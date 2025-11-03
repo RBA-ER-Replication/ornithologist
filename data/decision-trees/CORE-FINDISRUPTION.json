@@ -1,0 +1,53 @@
+{
+  "id": "n1",
+  "question": "Does the paragraph describe a financial crisis or financial stress?",
+  "children": {
+    "yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is the financial crisis or stress event Australian in nature, or is it overseas/global?",
+      "children": {
+        "Australian": {
+          "id": "n3",
+          "type": "LLM",
+          "question": "Does the paragraph indicate the need for intervention or support?",
+          "children": {
+            "yes": {
+              "id": "n4",
+              "type": "TERMINAL",
+              "assessment": "Dovish",
+              "children": {}
+            },
+            "no": {
+              "id": "n5",
+              "assessment": "Leaning Dovish",
+              "children": {}
+            }
+          }
+        },
+        "Overseas or global": {
+          "id": "n6",
+          "type": "LLM",
+          "question": "Does the paragraph potential spillovers for Australia?",
+          "children": {
+            "yes": {
+              "id": "n7",
+              "assessment": "Leaning Dovish",
+              "children": {}
+            },
+            "no": {
+              "id": "n8",
+              "assessment": "Neutral (financial stress event is remote)",
+              "children": {}
+            }
+          }
+        }
+      }
+    },
+    "no": {
+      "id": "n9",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

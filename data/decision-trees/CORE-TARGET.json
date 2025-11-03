@@ -1,0 +1,51 @@
+{
+  "id": "n1",
+  "type": "SYMBOLIC",
+  "question": "{inflation_state}",
+  "children": {
+    "above_target": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Are policymakers tolerating a long return of inflation to target?",
+      "children": {
+        "Yes": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Dovish",
+          "children": {}
+        },
+        "No": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Hawkish",
+          "children": {}
+        }
+      }
+    },
+    "below_target": {
+      "id": "n5",
+      "type": "LLM",
+      "question": "Are policymakers tolerating a long return of inflation to target?",
+      "children": {
+        "Yes": {
+          "id": "n6",
+          "type": "terminal",
+          "assessment": "Hawkish",
+          "children": {}
+        },
+        "No": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Dovish",
+          "children": {}
+        }
+      }
+    },
+    "on_target": {
+      "id": "n8",
+      "type": "terminal",
+      "assessment": "Neutral",
+      "children": {}
+    }
+  }
+}

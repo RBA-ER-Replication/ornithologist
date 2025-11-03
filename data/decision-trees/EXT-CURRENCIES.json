@@ -1,0 +1,60 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Does the paragraph mention the Australian Dollar explicitly?",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is the Australian Dollar appreciating, depreciating, or stable? This may also be expressed as the TWI (trade weighted index) increasing or decreasing.",
+      "children": {
+        "Appreciating": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Depreciating": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "Stable": {
+          "id": "n5",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        },
+        "Other or unclear": {
+          "id": "n6",
+          "type": "LLM",
+          "question": "Broadly, do the exchange rate movements imply a weaker, stronger, or unchanged Australian dollar?",
+          "children": {
+            "weaker AUD": {
+              "id": "n7",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            },
+            "stronger AUD": {
+              "id": "n8",
+              "assessment": "Leaning dovish",
+              "children": {}
+            },
+            "unchanged AUD": {
+              "id": "n9",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        }
+      }
+    },
+    "No": {
+      "id": "n10",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

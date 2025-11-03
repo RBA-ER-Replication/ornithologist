@@ -1,0 +1,412 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Does this text contain a forward-looking forecast, projection, or scenario (answer one of: yes / no / unclear)?",
+  "children": {
+    "no": {
+      "id": "n2",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    },
+    "unclear": {
+      "id": "n3",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    },
+    "yes": {
+      "id": "n4",
+      "type": "LLM",
+      "question": "What does the forecast concern? Pick the most important topic, in this order: inflation, activity variables (e.g. GDP/labour/wages/investment), major trading partner forecasts (e.g. China, USA, EU), financial conditions, or other?",
+      "children": {
+        "inflation": {
+          "id": "n5",
+          "type": "SYMBOLIC",
+          "question": "{inflation_state}",
+          "children": {
+            "above_target": {
+              "id": "n6",
+              "type": "LLM",
+              "question": "Given the paragraph and that inflation is above target, does the forecast indicate inflation will: increase / decrease / stay roughly the same? Answer one.",
+              "children": {
+                "increase": {
+                  "id": "n7",
+                  "type": "LLM",
+                  "question": "Is the paragraph expressing particular concern about inflation being above target? Yes or no.",
+                  "children": {
+                    "yes": {
+                      "id": "n8",
+                      "type": "terminal",
+                      "assessment": "Hawkish: inflation is above target and forecast to increase.",
+                      "children": {}
+                    },
+                    "no": {
+                      "id": "n9",
+                      "type": "terminal",
+                      "assessment": "Leaning hawkish: inflation is above target and is forecast to increase.",
+                      "children": {}
+                    }
+                  }
+                },
+                "decrease": {
+                  "id": "n10",
+                  "type": "LLM",
+                  "question": "Is the paragraph expressing particular concern about inflation being above target? Or are policymakers comfortable with the pace of decline?",
+                  "children": {
+                    "particular concern": {
+                      "id": "n11",
+                      "type": "terminal",
+                      "assessment": "Hawkish: inflation is above target, and policymakers remain concerned despite a forecast decline.",
+                      "children": {}
+                    },
+                    "satisfied with pace": {
+                      "id": "n12",
+                      "type": "terminal",
+                      "assessment": "Leaning dovish: inflation is above target, but policymakers are comfortable with the pace of return to target.",
+                      "children": {}
+                    },
+                    "unclear": {
+                      "id": "n13",
+                      "assessment": "Leaning hawkish: inflation is above target, though it is forecast to decline.",
+                      "children": {}
+                    }
+                  }
+                },
+                "stay roughly the same": {
+                  "id": "n14",
+                  "type": "LLM",
+                  "question": "Is the paragraph expressing particular concern about inflation being above target?",
+                  "children": {
+                    "yes": {
+                      "id": "n15",
+                      "type": "terminal",
+                      "assessment": "Hawkish: inflation is above target and is forecast to stay there. Policymakers have expressed concern.",
+                      "children": {}
+                    },
+                    "no": {
+                      "id": "n16",
+                      "type": "terminal",
+                      "assessment": "Leaning hawkish: inflation is above target and expected to stay there.",
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            },
+            "on_target": {
+              "id": "n17",
+              "type": "LLM",
+              "question": "Given inflation is at target, does the forecast imply inflation will: increase / decrease / remain about the same / unclear? Answer one.",
+              "children": {
+                "increase": {
+                  "id": "n18",
+                  "type": "LLM",
+                  "question": "Is the paragraph expressing particular concern about inflation potentially moving above target?",
+                  "children": {
+                    "yes": {
+                      "id": "n19",
+                      "type": "terminal",
+                      "assessment": "Hawkish: though inflation is at target, policymakers are concerned it may increase to be above target.",
+                      "children": {}
+                    },
+                    "no": {
+                      "id": "n20",
+                      "type": "terminal",
+                      "assessment": "Neutral: inflation is at target.",
+                      "children": {}
+                    }
+                  }
+                },
+                "decrease": {
+                  "id": "n21",
+                  "type": "LLM",
+                  "question": "Does the paragraph express particular concern about inflation potentially moving below target?",
+                  "children": {
+                    "yes": {
+                      "id": "n22",
+                      "assessment": "Dovish: though inflation is at target, policymakers are concerned it will fall to be below target.",
+                      "children": {}
+                    },
+                    "no": {
+                      "id": "n23",
+                      "assessment": "Neutral: inflation is at target.",
+                      "children": {}
+                    }
+                  }
+                },
+                "remain about the same": {
+                  "id": "n24",
+                  "type": "terminal",
+                  "assessment": "Neutral: inflation is at target.",
+                  "children": {}
+                }
+              }
+            },
+            "below_target": {
+              "id": "n25",
+              "type": "LLM",
+              "question": "Given inflation is below target, does the forecast imply inflation will: increase / decrease / remain about the same / unclear? Answer one.",
+              "children": {
+                "increase": {
+                  "id": "n26",
+                  "type": "LLM",
+                  "question": "Is the paragraph unsatisfied with the pace of inflation returning to target?",
+                  "children": {
+                    "unsatisfied with pace": {
+                      "id": "n27",
+                      "type": "terminal",
+                      "assessment": "Dovish: inflation is below target and policymakers are unsatisfied with the pace of its return to target.",
+                      "children": {}
+                    },
+                    "satisfied": {
+                      "id": "n28",
+                      "type": "terminal",
+                      "assessment": "Neutral: though inflation is below target, policymakers are satisfied with the pace of return to target.",
+                      "children": {}
+                    },
+                    "unclear": {
+                      "id": "n29",
+                      "type": "terminal",
+                      "assessment": "Leaning dovish: inflation is below target, though it is expected to move towards the target.",
+                      "children": {}
+                    }
+                  }
+                },
+                "decrease": {
+                  "id": "n30",
+                  "type": "terminal",
+                  "assessment": "Dovish: inflation is below target and forecast to decline further.",
+                  "children": {}
+                },
+                "remain about the same": {
+                  "id": "n31",
+                  "type": "terminal",
+                  "assessment": "Dovish: inflation is below target and not forecast to increase.",
+                  "children": {}
+                }
+              }
+            }
+          }
+        },
+        "activity variables": {
+          "id": "n32",
+          "type": "LLM",
+          "question": "For core forecasts (GDP, labour, wages, investment), does the paragraph indicate the economy is: expanding / contracting / stable / unclear?",
+          "children": {
+            "expanding": {
+              "id": "n33",
+              "type": "LLM",
+              "question": "Does the paragraph indicate that higher inflation is a risk?",
+              "children": {
+                "higher inflation is a risk": {
+                  "id": "n34",
+                  "type": "terminal",
+                  "assessment": "Hawkish: forecasts point to an expanding economy with inflationary pressures rising, and policymakers are concerned.",
+                  "children": {}
+                },
+                "no mention": {
+                  "id": "n35",
+                  "type": "terminal",
+                  "assessment": "Leaning hawkish: the economy is expanding, but potential inflationary pressures are not mentioned.",
+                  "children": {}
+                }
+              }
+            },
+            "contracting": {
+              "id": "n36",
+              "type": "LLM",
+              "question": "Does the paragraph indicate that lower inflation is a risk?",
+              "children": {
+                "lower inflation is a risk": {
+                  "id": "n37",
+                  "type": "terminal",
+                  "assessment": "Dovish: the economy is forecast to contract and lower inflation is mentioned as a risk.",
+                  "children": {}
+                },
+                "no mention": {
+                  "id": "n38",
+                  "type": "terminal",
+                  "assessment": "Leaning dovish: the economy is forecast to contract, but potential inflationary pressures are not mentioned.",
+                  "children": {}
+                }
+              }
+            },
+            "stable": {
+              "id": "n39",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n40",
+                  "assessment": "Hawkish: though the economy is projected to remain stable, inflation remains above target.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n41",
+                  "assessment": "Neutral: the economy is projected to remain stable, and inflation is at target.",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n42",
+                  "assessment": "Dovish: though the economy is projected to remain stable, inflation remains below target.",
+                  "children": {}
+                }
+              }
+            },
+            "unclear": {
+              "id": "n43",
+              "type": "LLM",
+              "question": "Broadly, are the forecasts positive for economic growth, negative, or is it still unclear?",
+              "children": {
+                "positive": {
+                  "id": "n66",
+                  "assessment": "Leaning hawkish",
+                  "children": {}
+                },
+                "negative": {
+                  "id": "n67",
+                  "assessment": "Leaning dovish",
+                  "children": {}
+                },
+                "unclear": {
+                  "id": "n68",
+                  "assessment": "Neutral",
+                  "children": {}
+                }
+              }
+            }
+          }
+        },
+        "Major trading partners": {
+          "id": "n44",
+          "type": "LLM",
+          "question": "Does the forecast for major trading partners imply: growing external demand / shrinking external demand / neutral / unclear for Australia?",
+          "children": {
+            "growing external demand": {
+              "id": "n45",
+              "type": "terminal",
+              "assessment": "Leaning hawkish: growing external demand might flow through to higher inflation.",
+              "children": {}
+            },
+            "shrinking external demand": {
+              "id": "n46",
+              "type": "terminal",
+              "assessment": "Leaning dovish: growing external demand might flow through to lower inflation.",
+              "children": {}
+            },
+            "neutral or unclear": {
+              "id": "n47",
+              "type": "terminal",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        },
+        "financial_conditions": {
+          "id": "n48",
+          "type": "LLM",
+          "question": "Do financial conditions (eg. funding spreads, term premia, credit availability) point to financial stability risks, or are they reflective of strong or sluggish economic growth?",
+          "children": {
+            "financial stability risks": {
+              "id": "n49",
+              "assessment": "Leaning dovish: financial stability risks may indicate a central bank would ease monetary policy.",
+              "children": {}
+            },
+            "strong growth": {
+              "id": "n50",
+              "assessment": "Leaning hawkish: financial conditions are linked to positive economic growth, perhaps linked to inflationary pressures increasing.",
+              "children": {}
+            },
+            "sluggish growth": {
+              "id": "n51",
+              "assessment": "Leaning dovish: financial conditions are linked to sluggish economic growth, perhaps linked to inflationary pressures declining.",
+              "children": {}
+            },
+            "unclear": {
+              "id": "n52",
+              "assessment": "Neutral: it is unclear from the paragraph how financial conditions are linked to inflation.",
+              "children": {}
+            }
+          }
+        },
+        "other": {
+          "id": "n53",
+          "type": "LLM",
+          "question": "Use your judgement: is the forecast content inflationary, disinflationary, or neutral for Australia? Answer one.",
+          "children": {
+            "inflationary": {
+              "id": "n54",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n55",
+                  "type": "terminal",
+                  "assessment": "Hawkish: inflation is above target and forecasts indicate inflationary pressures.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n56",
+                  "type": "terminal",
+                  "assessment": "Leaning hawkish: inflation is at target and forecasts indicate inflationary pressures.",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n57",
+                  "type": "terminal",
+                  "assessment": "Neutral: inflation is below target and forecasts indicate inflationary pressures.",
+                  "children": {}
+                }
+              }
+            },
+            "disinflationary": {
+              "id": "n58",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n59",
+                  "assessment": "Leaning hawkish: inflation is above target but forecasts suggest disinflation.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n60",
+                  "assessment": "Leaning dovish: inflation is on target, but forecasts suggest disinflationary pressures.",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n61",
+                  "assessment": "Dovish: inflation is below target and forecasts suggest disinflationary pressures.",
+                  "children": {}
+                }
+              }
+            },
+            "neutral": {
+              "id": "n62",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n63",
+                  "assessment": "Leaning hawkish: inflation is above target.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n64",
+                  "assessment": "Neutral: inflation is at target.",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n65",
+                  "assessment": "Leaning dovish: inflation is below target.",
+                  "children": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

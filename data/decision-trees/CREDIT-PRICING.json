@@ -1,0 +1,66 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the paragraph primarily discussing asset prices, yield curves, or are markets described as stable/mixed?",
+  "children": {
+    "Asset Prices": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Are asset prices increasing or decreasing?",
+      "children": {
+        "Increasing": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning Hawkish",
+          "children": {}
+        },
+        "Decreasing": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning Dovish",
+          "children": {}
+        },
+        "Stable": {
+          "id": "n5",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Yield Curves": {
+      "id": "n6",
+      "type": "LLM",
+      "question": "Are the yield curves getting flatter or steeper?",
+      "children": {
+        "Getting Flatter": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Dovish",
+          "children": {}
+        },
+        "Getting Steeper": {
+          "id": "n8",
+          "type": "terminal",
+          "assessment": "Hawkish",
+          "children": {}
+        },
+        "Not changing": {
+          "id": "n9",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Stable/Mixed": {
+      "id": "n10",
+      "type": "terminal",
+      "assessment": "Neutral",
+      "children": {}
+    },
+    "Other, unclear, or irrelevant": {
+      "id": "n11",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

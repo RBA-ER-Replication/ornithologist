@@ -1,0 +1,29 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Are equity markets/prices increasing or declining?",
+  "children": {
+    "Increasing": {
+      "id": "n2",
+      "type": "TERMINAL",
+      "assessment": "Leaning hawkish",
+      "children": {}
+    },
+    "Declining": {
+      "id": "n5",
+      "type": "terminal",
+      "assessment": "Leaning Dovish",
+      "children": {}
+    },
+    "Irrelevant, unclear, or other": {
+      "id": "n6",
+      "assessment": "skip",
+      "children": {}
+    },
+    "Stable or largely unchanged": {
+      "id": "n7",
+      "assessment": "Neutral",
+      "children": {}
+    }
+  }
+}

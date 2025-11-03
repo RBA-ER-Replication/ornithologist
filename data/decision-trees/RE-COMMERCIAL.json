@@ -1,0 +1,50 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is domestic commercial real estate being directly or indirectly (e.g. non-residential construction, office vacancies) mentioned?",
+  "children": {
+    "No": {
+      "id": "n2",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    },
+    "Yes": {
+      "id": "n3",
+      "type": "LLM",
+      "question": "Does the paragraph describe exposures or dynamics that could plausibly constitute a financial stability risk?",
+      "children": {
+        "Yes": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "No or unclear": {
+          "id": "n5",
+          "type": "LLM",
+          "question": "Does the paragraph describe a broader slowdown in construction or credit growth?",
+          "children": {
+            "Yes": {
+              "id": "n6",
+              "type": "terminal",
+              "assessment": "Leaning dovish",
+              "children": {}
+            },
+            "No": {
+              "id": "n7",
+              "type": "terminal",
+              "assessment": "Neutral",
+              "children": {}
+            },
+            "Unclear": {
+              "id": "n8",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "id": "n1",
+  "question": "Does the paragraph discuss wages growth, or indicators connected to wages growth?",
+  "children": {
+    "yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is the level of wages growth (e.g. WPI) explicitly discussed, or are implicit indicators discussed?",
+      "children": {
+        "strong growth": {
+          "id": "n3",
+          "type": "SYMBOLIC",
+          "question": "{inflation_state}",
+          "children": {
+            "above_target": {
+              "id": "n4",
+              "assessment": "Hawkish",
+              "children": {}
+            },
+            "on_target": {
+              "id": "n5",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            },
+            "below_target": {
+              "id": "n6",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        },
+        "gradual or moderate growth": {
+          "id": "n7",
+          "type": "TERMINAL",
+          "assessment": "Neutral",
+          "children": {}
+        },
+        "weak or subdued growth": {
+          "id": "n8",
+          "type": "SYMBOLIC",
+          "question": "{inflation_state}",
+          "children": {
+            "above_target": {
+              "id": "n9",
+              "assessment": "Neutral",
+              "children": {}
+            },
+            "on_target": {
+              "id": "n10",
+              "assessment": "Leaning dovish",
+              "children": {}
+            },
+            "below_target": {
+              "id": "n11",
+              "assessment": "Dovish",
+              "children": {}
+            }
+          }
+        },
+        "implicit only": {
+          "id": "n12",
+          "type": "LLM",
+          "question": "Broadly, does the paragraph imply wages growth might accelerate, remain stable, or slow?",
+          "children": {
+            "accelerate": {
+              "id": "n13",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            },
+            "remain stable": {
+              "id": "n14",
+              "assessment": "Neutral",
+              "children": {}
+            },
+            "slow": {
+              "id": "n15",
+              "assessment": "Leaning dovish",
+              "children": {}
+            }
+          }
+        }
+      }
+    },
+    "no": {
+      "id": "n16",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

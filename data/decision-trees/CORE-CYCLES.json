@@ -1,0 +1,55 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "For Australia only: is the paragraph describing or implying an actual or potential expansionary economy or a contractionary economy?",
+  "children": {
+    "Expansionary Economy": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is it an actual or potential expansion?",
+      "children": {
+        "Actual Expansion": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Hawkish (Economy growing, leading to potential inflationary pressures)",
+          "children": {}
+        },
+        "Potential Expansion": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning Hawkish (Future growth suggests cautious tightening)",
+          "children": {}
+        }
+      }
+    },
+    "Contractionary Economy": {
+      "id": "n5",
+      "type": "LLM",
+      "question": "Is it an actual or potential contraction?",
+      "children": {
+        "Actual Contraction": {
+          "id": "n6",
+          "type": "terminal",
+          "assessment": "Dovish (Economy shrinking, requiring supportive policies)",
+          "children": {}
+        },
+        "Potential Contraction": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Leaning Dovish (Future downturns suggest caution and potential easing)",
+          "children": {}
+        }
+      }
+    },
+    "Near trend or unclear": {
+      "id": "n8",
+      "assessment": "Neutral",
+      "children": {}
+    },
+    "Global/non-Australian": {
+      "id": "n9",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

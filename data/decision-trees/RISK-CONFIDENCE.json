@@ -1,0 +1,81 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Does the paragraph refer to a measure of consumer/business confidence, measures of market sentiment (e.g. volatility), or is it an expression of uncertainty in judgements (e.g. forecast uncertainty)?",
+  "children": {
+    "Expression of uncertainty in judgements": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Broadly, how could policymaker confidence/sentiment be described?",
+      "children": {
+        "Positive sentiment or high confidence": {
+          "id": "n15",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "Negative sentiment or low confidence": {
+          "id": "n16",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Mixed or other": {
+          "id": "n17",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Consumer or Business Confidence Survey": {
+      "id": "n3",
+      "type": "LLM",
+      "question": "Broadly, how could consumer or business confidence be described?",
+      "children": {
+        "Positive sentiment or high confidence": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "Negative sentiment or low confidence": {
+          "id": "n5",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Mixed or other": {
+          "id": "n6",
+          "type": "TERMINAL",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Market or institutional confidence/uncertainty": {
+      "id": "n10",
+      "type": "LLM",
+      "question": "Broadly, how could market sentiment be described?",
+      "children": {
+        "Positive sentiment or high confidence": {
+          "id": "n12",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "Negative sentiment or low confidence": {
+          "id": "n13",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Other": {
+          "id": "n14",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Other/irrelevant": {
+      "id": "n11",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

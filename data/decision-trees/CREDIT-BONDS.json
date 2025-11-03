@@ -1,0 +1,32 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Are funding conditions (e.g. issuance levels or pricing) in bond or securitisation markets being described?",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Are funding conditions described as tightening (e.g. low issuance or higher pricing) or loosening (e.g. high issuance or lower pricing)?",
+      "children": {
+        "Tightening": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "Loosening": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        }
+      }
+    },
+    "No": {
+      "id": "n5",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

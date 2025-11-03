@@ -1,0 +1,114 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Does the paragraph discuss labour market indicators on the *intensive* margin (i.e. *underemployment* rates or hours worked) for Australia?",
+  "children": {
+    "yes": {
+      "id": "n9",
+      "type": "LLM",
+      "question": "Are the labour market indicators current or forward-looking? That is: are they relevant for current policymaking?",
+      "children": {
+        "historical only": {
+          "id": "n11",
+          "type": "LLM",
+          "question": "Broadly, does the historical comparison in the paragraph support tighter monetary policy, looser policy, or is it neutral?",
+          "children": {
+            "tighter policy": {
+              "id": "n13",
+              "assessment": "Leaning hawkish: historical comparisons of labour market indicators supported tighter monetary policy.",
+              "children": {}
+            },
+            "looser policy": {
+              "id": "n14",
+              "assessment": "Leaning dovish: historical comparisons of labour market indicators supported looser monetary policy.",
+              "children": {}
+            },
+            "neutral": {
+              "id": "n15",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        },
+        "current relevance": {
+          "id": "n12",
+          "type": "LLM",
+          "question": "Do labour market indicators broadly point towards tightness (e.g., low underemployment rates, increasing hours worked etc.), stability, or slack (e.g., high underemployment rates, decreasing hours worked, etc.)?",
+          "children": {
+            "tightness": {
+              "id": "n16",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n19",
+                  "assessment": "Hawkish: inflation is above target and there seems to be tightness in the labour market.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n20",
+                  "assessment": "Neutral: inflation is on target and there seems to be tightness in the labour market.",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n21",
+                  "assessment": "Leaning dovish: inflation is below target and there seems to be tightness in the labour market, which could generate inflationary pressures.",
+                  "children": {}
+                }
+              }
+            },
+            "stability": {
+              "id": "n17",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n22",
+                  "assessment": "Leaning hawkish: inflation is above target and policymakers might decide to tighten policy.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n23",
+                  "assessment": "Neutral",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n24",
+                  "assessment": "Leaning dovish: inflation is below target and policymakers might decide to stimulate.",
+                  "children": {}
+                }
+              }
+            },
+            "slack": {
+              "id": "n18",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n25",
+                  "assessment": "Leaning hawkish: inflation is above target and there seems to be slack in the labour market, which may contribute to disinflation.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n26",
+                  "assessment": "Leaning dovish: inflation is on target and there seems to be slack in the labour market, so policymakers may decide to stimulate.",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n27",
+                  "assessment": "Dovish: inflation is below target and there seems to be slack in the labour market, so policymakers may stimulate.",
+                  "children": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "no": {
+      "id": "n10",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

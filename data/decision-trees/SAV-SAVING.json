@@ -1,0 +1,50 @@
+{
+  "id": "n1",
+  "question": "Does the paragraph describe the savings rate or savings buffers?",
+  "children": {
+    "Savings rate": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is the savings rate described as high or increasing, low or decreasing, or stable?",
+      "children": {
+        "high or increasing": {
+          "id": "n3",
+          "assessment": "Leaning Dovish",
+          "children": {}
+        },
+        "low or decreasing": {
+          "id": "n4",
+          "assessment": "Leaning Hawkish",
+          "children": {}
+        },
+        "stable": {
+          "id": "n5",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Savings buffers": {
+      "id": "n6",
+      "type": "LLM",
+      "question": "Are savings buffers being used to deleverage?",
+      "children": {
+        "yes": {
+          "id": "n7",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "no": {
+          "id": "n8",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        }
+      }
+    },
+    "Savings not discussed": {
+      "id": "n9",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

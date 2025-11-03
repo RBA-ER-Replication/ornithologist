@@ -1,0 +1,38 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is loan growth in household debt described as strong or weak?",
+  "children": {
+    "Strong": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is strong loan growth being described as a financial stability risk?",
+      "children": {
+        "Yes": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "No": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Hawkish",
+          "children": {}
+        }
+      }
+    },
+    "Weak": {
+      "id": "n5",
+      "type": "terminal",
+      "assessment": "Leaning dovish",
+      "children": {}
+    },
+    "Not described, unclear, or other": {
+      "id": "n6",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

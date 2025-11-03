@@ -1,0 +1,42 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the paragraph talking about productivity or unit labour costs?",
+  "children": {
+    "no": {
+      "id": "n2",
+      "assessment": "skip",
+      "children": {}
+    },
+    "yes": {
+      "id": "n3",
+      "type": "LLM",
+      "question": "Is the paragraph describing productivity growth as strong, weak, or negative?",
+      "children": {
+        "Strong productivity growth": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Dovish",
+          "children": {}
+        },
+        "Weak productivity growth": {
+          "id": "n5",
+          "type": "terminal",
+          "assessment": "Leaning Hawkish",
+          "children": {}
+        },
+        "Productivity declines": {
+          "id": "n6",
+          "type": "terminal",
+          "assessment": "Hawkish",
+          "children": {}
+        },
+        "Around trend, other, or unclear": {
+          "id": "n7",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    }
+  }
+}

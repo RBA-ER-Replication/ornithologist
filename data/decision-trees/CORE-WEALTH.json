@@ -1,0 +1,30 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the paragraph talk explicitly or implicitly (i.e. via asset prices) about wealth increasing, decreasing, or remaining stable?",
+  "children": {
+    "Increasing": {
+      "id": "n2",
+      "type": "terminal",
+      "assessment": "Hawkish",
+      "children": {}
+    },
+    "Decreasing": {
+      "id": "n3",
+      "type": "terminal",
+      "assessment": "Dovish",
+      "children": {}
+    },
+    "Stable": {
+      "id": "n4",
+      "type": "terminal",
+      "assessment": "Neutral",
+      "children": {}
+    },
+    "Unclear": {
+      "id": "n5",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Does the paragraph mention capital stock/investment?",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Are inflationary pressures mentioned or implied?",
+      "children": {
+        "Yes": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "No": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "No or unknown": {
+      "id": "n8",
+      "type": "TERMINAL",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

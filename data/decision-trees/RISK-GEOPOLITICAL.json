@@ -1,0 +1,89 @@
+{
+  "id": "n7",
+  "question": "What type of geopolitical risks does the paragraph discuss?",
+  "children": {
+    "wars or conflicts": {
+      "id": "n8",
+      "type": "LLM",
+      "question": "Is the conflict described in the paragraph potentially causing supply shocks or inflationary pressures?",
+      "children": {
+        "yes": {
+          "id": "n13",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "no/unclear": {
+          "id": "n14",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "sanctions or trade": {
+      "id": "n9",
+      "type": "LLM",
+      "question": "Are trade tensions or sanctions discussed in the paragraph described as inflationary risks?",
+      "children": {
+        "yes": {
+          "id": "n15",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "no/unclear": {
+          "id": "n16",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "logistics (e.g. ports, pipelines)": {
+      "id": "n10",
+      "type": "LLM",
+      "question": "Are logistics concerns discussed in the paragraph described as persistent inflationary risks, or are they temporary?",
+      "children": {
+        "inflationary risk": {
+          "id": "n17",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "temporary shock": {
+          "id": "n18",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "other/unclear": {
+          "id": "n19",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "other/general tensions": {
+      "id": "n11",
+      "type": "LLM",
+      "question": "Broadly, are the tensions heightened/described as significant risks, or are they simply noted?",
+      "children": {
+        "Heightened/significant": {
+          "id": "n20",
+          "assessment": "Dovish",
+          "children": {}
+        },
+        "Noted": {
+          "id": "n21",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Other/unsure": {
+          "id": "n22",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "geopolitical risks not discussed/irrelevant": {
+      "id": "n12",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the discussion about government debt?",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Does the paragraph discuss a central bank asset purchase program or quantitative easing/tightening?",
+      "children": {
+        "Yes": {
+          "id": "n3",
+          "type": "LLM",
+          "question": "Is the asset purchase programme or QE expanding (easing) or contracting (tightening)?",
+          "children": {
+            "expanding/easing": {
+              "id": "n8",
+              "assessment": "Dovish",
+              "children": {}
+            },
+            "contracting/tightening": {
+              "id": "n9",
+              "assessment": "Hawkish",
+              "children": {}
+            }
+          }
+        },
+        "No": {
+          "id": "n4",
+          "type": "LLM",
+          "question": "Is the central bank selling its holdings of government debt?",
+          "children": {
+            "Yes": {
+              "id": "n5",
+              "type": "terminal",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            },
+            "No": {
+              "id": "n6",
+              "type": "terminal",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        }
+      }
+    },
+    "No": {
+      "id": "n7",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

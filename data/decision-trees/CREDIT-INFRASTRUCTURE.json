@@ -1,0 +1,24 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the financial market infrastructure described as being under financial stress?",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "terminal",
+      "assessment": "Leaning dovish",
+      "children": {}
+    },
+    "No": {
+      "id": "n3",
+      "type": "terminal",
+      "assessment": "Neutral",
+      "children": {}
+    },
+    "Financial market infrastructure not discussed": {
+      "id": "n4",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

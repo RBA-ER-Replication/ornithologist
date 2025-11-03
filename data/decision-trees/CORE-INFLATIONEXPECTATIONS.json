@@ -1,0 +1,96 @@
+{
+  "id": "n1",
+  "question": "Is the paragraph talking about expectations for the cash/policy rate, or is it talking about inflation expectations?",
+  "children": {
+    "policy rate expectations": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Broadly, how does the market view the central bank's policy reaction function? Do they expect policy to be tighter than before, looser than before, or is it unclear?",
+      "children": {
+        "tigher": {
+          "id": "n3",
+          "assessment": "Leaning hawkish: markets expect the central bank to have tighter policy than previously.",
+          "children": {}
+        },
+        "looser": {
+          "id": "n4",
+          "assessment": "Leaning dovish: markets expect the central bank to have looser policy than previously.",
+          "children": {}
+        },
+        "unclear": {
+          "id": "n5",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "inflation expectations": {
+      "id": "n6",
+      "type": "SYMBOLIC",
+      "question": "{inflation_state}",
+      "children": {
+        "above_target": {
+          "id": "n7",
+          "type": "LLM",
+          "question": "Does the paragraph describe or imply there are risks of inflation expectations increasing?",
+          "children": {
+            "yes": {
+              "id": "n8",
+              "assessment": "Hawkish: inflation expectations increasing when inflation is above target means a central bank will likely tighten policy.",
+              "children": {}
+            },
+            "no": {
+              "id": "n9",
+              "assessment": "Leaning hawkish: inflation is above target, but policymakers are not too concerned about expectations deanchoring.",
+              "children": {}
+            }
+          }
+        },
+        "on_target": {
+          "id": "n10",
+          "type": "LLM",
+          "question": "Does the paragraph describe increasing inflation expectations, or declining inflation expectations?",
+          "children": {
+            "increasing expectations": {
+              "id": "n11",
+              "assessment": "Leaning hawkish: inflation is at target but there is a risk of inflation expectations increasing.",
+              "children": {}
+            },
+            "declining expectations": {
+              "id": "n12",
+              "assessment": "Leaning dovish: inflation is at target but there is a risk of inflation expectations declining.",
+              "children": {}
+            },
+            "neither or other": {
+              "id": "n13",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        },
+        "below_target": {
+          "id": "n14",
+          "type": "LLM",
+          "question": "Does the paragraph describe or imply there are risks of inflation expectations declining?",
+          "children": {
+            "yes": {
+              "id": "n15",
+              "assessment": "Dovish: inflation expectations declining when inflation is below target means a central bank will likely loosen policy.",
+              "children": {}
+            },
+            "no": {
+              "id": "n16",
+              "assessment": "Leaning dovish: inflation is below target, but policymakers are not too concerned about expectations deanchoring.",
+              "children": {}
+            }
+          }
+        }
+      }
+    },
+    "neither": {
+      "id": "n17",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

@@ -1,0 +1,2438 @@
+asset prices	CREDIT-PRICING
+budget deficits	POL-GOVBUDGET
+economic activity	CORE-ACTIVITY
+labour costs	CORE-WAGES
+financial markets	CREDIT-PRICING
+credit spreads	CREDIT-PRICING
+european central bank	EXT-INTLMONETARYPOLICY
+policy actions	POL-MONETARY, POL-FISCAL
+private investment	CORE-INVESTMENT
+global trade	EXT-TRADE
+total hours worked	CORE-LABOURINTENSIVE
+fixed exchange rate	EXT-CURRENCIES
+deputy governor	OTH-CBGOVERNANCE
+job security	CORE-LABOUREXTENSIVE
+macroeconomic stability	CORE-CYCLES
+owner occupiers	RE-RESIDENTIAL
+foreign investment	EXT-INTLECON
+credit unions	CREDIT-BANKING
+financial stability considerations	CORE-FINDISRUPTION
+foreign savings	EXT-INTLECON
+political uncertainty	RISK-GEOPOLITICAL
+speculative activity	CREDIT-EQUITIES
+national unemployment rate	CORE-LABOUREXTENSIVE
+payment services	CREDIT-INFRASTRUCTURE
+upward revision	EC-FORECAST
+liquidity conditions	CREDIT-BANKING
+payments systems	CREDIT-INFRASTRUCTURE
+equipment investment	CORE-INVESTMENT
+rate cut	POL-MONETARY
+covid 19 outbreaks	CORE-DISRUPTION
+stance of monetary policy	POL-MONETARY
+credit market	CREDIT-CREDITGROWTH
+inflation environment	CORE-INFLATION
+non mining investment	CORE-INVESTMENT
+stronger wages growth	CORE-WAGES
+retail sales growth	CORE-CONSUMPTION
+stronger recovery	CORE-CYCLES
+global supply chain	EXT-TRADE
+wage price	CORE-WAGES
+award and minimum	CORE-WAGES
+wages growth and inflation	CORE-WAGES, CORE-INFLATION
+market spreads	CREDIT-PRICING
+price and wage	CORE-WAGES, CORE-INFLATION
+the federal funds rate	EXT-INTLMONETARYPOLICY
+basis point increase	CREDIT-INTERESTRATES
+reducing unemployment	CORE-LABOUREXTENSIVE
+australian payments	CREDIT-INFRASTRUCTURE
+contraction in economic activity	CORE-CYCLES
+household consumption	CORE-CONSUMPTION
+bulk commodities	EXT-COMMODITIES, EXT-TRADE
+capital outflows	EXT-INTLECON
+monetary policies	POL-MONETARY
+market conditions	CORE-BUSACTIVITY
+policy responses	POL-MONETARY, POL-FISCAL
+economic outlook	EC-FORECAST
+labour supply	CORE-LABOURCAPACITY
+investment spending	CORE-INVESTMENT
+vaccination rates	CORE-DISRUPTION
+foreign capital	EXT-INTLECON
+cyclone debbie	FUN-CLIMATE
+net exports	EXT-TRADE
+steel demand	EXT-COMMODITIES
+automatic stabilisers	POL-FISCAL
+fixed rate	CREDIT-INTERESTRATES
+debt funding	CREDIT-CORPDEBT
+baseline scenario	EC-FORECAST
+household borrowing	CREDIT-HOUSEHOLDDEBT
+demand growth	CORE-ACTIVITY
+household goods	CORE-CONSUMPTION
+overseas migration	FUN-DEMOGRAPHICS
+industrial activity	CORE-BUSACTIVITY
+international financial institutions	OTH-ORGANISATIONS
+export markets	EXT-TRADE
+financing costs	CREDIT-INTERESTRATES
+housing investment	CORE-INVESTMENT, RE-RESIDENTIAL
+labour force survey	CORE-LABOUREXTENSIVE
+rental market	RE-RESIDENTIAL
+fiscal policy measures	POL-FISCAL
+low wages growth	CORE-WAGES
+year ended cpi inflation	CORE-INFLATION
+strong competition	CORE-COMPETITION
+non financial corporations	CORE-BUSACTIVITY
+low interest rates	CREDIT-INTERESTRATES, POL-MONETARY
+supported by accommodative monetary policy	POL-MONETARY
+rate movements	CREDIT-INTERESTRATES
+bond yields	CREDIT-BONDS, CREDIT-PRICING
+higher income economies	EXT-INTLECON
+lower interest rates	CREDIT-INTERESTRATES, POL-MONETARY
+gdp per capita	CORE-ACTIVITY
+growth in labour costs	CORE-WAGES
+supply side	CORE-SUPPLYSHOCKS
+spending growth	CORE-CONSUMPTION
+fuel prices	CORE-AFFORDABILITY, CORE-INFLATION
+supply disruptions	CORE-DISRUPTION, CORE-SUPPLYSHOCKS
+rent inflation	CORE-INFLATION, CORE-AFFORDABILITY, RE-RESIDENTIAL
+corporate bonds	CREDIT-BONDS, CREDIT-CORPDEBT
+policy rate	CREDIT-INTERESTRATES, POL-MONETARY
+house building	RE-RESIDENTIAL
+housing activity	RE-RESIDENTIAL
+reserve bank act	POL-LEGISLATIONREGULATION
+mining companies	EXT-MINING
+board's view	POL-MONETARY
+market pricing implied	CREDIT-PRICING
+service industries	CORE-SERVICES
+labour force	CORE-LABOUREXTENSIVE
+labour intensive	CORE-LABOURINTENSIVE
+labour market underutilisation	CORE-LABOURCAPACITY, CORE-LABOURINTENSIVE
+government support	POL-STIMULUS
+fine tune	POL-MONETARY
+maturity date	CREDIT-BONDS
+key uncertainties	POL-MONETARY
+deposit taking institutions	CREDIT-BANKING
+corporate bond yields	CREDIT-BONDS, CREDIT-INTERESTRATES
+volatile items	CORE-INFLATION
+declining housing prices	RE-RESIDENTIAL, CORE-AFFORDABILITY
+upward revisions	EC-FORECAST
+dampening effect	CORE-INFLATION, CORE-ACTIVITY
+lower prices	CORE-INFLATION
+fomc members	POL-MONETARY
+weather related	EXT-AGRICULTURAL
+accommodative stance	POL-MONETARY
+domestic costs	CORE-INFLATION
+profit growth	CORE-BUSACTIVITY
+leading indicators of labour demand	CORE-LABOUREXTENSIVE
+investment growth	CORE-INVESTMENT, CORE-ACTIVITY
+australia's major trading partners	EXT-INTLECON
+share price indices	CREDIT-EQUITIES
+australian financial markets	CREDIT-BANKING
+saving ratio	SAV-SAVING
+fiscal stimulus measures	POL-STIMULUS, POL-FISCAL
+thermal coal prices	EXT-COMMODITIES
+government bond yield	CREDIT-GOVTDEBT, CREDIT-INTERESTRATES
+national housing	RE-RESIDENTIAL
+aggregate growth	CORE-ACTIVITY
+additional investment	CORE-INVESTMENT
+easing of monetary policy	POL-MONETARY
+china trade and technology disputes	EXT-TRADE
+capital and liquidity buffers	CREDIT-BANKING
+australian monetary policy	POL-MONETARY
+international economic developments	EXT-INTLECON
+a reasonable timeframe	POL-MONETARY
+tightening of financial conditions	POL-MONETARY
+brent oil remaining at us	EXT-COMMODITIES
+electricity and gas	EXT-COMMODITIES
+broadly in line with market pricing	CREDIT-PRICING
+spare capacity in labour and product	CORE-CAPACITY
+growth in public demand	POL-FISCAL, CORE-ACTIVITY
+advanced economies	EXT-INTLECON
+dwelling prices	RE-RESIDENTIAL
+market expectations	CORE-INFLATIONEXPECTATIONS
+labour shortages	CORE-LABOUREXTENSIVE, CORE-LABOURCAPACITY
+capital ratios	CREDIT-BANKING
+board meeting	POL-MONETARY, OTH-CBGOVERNANCE
+low inflation	CORE-INFLATION
+liquid assets	CREDIT-BANKING
+broadly based	EC-INDICATOR
+highly indebted	CREDIT-HOUSEHOLDDEBT, CREDIT-CORPDEBT
+consumption spending	CORE-CONSUMPTION
+phillips curve	CORE-INFLATION, CORE-LABOUREXTENSIVE
+term funding	CREDIT-BANKING
+corporate bond spreads	CREDIT-BONDS
+rural commodities	EXT-AGRICULTURAL
+bretton woods	OTH-ORGANISATIONS
+capacity pressures	CORE-CAPACITY
+capital adequacy	CREDIT-BANKING
+consensus forecasts	EC-FORECAST
+domestic economic conditions	CORE-ACTIVITY
+foreign currency reserves	EXT-CURRENCIES
+rate rises	POL-MONETARY
+related disruptions	CORE-DISRUPTION
+final consumer	CORE-CONSUMPTION
+mining activity	EXT-MINING
+discretionary services	CORE-CONSUMPTION
+expansionary setting	POL-MONETARY
+inflation data	CORE-INFLATION
+credit quality	CREDIT-CREDITGROWTH
+inflation stays	CORE-INFLATION
+widely expected	EC-FORECAST
+policy adjustments	POL-MONETARY
+price index	CORE-INFLATION
+industrial sector	CORE-BUSACTIVITY
+asian markets	EXT-INTLECON
+public confidence	RISK-CONFIDENCE
+domestic sources	CORE-ACTIVITY
+forward looking indicators of labour demand	CORE-LABOURCAPACITY
+low funding costs	CREDIT-INTERESTRATES
+recent international	EXT-INTLECON
+normal times	CORE-CYCLES
+moderate employment	CORE-LABOUREXTENSIVE
+highly supportive	POL-MONETARY
+stronger than expected	EC-FORECAST
+remained highly accommodative	POL-MONETARY
+goods inflation	CORE-INFLATION
+gradual increase	EC-FORECAST
+business and consumer sentiment	RISK-CONFIDENCE
+high loan to valuation	CREDIT-HOUSEHOLDDEBT
+consumption of services	CORE-CONSUMPTION
+growth in housing credit	CREDIT-CREDITGROWTH
+current period of high inflation	CORE-INFLATION
+trade and technology disputes	EXT-TRADE
+expected to support	EC-FORECAST
+bring inflation	CORE-INFLATION
+capacity constraints	CORE-CAPACITY
+infrastructure investment	CORE-INVESTMENT, CORE-CAPITALSTOCK
+policy makers	POL-MONETARY, POL-FISCAL
+administered prices	CORE-INFLATION
+asset purchases	POL-MONETARY
+labour demand	CORE-LABOURCAPACITY
+wage increases	CORE-WAGES, CORE-HOUSEHOLDINCOMES
+labour market outcomes	CORE-LABOURCAPACITY
+resource allocation	CORE-CAPACITY
+highly leveraged	CREDIT-CORPDEBT, CREDIT-HOUSEHOLDDEBT
+highly uncertain	RISK-CONFIDENCE
+listed companies	CREDIT-EQUITIES
+virus outbreaks	CORE-DISRUPTION
+inflation target	CORE-TARGET
+superannuation funds	SAV-SUPER, CORE-WEALTH
+regulatory architecture	POL-LEGISLATIONREGULATION
+stimulus measures	POL-STIMULUS
+current account deficits	EXT-INTLECON
+market services	CORE-SERVICES
+construction costs	CORE-CONSUMPTION, CORE-AFFORDABILITY
+input cost pressures	CORE-INFLATION
+loan commitments	CREDIT-CREDITGROWTH
+es balances	CREDIT-BANKING
+additional hours	CORE-LABOURINTENSIVE
+mining business investment	CORE-INVESTMENT, EXT-MINING
+minimum wages	CORE-WAGES, CORE-HOUSEHOLDINCOMES
+international markets	EXT-INTLECON
+earlier expected	EC-FORECAST
+wpi growth	CORE-WAGES
+credit crisis	CORE-FINDISRUPTION
+national accounts data	CORE-ACTIVITY
+crude steel	EXT-COMMODITIES
+australian government bond yields	CREDIT-BONDS
+apartment prices	RE-RESIDENTIAL, CORE-AFFORDABILITY
+higher unemployment	CORE-LABOUREXTENSIVE
+tighten policy	POL-MONETARY
+variable rate loans	CREDIT-HOUSEHOLDDEBT
+future income growth	CORE-HOUSEHOLDINCOMES
+global industrial production	EXT-INTLECON
+low and stable inflation	CORE-INFLATION
+a longer term perspective	EC-FORECAST
+cash rate by 25 basis points	POL-MONETARY
+sentiment remained	RISK-CONFIDENCE
+upside and downside scenarios	EC-FORECAST
+fixed exchange	EXT-CURRENCIES
+lending to owner occupiers	CREDIT-HOUSEHOLDDEBT
+10 year government bond yields	CREDIT-BONDS
+package of policy measures	POL-STIMULUS
+increased uncertainty	RISK-CONFIDENCE
+issuance by australian banks	CREDIT-BANKING
+scope to ease	POL-MONETARY
+residential and non residential	RE-RESIDENTIAL, RE-COMMERCIAL
+expected to remain low	EC-FORECAST
+growth in household disposable income	CORE-HOUSEHOLDINCOMES, CORE-CONSUMPTION
+surveys and liaison	CORE-BUSACTIVITY
+business surveys	CORE-BUSACTIVITY
+trade tensions	CORE-DISRUPTION, EXT-TRADE
+hedge funds	CREDIT-PRICING
+emerging market	EXT-INTLECON
+industrial countries	EXT-INTLECON
+floating exchange rate	EXT-CURRENCIES
+wealth effects	CORE-WEALTH, CORE-CONSUMPTION
+drought conditions	FUN-CLIMATE
+upstream cost pressures	CORE-INFLATION
+geopolitical tensions	RISK-GEOPOLITICAL
+small business	CORE-BUSACTIVITY
+variable rate	CREDIT-INTERESTRATES
+cpi basket	CORE-INFLATION
+commonwealth government securities	CREDIT-GOVTDEBT
+higher commodity prices	EXT-COMMODITIES
+household saving	SAV-SAVING
+housing loan	CREDIT-HOUSEHOLDDEBT
+real income	CORE-HOUSEHOLDINCOMES
+total social financing	CREDIT-CREDITGROWTH
+headline cpi	CORE-INFLATION
+demand conditions	CORE-DEMANDSHOCKS
+fiscal expansion	POL-FISCAL, POL-STIMULUS
+inflation targeting regime	POL-MONETARY, CORE-TARGET
+farm sector	EXT-AGRICULTURAL
+limited spare capacity	CORE-CAPACITY
+global outlook	EXT-INTLECON
+economic variables	EC-INDICATOR
+stronger growth	CORE-ACTIVITY
+australian business	CORE-BUSACTIVITY
+largest banks	CREDIT-BANKING
+retail sales data	EC-INDICATOR, CORE-CONSUMPTION
+global economic recovery	EXT-INTLECON
+australian households	CORE-HOUSEHOLDINCOMES
+investment abroad	EXT-INTLECON
+monetary policy measures	POL-MONETARY
+strong global demand	EXT-INTLECON
+higher debt levels	CREDIT-HOUSEHOLDDEBT, CREDIT-CORPDEBT
+search for yield	CREDIT-PRICING
+official interest rates	CREDIT-INTERESTRATES
+support payments	POL-STIMULUS
+inflation returns to target	CORE-INFLATIONEXPECTATIONS
+machinery and equipment	CORE-INVESTMENT
+financial developments	CREDIT-BANKING
+global commodity	EXT-COMMODITIES
+rate increase	POL-MONETARY
+payments to households	POL-STIMULUS
+outlook for business investment	EC-FORECAST, CORE-INVESTMENT
+house prices	RE-RESIDENTIAL
+import prices	EXT-TRADE
+consumer durables	CORE-CONSUMPTION, CORE-ACTIVITY
+real gdp	CORE-ACTIVITY
+nab survey	RISK-CONFIDENCE
+wage growth	CORE-WAGES
+steel production	CORE-MANUF
+forward guidance	POL-MONETARY
+historical experience	EC-FORECAST
+wholesale funding	CREDIT-BANKING
+major countries	EXT-INTLECON
+tobacco excise	POL-TAX
+profit margins	CORE-BUSACTIVITY
+comparative advantage	EXT-TRADE
+federal reserve's	EXT-INTLMONETARYPOLICY
+total assets	CREDIT-BANKING
+wage rises	CORE-WAGES, CORE-INFLATION
+resource related	EXT-MINING
+low wage growth	CORE-WAGES
+nominal incomes	CORE-HOUSEHOLDINCOMES
+vacancy rate	RE-RESIDENTIAL
+regulatory community	POL-LEGISLATIONREGULATION
+higher oil prices	CORE-INFLATION, EXT-COMMODITIES
+ongoing uncertainty	RISK-CONFIDENCE
+fiscal policies	POL-FISCAL
+capital expenditure survey	CORE-INVESTMENT, EC-INDICATOR
+japanese yen	EXT-CURRENCIES
+mining profits	EXT-MINING
+bank for international settlements	OTH-ORGANISATIONS
+cost of living pressures	CORE-AFFORDABILITY, CORE-INFLATION
+potential supply	CORE-CAPACITY
+asset price boom	CREDIT-PRICING, CORE-BUSACTIVITY
+fixed rates	CREDIT-INTERESTRATES
+trade weighted exchange rate	EXT-CURRENCIES, EC-INDICATOR
+coronavirus outbreak	CORE-DISRUPTION
+current conditions	EC-INDICATOR
+crude oil price	EXT-COMMODITIES, CORE-INFLATION
+monetary and fiscal stimulus	POL-MONETARY, POL-STIMULUS
+assistance payments	POL-STIMULUS
+high rates	CREDIT-INTERESTRATES
+wage and price pressures	CORE-INFLATION, CORE-WAGES
+below pre pandemic levels	CORE-ACTIVITY
+higher interest rates	CREDIT-INTERESTRATES, POL-MONETARY
+major international	EXT-INTLECON
+conditions remained accommodative	POL-MONETARY, POL-STIMULUS
+bond issuance by australian banks	CREDIT-BONDS, CREDIT-BANKING
+settlement accounts	CREDIT-BANKING
+major global	EXT-INTLECON
+asian financial	EXT-INTLECON
+real household	CORE-HOUSEHOLDINCOMES, CORE-ACTIVITY
+the established housing market	RE-RESIDENTIAL, CORE-AFFORDABILITY
+consumer spending	CORE-CONSUMPTION, CORE-ACTIVITY
+sovereign debt	CREDIT-GOVTDEBT, POL-FISCAL
+risk premiums	RISK-FINRISK
+cpi inflation	CORE-INFLATION, CORE-INFLATIONEXPECTATIONS
+capital markets	CREDIT-PRICING, CREDIT-EQUITIES, CREDIT-BONDS
+purchasing power	CORE-AFFORDABILITY, CORE-INFLATION
+supply shocks	CORE-SUPPLYSHOCKS
+enterprise agreements	CORE-WAGES
+skilled labour	CORE-SKILLS, CORE-LABOURCAPACITY
+detached dwellings	RE-RESIDENTIAL
+government subsidies	POL-STIMULUS
+major central banks	EXT-INTLMONETARYPOLICY
+commercial banks	CREDIT-BANKING
+china's growth	EXT-INTLECON
+tradables inflation	CORE-INFLATION
+monetary policy decisions	POL-MONETARY
+annual growth	EC-INDICATOR, CORE-ACTIVITY
+money market rates	CREDIT-INTERESTRATES
+housing finance	RE-RESIDENTIAL, CREDIT-HOUSEHOLDDEBT
+inflation outcome	CORE-INFLATION
+monetary policy response	POL-MONETARY
+coal and iron ore	EXT-COMMODITIES
+settlement balances	CREDIT-BANKING
+financial stability board	OTH-ORGANISATIONS
+business cycles	CORE-CYCLES
+business investment intentions	EC-INDICATOR, CORE-INVESTMENT
+based on historical forecast errors	EC-FORECAST
+open economy	EXT-TRADE, EXT-INTLECON
+lower income	CORE-HOUSEHOLDINCOMES
+iron ore and coal	EXT-COMMODITIES
+domestic inflation	CORE-INFLATION
+competition policy	POL-LEGISLATIONREGULATION, CORE-COMPETITION
+rates steady	CREDIT-INTERESTRATES
+upstream price	CORE-SUPPLYSHOCKS
+supportive monetary conditions	POL-MONETARY
+fruit and vegetable prices	CORE-INFLATION, CORE-AFFORDABILITY
+housing and business loans	CREDIT-HOUSEHOLDDEBT, CREDIT-CORPDEBT
+plant and equipment	CORE-INVESTMENT
+global financial	EXT-INTLECON
+industrial production and exports	EXT-TRADE
+actual and expected	EC-FORECAST
+nominal exchange rate	EXT-CURRENCIES
+fiscal and monetary support	POL-FISCAL, POL-MONETARY
+domestic labour	CORE-LABOUREXTENSIVE
+population growth	FUN-DEMOGRAPHICS, CORE-LABOUREXTENSIVE
+capital flows	EXT-INTLECON
+banking systems	CREDIT-BANKING
+private sector	CORE-ACTIVITY
+central forecasts	EC-FORECAST
+german bunds	CREDIT-BONDS
+financial stability department	CREDIT-BANKING
+economic developments	CORE-ACTIVITY
+resources sector	EXT-MINING
+single currency	EXT-CURRENCIES
+australia's exports	EXT-TRADE
+job ads	CORE-LABOUREXTENSIVE
+mortgage backed securities	CREDIT-BONDS
+tight labour market	CORE-LABOURCAPACITY
+capital imports	CORE-INVESTMENT
+chinese steel production	EXT-TRADE
+secondary market	CREDIT-PRICING
+investment opportunities	CORE-INVESTMENT
+corporate sector	CORE-BUSACTIVITY
+global inflationary pressures	CORE-INFLATION
+capital gains	CREDIT-PRICING
+overseas markets	EXT-INTLECON
+rising prices	CORE-INFLATION
+investment outlook	EC-FORECAST
+australia's central bank	OTH-CBGOVERNANCE
+international capital markets	EXT-INTLECON
+base metals prices	EXT-COMMODITIES
+small and medium sized businesses	CORE-ACTIVITY
+open market	POL-MONETARY
+construction sector	CORE-MANUF
+small downward revision	EC-FORECAST
+business surveys and liaison	EC-INDICATOR
+broader measures of labour underutilisation	CORE-LABOURCAPACITY
+electricity and gas prices	CORE-AFFORDABILITY
+business and consumer confidence	RISK-CONFIDENCE
+expansionary monetary	POL-MONETARY, POL-STIMULUS
+earnings ratios	CREDIT-PRICING
+australian economy grew	CORE-ACTIVITY
+measures of underlying inflation	CORE-INFLATION
+accommodative monetary	POL-MONETARY, POL-STIMULUS
+australian gdp	CORE-ACTIVITY
+growth in household consumption	CORE-CONSUMPTION
+business investment	CORE-INVESTMENT
+price stability	POL-MONETARY, CORE-INFLATION
+headline inflation	CORE-INFLATION
+human capital	CORE-SKILLS, CORE-PRODUCTIVITY
+asset values	CREDIT-PRICING
+retail trade	CORE-CONSUMPTION
+productivity growth	CORE-PRODUCTIVITY
+equity market	CREDIT-EQUITIES
+coking coal	EXT-COMMODITIES
+auction clearance rates	RE-RESIDENTIAL
+potential output	CORE-CAPACITY
+coal prices	EXT-COMMODITIES
+infrastructure spending	POL-STIMULUS, POL-GOVBUDGET, CORE-CAPITALSTOCK
+external shock	CORE-DISRUPTION
+productivity gains	CORE-PRODUCTIVITY
+broad mandate	POL-MONETARY, OTH-CBGOVERNANCE
+minimum wage	CORE-WAGES
+homebuilder program	POL-STIMULUS
+delta variant	CORE-DISRUPTION
+household credit	CREDIT-HOUSEHOLDDEBT
+health care	POL-GOVBUDGET
+state budgets	POL-GOVBUDGET
+sustainable growth	CORE-ACTIVITY
+asia pacific	EXT-INTLECON
+wholesale electricity	CORE-INFLATION
+manufacturing sector	CORE-MANUF, CORE-ACTIVITY
+flexible inflation target	CORE-TARGET
+people's bank of china	OTH-ORGANISATIONS
+australian government budget	POL-GOVBUDGET
+lower population growth	CORE-LABOURCAPACITY, FUN-DEMOGRAPHICS
+global production	EXT-INTLECON
+improving productivity	CORE-PRODUCTIVITY
+resources sector investment	CORE-INVESTMENT, EXT-MINING
+domestic demand growth	CORE-ACTIVITY
+final demand	CORE-ACTIVITY
+euro area economy	EXT-INTLECON
+short term money markets	CREDIT-INTERESTRATES
+weaker than expected	EC-FORECAST
+fruit and vegetables	CORE-INFLATION
+reserve bank of australia	POL-MONETARY
+medium term inflation target	CORE-TARGET
+inflation remains	CORE-INFLATION
+3 year australian government bond	CREDIT-BONDS
+real interest rates	CREDIT-INTERESTRATES
+chinese equity	EXT-INTLECON
+food and energy	CORE-INFLATION
+prices and wages	CORE-INFLATION, CORE-WAGES
+medium term inflation	POL-MONETARY, CORE-INFLATION
+resources boom	EXT-MINING
+higher wage	CORE-WAGES
+share prices	CREDIT-EQUITIES
+market pricing	CREDIT-PRICING
+current account	EXT-INTLECON
+asian economies	EXT-INTLECON
+retail sales	CORE-CONSUMPTION
+financial instability	RISK-FINRISK
+base metals	EXT-COMMODITIES
+federal budget	POL-FISCAL, POL-GOVBUDGET
+increased competition	CORE-COMPETITION
+global financial conditions	EXT-INTLECON
+loan arrears	CREDIT-HOUSEHOLDDEBT, RISK-FINRISK
+highly rated	RISK-FINRISK
+domestic cost pressures	CORE-INFLATION
+regulatory arrangements	POL-LEGISLATIONREGULATION
+resource stocks	CREDIT-EQUITIES, EXT-MINING
+earlier expectations	EC-FORECAST
+bad loans	CREDIT-HOUSEHOLDDEBT, RISK-FINRISK
+debt ratios	CREDIT-HOUSEHOLDDEBT
+weather related disruptions	CORE-DISRUPTION, FUN-CLIMATE
+income support	POL-STIMULUS
+loan rates	CREDIT-INTERESTRATES
+inflation outlook	CORE-INFLATIONEXPECTATIONS
+global imbalances	EXT-INTLECON
+final spending	CORE-ACTIVITY
+domestic forecasts	EC-FORECAST
+key domestic uncertainties	EC-FORECAST
+setting of monetary policy	POL-MONETARY
+residential property market	RE-RESIDENTIAL
+labour cost	CORE-WAGES
+domestic growth	CORE-ACTIVITY
+eased policy	POL-MONETARY
+underlying measures	CORE-INFLATION
+non tradables inflation	CORE-INFLATION
+government sector	POL-GOVBUDGET
+remain accommodative	POL-MONETARY
+international economic	EXT-INTLECON
+stability risks	RISK-FINRISK
+sustained growth	CORE-ACTIVITY
+including china	EXT-INTLECON
+shift to electronic payments	CORE-ACTIVITY
+25 basis points	CREDIT-INTERESTRATES
+funding costs low	POL-MONETARY
+demand for goods	CORE-CONSUMPTION
+high credit quality	CREDIT-HOUSEHOLDDEBT
+debt to gdp	EC-INDICATOR
+inflation rising	CORE-INFLATION
+offset and redraw	RE-RESIDENTIAL
+downside risks	EC-FORECAST
+vacancy rates	RE-RESIDENTIAL
+policy stimulus	POL-STIMULUS
+economic performance	CORE-ACTIVITY
+national income	CORE-ACTIVITY
+housing loans	CREDIT-HOUSEHOLDDEBT
+government budgets	POL-GOVBUDGET
+share market	CREDIT-EQUITIES
+aggregate wages growth	CORE-WAGES
+updated forecasts	EC-FORECAST
+average hours worked	CORE-LABOURINTENSIVE
+cyclone yasi	FUN-CLIMATE
+monetary conditions	POL-MONETARY
+financing conditions	CREDIT-PRICING
+natural gas	EXT-COMMODITIES
+motor vehicle sales	CORE-CONSUMPTION
+financial stability risks	RISK-FINRISK
+wage claims	CORE-WAGES
+capital injections	CREDIT-BANKING
+economic weakness	CORE-CYCLES
+price growth	CORE-INFLATION
+dwelling approvals	RE-RESIDENTIAL
+financial problems	RISK-FINRISK
+resource prices	EXT-COMMODITIES
+cpi outcome	CORE-INFLATION
+inflation control	CORE-TARGET
+effective lower bound	POL-MONETARY
+rate increases	CREDIT-INTERESTRATES
+housing price declines	RE-RESIDENTIAL
+global capital markets	EXT-INTLECON
+economic adjustment	CORE-CYCLES
+bank funding costs	CREDIT-PRICING
+sovereign credit	CREDIT-GOVTDEBT
+global gdp growth	EXT-INTLECON
+rising commodity prices	EXT-COMMODITIES
+supply side factors	CORE-CAPACITY
+treasury yields	CREDIT-BONDS
+supply side issues	CORE-CAPACITY
+mining sectors	EXT-MINING
+survey measures of capacity utilisation	CORE-CAPACITY
+outstanding housing	RE-RESIDENTIAL
+planned fiscal	POL-FISCAL
+global oil	EXT-COMMODITIES
+reports of labour shortages	CORE-LABOUREXTENSIVE
+bank of canada	OTH-ORGANISATIONS
+forecast to decline	EC-FORECAST
+consumer price	CORE-INFLATION
+fiscal policy	POL-FISCAL
+supply chains	CORE-SUPPLYSHOCKS
+national accounts	CORE-ACTIVITY
+quantitative easing	POL-MONETARY
+export volumes	CORE-TRADABLENONTRADABLE
+international travel	FUN-DEMOGRAPHICS
+exchange rate appreciation	EXT-CURRENCIES
+board's decision	POL-MONETARY
+fiscal measures	POL-FISCAL
+advanced economy	EXT-INTLECON
+participation rate	CORE-LABOUREXTENSIVE
+rental vacancy rates	RE-RESIDENTIAL
+technological change	CORE-PRODUCTIVITY
+business lending	CREDIT-BANKING
+housing credit	CREDIT-HOUSEHOLDDEBT
+supply chain disruptions	CORE-DISRUPTION, CORE-SUPPLYSHOCKS
+infection rates	CORE-DISRUPTION
+working age population	CORE-LABOUREXTENSIVE
+domestic spending	CORE-CONSUMPTION
+investment decisions	CORE-INVESTMENT
+chinese demand	EXT-INTLECON
+policy announcements	POL-MONETARY, POL-STIMULUS
+regulatory reform	POL-LEGISLATIONREGULATION
+policy accommodation	POL-MONETARY
+policy instruments	POL-MONETARY
+trade exposed sectors	CORE-TRADABLENONTRADABLE
+swiss national bank	EXT-INTLMONETARYPOLICY
+carbon price	FUN-CLIMATE
+international capital flows	EXT-INTLECON
+chinese exports	EXT-TRADE
+country specific	EXT-INTLECON
+policy issues	POL-MONETARY, POL-FISCAL
+market pricing suggested	CREDIT-PRICING
+bank financing	CREDIT-BANKING
+recent lockdowns	CORE-DISRUPTION
+fed funds rate	EXT-INTLMONETARYPOLICY
+fair work commission	CORE-WAGES
+information from liaison	CORE-BUSACTIVITY
+australia's export	EXT-TRADE
+japanese government	EXT-INTLECON
+prime loans	CREDIT-CORPDEBT
+emerging world	EXT-INTLECON
+earlier tightening	POL-MONETARY
+fiscal and monetary policies	POL-FISCAL, POL-MONETARY
+sovereign debt problems	POL-GOVBUDGET
+recent inflation data	CORE-INFLATION
+year ended inflation	CORE-INFLATION
+measures of inflation expectations	CORE-INFLATIONEXPECTATIONS
+demand for bulk commodities	EXT-COMMODITIES
+broadly in line with expectations	EC-FORECAST
+measures of labour underutilisation	CORE-LABOURCAPACITY
+inflation expectations remain	CORE-INFLATIONEXPECTATIONS
+aggregate demand	CORE-CAPACITY, CORE-ACTIVITY
+gdp growth	CORE-ACTIVITY
+real incomes	CORE-HOUSEHOLDINCOMES
+exchange rate	EXT-CURRENCIES
+lng projects	CORE-INVESTMENT
+hours worked	CORE-LABOURINTENSIVE
+foreign currency	EXT-CURRENCIES
+central bank independence	OTH-CBGOVERNANCE
+inflation outcomes	CORE-INFLATION
+capex survey	CORE-INVESTMENT
+goods prices	CORE-INFLATION
+industrial relations	CORE-LABOURCAPACITY
+authorised deposit taking institutions	CREDIT-BANKING
+forecasts incorporate	EC-FORECAST
+resource utilisation	CORE-CAPACITY
+animal spirits	RISK-CONFIDENCE
+direct investment	CORE-INVESTMENT
+trade disputes	EXT-TRADE
+tapis crude	EXT-COMMODITIES
+government bond	CREDIT-GOVTDEBT
+higher inflation	CORE-INFLATION
+central forecast scenario	EC-FORECAST
+global supply chains	EXT-TRADE
+trade weighted	EXT-CURRENCIES
+covid 19 outbreak	CORE-DISRUPTION
+medium term target range	CORE-TARGET
+potential growth	CORE-CAPACITY
+trade policy	EXT-TRADE
+accelerating inflation	CORE-INFLATION
+euro area economies	EXT-INTLECON
+hurdle rates	CORE-INVESTMENT
+higher costs	CORE-INFLATION
+low income growth	CORE-HOUSEHOLDINCOMES
+building construction	RE-CONSTRUCTION, CORE-INVESTMENT
+robust growth	CORE-ACTIVITY
+higher living standards	CORE-HOUSEHOLDINCOMES
+tightened monetary policy	POL-MONETARY
+business liaison program	CORE-BUSACTIVITY
+long term debt	CREDIT-GOVTDEBT, CREDIT-CORPDEBT
+higher commodity	EXT-COMMODITIES, CORE-INFLATION
+sovereign debt problems in europe	CREDIT-GOVTDEBT, EXT-INTLECON
+forecast to grow strongly	EC-FORECAST
+march quarter national accounts	EC-INDICATOR
+g 20	OTH-ORGANISATIONS
+unemployment and underemployment	CORE-LABOUREXTENSIVE
+gdp grew	CORE-ACTIVITY
+loan approvals	CREDIT-CREDITGROWTH
+business conditions	CORE-BUSACTIVITY
+indicators suggested	EC-INDICATOR
+financial systems	CREDIT-BANKING
+public spending	POL-FISCAL
+rental yields	RE-RESIDENTIAL
+structural change	CORE-CAPACITY
+australian economy	CORE-ACTIVITY
+deposit rates	CREDIT-INTERESTRATES
+lng production	CORE-ACTIVITY, EXT-MINING
+remained tight	POL-MONETARY
+international experience	EXT-INTLECON
+production capacity	CORE-CAPACITY
+transport infrastructure	CORE-CAPITALSTOCK
+september quarter	EC-FORECAST
+banana prices	EXT-AGRICULTURAL
+structural reforms	POL-LEGISLATIONREGULATION
+higher wages	CORE-WAGES, CORE-LABOURINTENSIVE
+high unemployment	CORE-LABOUREXTENSIVE
+mining boom	CORE-CYCLES, EXT-MINING
+housing supply	RE-RESIDENTIAL
+tradable items	EXT-TRADE
+private saving	SAV-SAVING
+food price	CORE-AFFORDABILITY
+mining projects	CORE-INVESTMENT, EXT-MINING
+board reaffirmed	POL-MONETARY
+expansionary effects	POL-MONETARY, POL-STIMULUS
+household behaviour	CORE-CONSUMPTION
+major trading partners	EXT-TRADE
+personal credit	CREDIT-HOUSEHOLDDEBT
+global equity markets	CREDIT-EQUITIES
+government bond markets	CREDIT-BONDS
+iron ore exports	EXT-TRADE, EXT-MINING
+pound sterling	EXT-CURRENCIES
+density housing	RE-RESIDENTIAL
+high quality borrowers	CREDIT-BANKING
+aggregate household income	CORE-HOUSEHOLDINCOMES
+key risk	RISK-FINRISK
+major advanced	EXT-INTLECON
+european markets	EXT-INTLECON
+leading indicators suggest	EC-INDICATOR
+strong labour demand	CORE-LABOUREXTENSIVE
+ore prices	EXT-COMMODITIES
+large advanced economies	EXT-INTLECON
+resource sector investment	CORE-INVESTMENT, EXT-MINING
+policy decision	POL-MONETARY, POL-FISCAL
+large firms	CORE-BUSACTIVITY
+declines in key commodity prices	CORE-AFFORDABILITY
+forecast horizon	EC-FORECAST
+lower growth	EC-FORECAST, CORE-CYCLES
+income economies	EXT-INTLECON
+income or wealth	CORE-HOUSEHOLDINCOMES
+tourism and education	CORE-ACTIVITY
+fiscal and monetary	POL-FISCAL, POL-MONETARY
+substantial easing	POL-MONETARY
+forecast to remain	EC-FORECAST
+forecast to increase	EC-FORECAST
+short term money	CREDIT-INTERESTRATES
+commodity prices	CORE-ACTIVITY, CORE-INFLATION
+food prices	CORE-ACTIVITY, CORE-INFLATION
+nominal gdp	CORE-ACTIVITY, EC-INDICATOR
+structural factors	CORE-CAPACITY, CORE-ACTIVITY
+payment systems	CREDIT-BANKING, CREDIT-INFRASTRUCTURE
+excess capacity	CORE-CAPACITY
+global factors	EXT-INTLECON
+financial market	CREDIT-BANKING
+bond purchases	POL-MONETARY, CREDIT-BONDS
+purchasing power parity	EC-INDICATOR, EXT-INTLECON
+commodity price	CORE-ACTIVITY, CORE-INFLATION
+labour market conditions	CORE-LABOURCAPACITY
+trade weighted index	EXT-CURRENCIES
+pre pandemic level	CORE-CYCLES, CORE-ACTIVITY
+debt service	CREDIT-HOUSEHOLDDEBT, CREDIT-CORPDEBT
+cpi data	CORE-INFLATION, EC-INDICATOR
+global output	CORE-ACTIVITY, EXT-INTLECON
+bank's balance sheet	CREDIT-BANKING, POL-MONETARY
+exchange settlement	CREDIT-INFRASTRUCTURE
+established housing markets	RE-RESIDENTIAL
+office vacancy rates	RE-COMMERCIAL, CORE-ACTIVITY
+services sectors	CORE-SERVICES, CORE-ACTIVITY
+borrowing capacity	CREDIT-CREDITGROWTH
+labour incomes	CORE-WAGES, CORE-LABOURINTENSIVE
+recent outbreaks	CORE-DISRUPTION
+soft patch	CORE-CYCLES
+upside risks	RISK-CONFIDENCE
+government incentives	POL-STIMULUS
+current income	CORE-HOUSEHOLDINCOMES
+anti inflation	POL-MONETARY, CORE-INFLATION
+aggregate wages	CORE-WAGES
+covid 19 pandemic	CORE-DISRUPTION
+household consumption spending	CORE-CONSUMPTION
+high debt levels	CREDIT-HOUSEHOLDDEBT, CREDIT-CORPDEBT
+strong balance sheets	SAV-SAVING
+higher funding costs	CREDIT-INTERESTRATES
+steady growth	CORE-ACTIVITY
+payments industry	CREDIT-BANKING, CREDIT-INFRASTRUCTURE
+major financial markets	CREDIT-BANKING
+expected to remain unchanged	EC-FORECAST
+support demand	POL-STIMULUS
+supply of apartments	RE-RESIDENTIAL
+medium sized businesses	CORE-BUSACTIVITY
+upward pressure on inflation	CORE-INFLATION
+surveys of business conditions	RISK-CONFIDENCE
+economic activity and inflation	CORE-ACTIVITY, CORE-INFLATION
+negative interest rates	POL-MONETARY, CREDIT-INTERESTRATES
+neutral real interest rate	POL-MONETARY
+above trend pace	CORE-ACTIVITY
+east asia	EXT-INTLECON
+public demand	CORE-ACTIVITY
+board decided	POL-MONETARY
+living standards	CORE-ACTIVITY
+residential investment	RE-RESIDENTIAL
+detached housing	RE-RESIDENTIAL
+euro area	EXT-INTLECON
+saving rates	SAV-SAVING
+offset accounts	RE-RESIDENTIAL
+contractionary effect	POL-MONETARY
+world economy	EXT-INTLECON
+traded goods	CORE-TRADABLENONTRADABLE
+policy tightening	POL-MONETARY
+servicing burdens	CREDIT-HOUSEHOLDDEBT
+independent central bank	OTH-CBGOVERNANCE
+policy action	POL-MONETARY
+home building	CORE-INVESTMENT, RE-RESIDENTIAL
+fixed rate loans	CREDIT-HOUSEHOLDDEBT
+price expectations	CORE-INFLATIONEXPECTATIONS
+density dwellings	RE-RESIDENTIAL
+tighter labour	CORE-LABOURCAPACITY
+energy markets	CORE-INFLATION
+pre pandemic trend	EC-INDICATOR
+financial prices	CREDIT-PRICING
+stock market	CREDIT-EQUITIES
+financial market prices	CREDIT-PRICING
+negative policy	POL-MONETARY
+vehicle sales	CORE-CONSUMPTION
+easing measures	POL-MONETARY
+inflation remaining	CORE-INFLATION
+prices fell	CORE-INFLATION
+imports of capital goods	EXT-TRADE, CORE-INVESTMENT
+economic analysis	EC-INDICATOR
+global credit	EXT-INTLECON
+stronger labour market	CORE-LABOUREXTENSIVE
+population aged	FUN-DEMOGRAPHICS
+rate loans	CREDIT-INTERESTRATES
+government bonds	CREDIT-GOVTDEBT
+volatility in financial markets	CREDIT-VOLATILITY
+access to finance	CREDIT-BANKING
+part time workers	CORE-LABOUREXTENSIVE
+global capital	EXT-INTLECON
+equity prices	CREDIT-EQUITIES
+financial conditions	CREDIT-VOLATILITY
+unemployment rates	CORE-LABOUREXTENSIVE
+business credit	CREDIT-BANKING, CREDIT-CREDITGROWTH
+wage freezes	CORE-WAGES
+february statement	POL-MONETARY
+financial crises	CORE-FINDISRUPTION
+international trade	EXT-TRADE
+highly accommodative	POL-MONETARY
+market volatility	CREDIT-VOLATILITY
+pre pandemic levels	CORE-CYCLES
+government guaranteed	POL-FISCAL
+price level	CORE-INFLATION
+positive spillovers	POL-MONETARY
+adverse weather	CORE-DISRUPTION
+central counterparties	CREDIT-INFRASTRUCTURE
+floating exchange rates	EXT-CURRENCIES
+foreign students	FUN-DEMOGRAPHICS
+services price inflation	CORE-INFLATION
+tighter monetary policy	POL-MONETARY
+heightened competitive pressures	CORE-COMPETITION
+capital goods	CORE-INVESTMENT
+domestic production	CORE-ACTIVITY
+currency crisis	CORE-FINDISRUPTION
+regulatory reforms	POL-LEGISLATIONREGULATION
+low unemployment	CORE-LABOUREXTENSIVE
+spot price	EXT-COMMODITIES
+chinese government	EXT-INTLECON
+weaker demand	CORE-DEMANDSHOCKS
+sovereign bond	CREDIT-GOVTDEBT
+purchase bonds	POL-MONETARY
+policy rate increases	POL-MONETARY
+semi government	CREDIT-GOVTDEBT
+growth potential	EC-FORECAST
+policy regime	POL-MONETARY
+higher participation	CORE-LABOUREXTENSIVE
+lower housing prices	RE-RESIDENTIAL
+continued to tighten	POL-MONETARY
+disruptions to supply chains	CORE-DISRUPTION
+unit labour	CORE-WAGES
+to present confidence intervals	EC-FORECAST
+weaker growth	CORE-CYCLES
+support growth	POL-STIMULUS
+package of monetary policy measures	POL-MONETARY
+domestic and international	EXT-INTLECON
+indicators of economic activity	EC-INDICATOR
+liaison with retailers	CORE-BUSACTIVITY
+advances in technology	CORE-PRODUCTIVITY
+revised staff	EC-FORECAST
+based measures of business conditions	CORE-BUSACTIVITY
+recovery in coal production	EXT-COMMODITIES, EXT-MINING
+flexible labour	CORE-LABOURCAPACITY
+building approvals	RE-CONSTRUCTION
+consumer confidence	RISK-CONFIDENCE
+energy prices	CORE-INFLATION
+risk appetite	RISK-CONFIDENCE
+cash rate	CREDIT-INTERESTRATES, POL-MONETARY
+natural disasters	CORE-DISRUPTION
+real estate	RE-RESIDENTIAL
+largely unchanged	EC-INDICATOR
+renewable energy	CORE-INVESTMENT
+activity restrictions	CORE-DISRUPTION
+financial assets	CREDIT-PRICING
+motor vehicle	CORE-CONSUMPTION
+large businesses	CORE-BUSACTIVITY
+iron ore	EXT-COMMODITIES
+balance sheets	CREDIT-BANKING
+reserve requirements	CREDIT-BANKING, POL-MONETARY
+futures pricing	CREDIT-PRICING
+base wages	CORE-WAGES
+public policy	POL-LEGISLATIONREGULATION
+industrial economies	EXT-INTLECON
+major markets	EXT-INTLECON
+updated staff forecasts	EC-FORECAST
+previously anticipated	EC-FORECAST
+global economic growth	EXT-INTLECON
+liaison reports	CORE-BUSACTIVITY
+employment data	CORE-LABOUREXTENSIVE
+superannuation guarantee	SAV-SUPER
+household savings	SAV-SAVING
+board's assessment	POL-MONETARY
+australia's terms of trade	EXT-TRADE
+employment outcomes	CORE-LABOUREXTENSIVE
+public sector wages	CORE-WAGES
+december and march quarters	EC-INDICATOR
+property sector	RE-RESIDENTIAL, RE-COMMERCIAL
+major financial institutions	CREDIT-BANKING
+reserve bank board's	OTH-CBGOVERNANCE, POL-MONETARY
+short term rates	CREDIT-INTERESTRATES, POL-MONETARY
+keeping inflation	CORE-INFLATION
+neutral rate	CREDIT-INTERESTRATES, POL-MONETARY
+bank funding	CREDIT-BANKING
+tightening of monetary policy	POL-MONETARY
+december quarter national accounts	EC-INDICATOR
+smooth functioning	CREDIT-BANKING
+tighten monetary policy	POL-MONETARY
+trade weighted exchange	EXT-CURRENCIES
+retail price	CORE-INFLATION
+household disposable income growth	CORE-HOUSEHOLDINCOMES
+market outcomes	CREDIT-PRICING
+temporary support	POL-STIMULUS
+employment and hours worked	CORE-LABOUREXTENSIVE
+year ended headline inflation	CORE-INFLATION
+marked slowing	EC-INDICATOR
+china trade and technology	EXT-TRADE
+sustainable rate	CORE-ACTIVITY
+year ended underlying inflation	CORE-INFLATION
+ongoing demand	CORE-CONSUMPTION
+debt problems	CREDIT-CORPDEBT
+dwelling investment	RE-RESIDENTIAL
+spare capacity	CORE-CAPACITY
+share markets	CREDIT-EQUITIES
+household balance sheets	CORE-HOUSEHOLDINCOMES
+participation rates	CORE-LABOUREXTENSIVE
+inflationary pressure	CORE-INFLATION
+international comparisons	EXT-INTLECON
+economic prospects	EC-FORECAST
+tight labour market conditions	CORE-LABOURCAPACITY
+fully employed	CORE-LABOUREXTENSIVE
+global markets	EXT-INTLECON
+stress tests	CREDIT-BANKING
+rate cuts	POL-MONETARY
+forward indicators	EC-INDICATOR
+recent economic data	EC-INDICATOR
+monetary and fiscal policy	POL-MONETARY, POL-FISCAL
+modest employment growth	CORE-LABOUREXTENSIVE, CORE-ACTIVITY
+future inflation	CORE-INFLATIONEXPECTATIONS
+household saving rate	SAV-SAVING
+employment to population ratio	CORE-LABOUREXTENSIVE
+increased risk	RISK-FINRISK
+weaker global	EXT-INTLECON
+business sectors	CORE-BUSACTIVITY
+remained very accommodative	POL-MONETARY
+exports and industrial production	CORE-TRADABLENONTRADABLE, EXT-TRADE
+assumptions and judgements	EC-FORECAST
+remained very tight	CORE-LABOURCAPACITY
+remained accommodative	POL-MONETARY
+housing market	RE-RESIDENTIAL
+commodity markets	EXT-COMMODITIES
+household incomes	CORE-HOUSEHOLDINCOMES
+government spending	POL-FISCAL
+policy response	POL-MONETARY, POL-FISCAL
+housing starts	RE-RESIDENTIAL
+yield curves	CREDIT-PRICING
+nominal wages	CORE-WAGES
+fiscal restraint	POL-FISCAL
+international environment	EXT-INTLECON
+upstream price pressures	CORE-INFLATION
+financial market conditions	CREDIT-BANKING
+headline inflation rates	CORE-INFLATION
+clearance rates	RE-RESIDENTIAL
+higher import prices	CORE-INFLATION
+labour market spare capacity	CORE-LABOURCAPACITY
+market liquidity	CREDIT-VOLATILITY
+domestic cost	CORE-AFFORDABILITY
+higher productivity	CORE-PRODUCTIVITY
+subdued inflation	CORE-INFLATION
+residential construction	CORE-ACTIVITY, RE-RESIDENTIAL
+central forecast	EC-FORECAST
+market economists	EC-FORECAST
+financial institutions	CREDIT-BANKING
+disposable incomes	CORE-HOUSEHOLDINCOMES, CORE-CONSUMPTION
+financial stocks	CREDIT-EQUITIES
+pre pandemic	CORE-DISRUPTION
+monetary policy framework	POL-MONETARY
+domestic activity	CORE-ACTIVITY
+north america	EXT-INTLECON
+stress test	CREDIT-BANKING
+mildly restrictive	POL-MONETARY
+major advanced economies	EXT-INTLECON
+foreign exchange markets	EXT-CURRENCIES
+investment boom	CORE-INVESTMENT
+headline cpi inflation	CORE-INFLATION
+financial market pricing	CREDIT-PRICING
+longer term yields	CREDIT-INTERESTRATES
+capital ratio	CREDIT-BANKING
+domestic final demand	CORE-ACTIVITY
+open market operations	POL-MONETARY
+accommodative monetary policy	POL-MONETARY
+major currencies	EXT-CURRENCIES
+funds management	CREDIT-BANKING
+extreme weather events	CORE-DISRUPTION, FUN-CLIMATE
+economic cycle	CORE-CYCLES
+debt markets	CREDIT-BONDS
+inflation performance	CORE-INFLATION
+price setting	CORE-AFFORDABILITY
+private sector firms	CORE-BUSACTIVITY
+current market pricing	CREDIT-PRICING
+flexible medium term inflation target	CORE-TARGET
+low rate	CREDIT-INTERESTRATES
+goods price	CORE-INFLATION
+strong labour market conditions	CORE-LABOUREXTENSIVE
+cash rate target	CREDIT-INTERESTRATES, POL-MONETARY
+bank balance sheets	CREDIT-BANKING
+significant investment	CORE-INVESTMENT
+aggregate household	CORE-HOUSEHOLDINCOMES
+trends in household	CORE-HOUSEHOLDINCOMES
+consumption and dwelling investment	CORE-CONSUMPTION, CORE-INVESTMENT
+ended underlying inflation	CORE-INFLATION
+demand for housing	CORE-DEMANDSHOCKS, RE-RESIDENTIAL
+machinery & equipment	CORE-INVESTMENT
+industrial production	EC-INDICATOR, CORE-ACTIVITY
+household debt	CREDIT-HOUSEHOLDDEBT
+consumer sentiment	RISK-CONFIDENCE
+lng exports	EXT-COMMODITIES
+import volumes	EXT-TRADE
+south korea	EXT-INTLECON
+price rises	CORE-INFLATION
+exchange rate depreciation	EXT-CURRENCIES
+capital expenditure survey	CORE-INVESTMENT
+structural adjustment	CORE-CAPACITY
+durable goods	CORE-CONSUMPTION
+inflationary pressures	CORE-INFLATION
+financial services	CREDIT-BANKING
+write downs	CREDIT-BANKING
+services sector	CORE-SERVICES
+australian exports	EXT-TRADE
+home loans	CREDIT-HOUSEHOLDDEBT, RE-RESIDENTIAL
+imf forecasts	EC-FORECAST
+monetary policy easing	POL-MONETARY
+sovereign yields	CREDIT-GOVTDEBT
+cost increases	CORE-INFLATION
+commercial paper	CREDIT-CORPDEBT
+risk weighted	CREDIT-BANKING
+capital market	CREDIT-PRICING
+long term government bond yields	CREDIT-GOVTDEBT, CREDIT-PRICING
+servicing ratio	CREDIT-HOUSEHOLDDEBT
+japanese government bonds	CREDIT-GOVTDEBT
+fiscal challenges	POL-GOVBUDGET
+current forecasts	EC-FORECAST
+heightened volatility	CREDIT-VOLATILITY
+major equity markets	CREDIT-EQUITIES
+mortgage market	CREDIT-HOUSEHOLDDEBT, RE-RESIDENTIAL
+credit outstanding	CREDIT-CREDITGROWTH
+bulk commodity exports	EXT-TRADE, EXT-COMMODITIES
+measures of consumer sentiment	RISK-CONFIDENCE
+falling mining investment	EXT-MINING
+international financial	EXT-INTLECON
+covid 19 restrictions	CORE-DISRUPTION
+large lng	EXT-COMMODITIES
+term inflation expectations remained	CORE-INFLATIONEXPECTATIONS
+government budget	POL-GOVBUDGET
+forward looking	EC-FORECAST
+price pressures	CORE-INFLATION
+borrowing rates	CREDIT-INTERESTRATES
+output growth	CORE-ACTIVITY
+capital inflow	EXT-INTLECON
+crude oil	EXT-COMMODITIES
+supply constraints	CORE-CAPACITY
+inflation pressures	CORE-INFLATION
+policy rates	CREDIT-INTERESTRATES, POL-MONETARY
+previously forecast	EC-FORECAST
+macroeconomic policy	POL-MONETARY, POL-FISCAL
+risk premia	CREDIT-PRICING
+financial instruments	CREDIT-PRICING
+trade flows	EXT-TRADE
+financial buffers	CREDIT-BANKING
+government initiatives	POL-STIMULUS
+fiscal sustainability	POL-FISCAL
+repurchase agreements	CREDIT-BANKING
+total exports	EXT-TRADE
+labour availability	CORE-LABOURCAPACITY
+international students	FUN-DEMOGRAPHICS
+uncertainties surrounding	RISK-FINRISK
+confidence intervals	EC-FORECAST
+inflation rates	CORE-INFLATION
+oecd area	EXT-INTLECON
+net overseas migration	FUN-DEMOGRAPHICS
+canadian dollar	EXT-CURRENCIES
+price earnings ratios	CREDIT-EQUITIES
+trade weighted terms	EXT-TRADE
+long term yields	CREDIT-INTERESTRATES
+foreign saving	EXT-INTLECON
+accommodative monetary policies	POL-MONETARY
+european economies	EXT-INTLECON
+swap rates	CREDIT-INTERESTRATES
+liquidity buffers	CREDIT-BANKING
+aggregate wage	CORE-WAGES
+business credit growth	CREDIT-CREDITGROWTH
+iron ore production	EXT-MINING, EXT-COMMODITIES
+higher leverage	CREDIT-CORPDEBT
+strong labour market	CORE-LABOURCAPACITY
+mining investment boom	CORE-INVESTMENT, EXT-MINING
+public sector wage	CORE-WAGES
+private capital	CORE-INVESTMENT
+investment activity	CORE-INVESTMENT
+additional demand	CORE-DEMANDSHOCKS
+demand for labour	CORE-LABOURCAPACITY
+output and employment	CORE-ACTIVITY, CORE-LABOUREXTENSIVE
+global financial crisis	CORE-FINDISRUPTION
+lending for housing	CREDIT-HOUSEHOLDDEBT
+return on equity	CORE-BUSACTIVITY
+favourable weather	EXT-AGRICULTURAL
+levels of household debt	CREDIT-HOUSEHOLDDEBT
+income and wealth	CORE-HOUSEHOLDINCOMES, CORE-WEALTH
+labour market	CORE-LABOUREXTENSIVE
+housing prices	RE-RESIDENTIAL, CORE-AFFORDABILITY
+shadow banking	CREDIT-BANKING
+employment growth	CORE-LABOUREXTENSIVE
+household wealth	CORE-WEALTH
+inflation expectations	CORE-INFLATIONEXPECTATIONS
+cash flows	CORE-ACTIVITY
+employment intentions	CORE-LABOUREXTENSIVE
+data releases	EC-INDICATOR
+foreign banks	CREDIT-BANKING, EXT-INTLECON
+bond yields	CREDIT-BONDS
+monetary easing	POL-MONETARY
+lending practices	CREDIT-BANKING
+credit risk	RISK-FINRISK
+emerging countries	EXT-INTLECON
+corporate profits	CORE-BUSACTIVITY
+upside risk	EC-FORECAST
+spending plans	CORE-CONSUMPTION
+global financial markets	EXT-INTLECON
+underlying momentum	EC-FORECAST
+earnings growth	CORE-BUSACTIVITY
+safety net	POL-STIMULUS
+strong growth	CORE-CYCLES
+low volatility	CREDIT-VOLATILITY
+downward revisions	EC-FORECAST
+united states and europe	EXT-INTLECON
+balanced growth	POL-MONETARY
+monetary policy stimulus	POL-MONETARY
+industrial output	CORE-ACTIVITY
+coal export volumes	EXT-COMMODITIES
+expansionary effect	POL-MONETARY
+bank's business liaison program	CORE-BUSACTIVITY
+policy uncertainty	POL-LEGISLATIONREGULATION
+non mining business investment	CORE-INVESTMENT
+traded goods and services	EXT-TRADE
+variable housing	RE-RESIDENTIAL
+conventional estimates	EC-FORECAST
+lower unemployment	CORE-LABOUREXTENSIVE
+temporary supply	CORE-SUPPLYSHOCKS
+slowing growth	CORE-CYCLES
+coking coal prices	EXT-COMMODITIES
+funding facility	CREDIT-BANKING
+growth path	EC-FORECAST
+international banks	CREDIT-BANKING, EXT-INTLECON
+short term interest rates	CREDIT-INTERESTRATES
+chinese share	EXT-INTLECON
+business investment and public	CORE-INVESTMENT
+survey based	EC-INDICATOR
+wages policies	CORE-WAGES
+v shaped	CORE-CYCLES
+low and middle income	FUN-DEMOGRAPHICS
+wage and price	CORE-WAGES, CORE-INFLATION
+supportive monetary	POL-MONETARY
+the cash rate steady	CREDIT-INTERESTRATES, POL-MONETARY
+underlying inflation	CORE-INFLATION
+emerging economies	EXT-INTLECON
+central bank	POL-MONETARY
+debt servicing	CREDIT-CORPDEBT, CREDIT-GOVTDEBT
+decision making	POL-MONETARY
+capital account	EXT-INTLECON
+competitive pressures	CORE-COMPETITION
+credit rating	CREDIT-CORPDEBT, CREDIT-GOVTDEBT
+monetary policy regime	POL-MONETARY
+dwelling construction	CORE-ACTIVITY, RE-CONSTRUCTION
+labour force participation	CORE-LABOUREXTENSIVE
+economic indicators	EC-INDICATOR
+growth prospects	EC-FORECAST
+staff forecasts	EC-FORECAST
+chinese steel	EXT-INTLECON
+heightened uncertainty	CORE-DISRUPTION
+liquefied natural gas	EXT-COMMODITIES
+policy easing	POL-MONETARY
+arrears rates	CREDIT-CREDITGROWTH
+sales volumes	CORE-CONSUMPTION
+technical assumption	EC-FORECAST
+business sentiment	RISK-CONFIDENCE
+international capital	EXT-INTLECON
+economic crisis	CORE-FINDISRUPTION
+tradable goods	EXT-TRADE
+policy meeting	POL-MONETARY
+low rates	CREDIT-INTERESTRATES
+highly supportive monetary conditions	POL-MONETARY
+liaison suggests	CORE-BUSACTIVITY
+cpi inflation rate	CORE-INFLATION
+australian treasury	POL-FISCAL
+negative yields	CREDIT-INTERESTRATES
+asian region	EXT-INTLECON
+second round effects	POL-MONETARY
+force participation	CORE-LABOUREXTENSIVE
+residential property prices	RE-RESIDENTIAL
+large banks	CREDIT-BANKING
+terms of trade	EXT-TRADE
+demand factors	CORE-DEMANDSHOCKS
+nominal interest rates	CREDIT-INTERESTRATES
+rate of unemployment	CORE-LABOUREXTENSIVE
+public capital	POL-FISCAL
+sales data	CORE-CONSUMPTION
+spreads on corporate	CREDIT-CORPDEBT
+accommodative monetary and fiscal	POL-MONETARY, POL-FISCAL
+sub prime mortgage	CREDIT-HOUSEHOLDDEBT
+gdp ratio	CORE-ACTIVITY
+non performing	CREDIT-CREDITGROWTH
+core inflation	CORE-INFLATION
+financial stress	CORE-FINDISRUPTION, RISK-FINRISK
+coal production	EXT-MINING
+investment intentions	CORE-INVESTMENT, EC-FORECAST
+export prices	EXT-TRADE
+commercial property	RE-COMMERCIAL
+oil price	EXT-COMMODITIES, CORE-INFLATION
+global supply	CORE-SUPPLYSHOCKS
+european banks	EXT-INTLECON
+strong demand	CORE-DEMANDSHOCKS, CORE-ACTIVITY
+sovereign bonds	CREDIT-GOVTDEBT
+japanese investors	EXT-INTLECON
+trade surplus	EXT-TRADE
+imported goods	EXT-TRADE
+detached houses	RE-RESIDENTIAL
+professional services	CORE-SERVICES
+consumption patterns	CORE-CONSUMPTION
+enterprise bargaining agreements	CORE-WAGES
+eased monetary policy	POL-MONETARY
+policy stance	POL-MONETARY
+commercial property market	RE-COMMERCIAL
+property market	RE-RESIDENTIAL
+global commodity prices	EXT-COMMODITIES, CORE-INFLATION
+board's decisions	POL-MONETARY
+extreme weather	FUN-CLIMATE
+long expansion	CORE-CYCLES
+real disposable income	CORE-HOUSEHOLDINCOMES
+term government bond yields	CREDIT-BONDS
+tradable goods and services	EXT-TRADE
+housing price inflation	CORE-INFLATION, RE-RESIDENTIAL
+control inflation	POL-MONETARY, CORE-INFLATION
+strong growth recorded	CORE-ACTIVITY
+first home buyers	RE-RESIDENTIAL
+tax offset	POL-TAX
+rapid recovery	CORE-CYCLES
+survey based measures of business conditions	RISK-CONFIDENCE
+household and business confidence	RISK-CONFIDENCE
+debt to income ratio	CREDIT-HOUSEHOLDDEBT
+bank share prices	CREDIT-BANKING, CREDIT-EQUITIES
+iron ore and coking	EXT-MINING, EXT-COMMODITIES
+terms of trade rise	EXT-TRADE
+financial system stability	CREDIT-BANKING, CORE-FINDISRUPTION
+medium term outlook for inflation	EC-FORECAST, CORE-INFLATIONEXPECTATIONS
+lower funding costs	POL-MONETARY, CREDIT-INTERESTRATES
+non mining business	CORE-BUSACTIVITY
+government bonds	CREDIT-GOVTDEBT
+capacity utilisation	CORE-CAPACITY
+european union	EXT-INTLECON
+economic expansion	CORE-CYCLES, CORE-ACTIVITY
+foreign investors	EXT-INTLECON
+bank supervision	CREDIT-BANKING
+financial intermediaries	CREDIT-BANKING
+property prices	RE-RESIDENTIAL, EC-INDICATOR
+developing countries	EXT-INTLECON
+capital requirements	CREDIT-BANKING
+latin america	EXT-INTLECON
+income growth	CORE-HOUSEHOLDINCOMES, CORE-ACTIVITY
+consumer price inflation	CORE-INFLATION
+rental markets	RE-RESIDENTIAL
+monetary policy tightening	POL-MONETARY
+falling housing prices	RE-RESIDENTIAL
+residential development	RE-RESIDENTIAL
+chinese growth	EXT-INTLECON
+productivity outcomes	CORE-PRODUCTIVITY
+tighter lending standards	CREDIT-BANKING
+business community	CORE-BUSACTIVITY
+private equity	CREDIT-EQUITIES
+residential building	RE-RESIDENTIAL
+price of brent crude oil	EXT-COMMODITIES, EC-INDICATOR
+council of financial regulators	OTH-ORGANISATIONS
+long term bond yields	CREDIT-BONDS, POL-MONETARY
+measured inflation	CORE-INFLATION
+residential mortgage	CREDIT-HOUSEHOLDDEBT
+delta variant of covid 19	CORE-DISRUPTION
+cost of living	CORE-AFFORDABILITY, CORE-INFLATION
+investment banks	CREDIT-BANKING
+market rates	CREDIT-INTERESTRATES
+china trade	EXT-INTLECON
+higher exchange rate	EXT-CURRENCIES
+easing in capacity pressures	CORE-CAPACITY
+path of monetary policy	POL-MONETARY
+central bank policy	POL-MONETARY
+funds rate	CREDIT-INTERESTRATES, POL-MONETARY
+prices for bulk commodities	EXT-COMMODITIES, EC-INDICATOR
+oil prices	EXT-COMMODITIES
+funding costs	CREDIT-PRICING
+cost pressures	CORE-INFLATION
+government securities	CREDIT-GOVTDEBT
+supervisory measures	CREDIT-BANKING
+spillover effects	CORE-DISRUPTION
+tax cuts	POL-TAX
+corporate debt	CREDIT-CORPDEBT
+basel iii	CREDIT-BANKING
+capital inflows	EXT-INTLECON
+bulk commodity	EXT-COMMODITIES
+business loans	CREDIT-CORPDEBT
+additional savings	SAV-SAVING
+commodity exports	EXT-TRADE
+household demand	CORE-CONSUMPTION
+retail prices	CORE-INFLATION
+merchandise trade	EXT-TRADE
+global economy	EXT-INTLECON
+growing population	FUN-DEMOGRAPHICS
+international downturn	CORE-CYCLES
+supply chain pressures	CORE-SUPPLYSHOCKS
+liaison information	CORE-BUSACTIVITY
+crude steel production	CORE-MANUF
+higher density dwellings	RE-RESIDENTIAL
+monetary policy works	POL-MONETARY
+supply capacity	CORE-CAPACITY
+bank accounts	CREDIT-BANKING
+term deposit	SAV-SAVING
+investor housing	RE-RESIDENTIAL
+medium term inflation expectations	CORE-INFLATIONEXPECTATIONS
+consumer and business confidence	RISK-CONFIDENCE
+business balance sheets	CREDIT-CORPDEBT
+federal government	POL-FISCAL
+financial conditions remained accommodative	POL-MONETARY
+subdued growth	CORE-CYCLES
+international trade policy	EXT-TRADE
+rising inflation	CORE-INFLATION
+public sector wages growth	CORE-WAGES
+global banks	EXT-INTLECON
+covid 19 related	CORE-DISRUPTION
+high levels of debt	CREDIT-HOUSEHOLDDEBT
+exports and imports	EXT-TRADE
+prices of consumer durables	CORE-INFLATION
+key uncertainty	RISK-CONFIDENCE
+household debt to income	CREDIT-HOUSEHOLDDEBT
+growth and inflation	CORE-CYCLES
+containment measures	CORE-DISRUPTION
+wage pressures	CORE-WAGES
+public finances	POL-GOVBUDGET
+asset quality	CREDIT-BANKING
+credit growth	CREDIT-CREDITGROWTH
+international competitiveness	EXT-TRADE
+trading partner	EXT-TRADE
+wage price index	CORE-WAGES
+global demand	EXT-INTLECON
+social distancing	CORE-DISRUPTION
+shipping costs	EXT-TRADE, CORE-INFLATION
+capital controls	POL-MONETARY
+seasonally adjusted	EC-INDICATOR
+trade volumes	EXT-TRADE
+building societies	CREDIT-BANKING
+financial regulation	CREDIT-BANKING, POL-LEGISLATIONREGULATION
+global recession	CORE-CYCLES
+household sector	CORE-HOUSEHOLDINCOMES, CORE-CONSUMPTION
+money supply	POL-MONETARY
+downside scenario	EC-FORECAST
+advanced countries	EXT-INTLECON
+lower commodity prices	EXT-COMMODITIES
+mining sector	EXT-MINING
+administered price	CORE-INFLATION
+swiss franc	EXT-CURRENCIES
+forecasts assume	EC-FORECAST
+housing price growth	RE-RESIDENTIAL, CORE-AFFORDABILITY
+survey measures of business conditions	CORE-BUSACTIVITY
+asset backed securities	CREDIT-BONDS
+real disposable incomes	CORE-HOUSEHOLDINCOMES, CORE-CONSUMPTION
+inflation targeting framework	POL-MONETARY, CORE-TARGET
+business survey	CORE-BUSACTIVITY
+climate related	FUN-CLIMATE
+japanese gdp	EXT-INTLECON
+supporting jobs	POL-STIMULUS, CORE-LABOUREXTENSIVE
+household credit growth	CREDIT-HOUSEHOLDDEBT
+international financial markets	EXT-INTLECON
+financial regulatory	CREDIT-BANKING, POL-LEGISLATIONREGULATION
+world trade	EXT-TRADE
+variable mortgage	CREDIT-HOUSEHOLDDEBT
+set monetary policy	POL-MONETARY
+tightening in financial conditions	CREDIT-VOLATILITY
+private sector balance sheets	CREDIT-CORPDEBT
+large current account	EXT-TRADE
+year ended gdp growth	CORE-ACTIVITY
+consumption tax increase	POL-TAX
+mergers and acquisitions	CORE-BUSACTIVITY
+expected to increase	EC-FORECAST
+an appreciating exchange rate	EXT-CURRENCIES
+labour and product markets	CORE-LABOUREXTENSIVE, CORE-CAPACITY
+high commodity	EXT-COMMODITIES
+chinese industrial	EXT-INTLECON
+standard of living	CORE-HOUSEHOLDINCOMES
+softer outlook for	EC-FORECAST
+external demand	CORE-ACTIVITY, EXT-TRADE
+rural exports	EXT-AGRICULTURAL, EXT-TRADE
+average earnings	CORE-WAGES
+leading indicators	EC-INDICATOR
+risk management	RISK-FINRISK
+debt levels	CREDIT-HOUSEHOLDDEBT, CREDIT-CORPDEBT
+north atlantic	EXT-INTLECON
+business cycle	CORE-CYCLES
+united states	EXT-INTLECON
+savings accumulated	SAV-SAVING
+delta outbreak	CORE-DISRUPTION
+continental europe	EXT-INTLECON
+bank's liaison program	CORE-BUSACTIVITY
+surveyed business conditions	CORE-BUSACTIVITY
+price declines	CORE-INFLATION
+target band	CORE-TARGET
+fiscal problems	POL-FISCAL
+market sentiment	RISK-CONFIDENCE
+securitisation market	CREDIT-BONDS
+bond purchase program	POL-MONETARY
+upside scenario	EC-FORECAST
+lower oil prices	EXT-COMMODITIES
+economic forecasts	EC-FORECAST
+accommodative policy settings	POL-MONETARY
+price boom	CORE-INFLATION
+future shocks	CORE-DISRUPTION
+inflation expectations remain anchored	CORE-INFLATIONEXPECTATIONS
+financial regulators	POL-LEGISLATIONREGULATION
+bonds purchased	POL-MONETARY
+iron ore and coking coal	EXT-COMMODITIES
+cross border payments	EXT-INTLECON
+social assistance payments	POL-FISCAL
+average growth rate	EC-INDICATOR
+statement on monetary policy	POL-MONETARY
+bank debt	CREDIT-BANKING
+real household disposable	CORE-HOUSEHOLDINCOMES
+weak consumption	CORE-CONSUMPTION
+larger wage	CORE-WAGES
+long term interest rates	CREDIT-INTERESTRATES
+central bank balance sheets	POL-MONETARY
+bank bill swap	CREDIT-INTERESTRATES
+progress in reducing unemployment	CORE-LABOUREXTENSIVE
+resource export	EXT-TRADE
+forecast to grow	EC-FORECAST
+pass through	CORE-INFLATION
+low and stable	CORE-INFLATION
+household income	CORE-HOUSEHOLDINCOMES
+emerging markets	EXT-INTLECON
+exchange rates	EXT-CURRENCIES
+relative prices	EC-INDICATOR
+yield curve	CREDIT-PRICING
+public debt	CREDIT-GOVTDEBT
+financial crisis	CORE-FINDISRUPTION
+national saving	CORE-ACTIVITY
+public infrastructure	CORE-CAPITALSTOCK
+resource export volumes	EXT-TRADE, EXT-MINING
+foreign exchange reserves	EXT-CURRENCIES
+multiple objectives	CORE-TARGET
+house price	RE-RESIDENTIAL
+exchange rate regime	EXT-CURRENCIES
+market operations	POL-MONETARY
+wage restraint	CORE-WAGES
+excess demand	CORE-CAPACITY
+excess supply	CORE-CAPACITY
+productive resources	CORE-CAPACITY
+bank's forecast	EC-FORECAST
+financial stability review	RISK-FINRISK
+term premia	CREDIT-INTERESTRATES
+producer prices	CORE-INFLATION
+financial liberalisation	CREDIT-BANKING
+mortgage lending	CREDIT-HOUSEHOLDDEBT
+housing price	RE-RESIDENTIAL
+chinese equity prices	CREDIT-EQUITIES
+reduced hours	CORE-LABOURINTENSIVE
+inflation psychology	CORE-INFLATIONEXPECTATIONS
+inventory cycle	CORE-BUSACTIVITY
+economic stability	CORE-ACTIVITY
+steel prices	EXT-COMMODITIES
+business surveys suggested	CORE-BUSACTIVITY
+supply side problems	CORE-SUPPLYSHOCKS
+real capital	CORE-CAPITALSTOCK
+real estate investment	CORE-INVESTMENT
+short term money market rates	CREDIT-INTERESTRATES
+bank's business liaison	CORE-BUSACTIVITY
+australia's inflation rate	CORE-INFLATION
+australia's economy	CORE-ACTIVITY
+foreign demand	EXT-TRADE
+consumer and business sentiment	RISK-CONFIDENCE
+global financial stability	RISK-FINRISK
+flexible medium term	CORE-TARGET
+easier monetary	POL-MONETARY
+longer term inflation expectations	CORE-INFLATIONEXPECTATIONS
+bond purchase	POL-MONETARY
+spare capacity remained	CORE-CAPACITY
+reduce inflation	POL-MONETARY
+3 year yield target	CREDIT-INTERESTRATES
+balance between supply and demand	CORE-CAPACITY
+low vacancy	RE-RESIDENTIAL
+full employment	CORE-LABOUREXTENSIVE, CORE-TARGET
+construction activity	CORE-ACTIVITY, RE-CONSTRUCTION
+credit card	CREDIT-HOUSEHOLDDEBT
+downside risk	EC-FORECAST
+trading partners	EXT-TRADE
+sovereign bond yields	CREDIT-BONDS
+capital stock	CORE-CAPITALSTOCK
+household appliances	CORE-CONSUMPTION
+international monetary fund	OTH-ORGANISATIONS, EXT-INTLECON
+considerable uncertainty	RISK-FINRISK
+debt burdens	CREDIT-HOUSEHOLDDEBT, CREDIT-CORPDEBT
+business liaison	CORE-BUSACTIVITY
+financial position	CREDIT-BANKING
+capital positions	CREDIT-CORPDEBT
+timely indicators	EC-INDICATOR
+eastern europe	EXT-INTLECON
+government revenues	POL-GOVBUDGET
+investor demand	CORE-INVESTMENT
+wage setting	CORE-WAGES
+nominal wage growth	CORE-WAGES
+tight labour markets	CORE-LABOURCAPACITY
+competitive pressure	CORE-COMPETITION
+strong employment growth	CORE-LABOUREXTENSIVE
+inflation rate	CORE-INFLATION
+monetary policy operates	POL-MONETARY
+residential building activity	RE-CONSTRUCTION, RE-RESIDENTIAL
+wholesale debt	CREDIT-CORPDEBT
+international economic conditions	EXT-INTLECON
+travel restrictions	CORE-DISRUPTION
+recent indicators suggested	EC-INDICATOR
+guaranteed debt	CREDIT-GOVTDEBT, CREDIT-CORPDEBT
+provide liquidity	POL-MONETARY
+australian share prices	CREDIT-EQUITIES
+wage and price setting	CORE-WAGES, CORE-INFLATION
+large retailers	CORE-CONSUMPTION
+total business	CORE-BUSACTIVITY
+high commodity prices	EXT-COMMODITIES
+monetary and fiscal policies	POL-MONETARY, POL-FISCAL
+current expansion	CORE-CYCLES
+foreign exchange market	EXT-CURRENCIES
+non mining activity	CORE-ACTIVITY
+labour income growth	CORE-WAGES
+wages growth remains	CORE-WAGES
+historical forecast errors	EC-FORECAST
+short term money market	CREDIT-INTERESTRATES
+returning inflation to target	POL-MONETARY, CORE-TARGET
+in trade weighted terms	EXT-TRADE
+weather events	FUN-CLIMATE
+significant slowing	CORE-CYCLES
+global economic outlook	EC-FORECAST
+ease monetary policy	POL-MONETARY
+conditions and confidence	RISK-CONFIDENCE
+foreign exchange	EXT-CURRENCIES
+central bankers	POL-MONETARY
+private demand	CORE-CONSUMPTION
+residential building approvals	RE-RESIDENTIAL, RE-CONSTRUCTION
+natural resources	EXT-MINING
+basis points	CREDIT-INTERESTRATES
+historical relationships	EC-FORECAST
+revised upwards	EC-FORECAST
+current account deficit	EXT-INTLECON, EXT-TRADE
+support measures	POL-STIMULUS
+balance sheet	CREDIT-BANKING
+enterprise bargaining	CORE-WAGES
+major economies	EXT-INTLECON
+housing loan approvals	RE-RESIDENTIAL, CREDIT-CREDITGROWTH
+housing credit growth	CREDIT-CREDITGROWTH, RE-RESIDENTIAL
+energy costs	CORE-AFFORDABILITY
+earlier forecasts	EC-FORECAST
+flexible exchange rate	EXT-CURRENCIES
+slower growth	CORE-CYCLES
+tax payments	POL-FISCAL
+liaison suggested	CORE-BUSACTIVITY
+banking problems	CREDIT-BANKING
+variable mortgage rates	CREDIT-INTERESTRATES
+low inflation environment	CORE-INFLATION
+housing costs	CORE-AFFORDABILITY
+rate mortgages	CREDIT-INTERESTRATES
+staff estimates	EC-FORECAST
+payments infrastructure	CREDIT-INFRASTRUCTURE
+financial market developments	CREDIT-PRICING
+policy instrument	POL-MONETARY
+exchange settlement accounts	CREDIT-INFRASTRUCTURE
+labour cost pressures	CORE-WAGES
+forecasts presented	EC-FORECAST
+world output	CORE-ACTIVITY
+long term rates	CREDIT-INTERESTRATES
+required mortgage payments	CREDIT-HOUSEHOLDDEBT
+residential mortgage backed	CREDIT-BONDS
+private sector wages	CORE-WAGES
+business lending rates	CREDIT-INTERESTRATES
+tightening monetary policy	POL-MONETARY
+market prices	CREDIT-PRICING
+australian share market	CREDIT-EQUITIES
+expected to increase gradually	EC-FORECAST
+wage increase	CORE-WAGES
+restrictions on activity	CORE-DISRUPTION
+modest growth	CORE-CYCLES
+forecast period	EC-FORECAST
+central bank policy rates	CREDIT-INTERESTRATES, POL-MONETARY
+cpi and underlying	CORE-INFLATION
+forward looking indicators suggested	EC-FORECAST
+expected to rise	EC-FORECAST
+first home owner	RE-RESIDENTIAL
+demand for credit	CREDIT-CREDITGROWTH
+yields on long term	CREDIT-PRICING
+household spending	CORE-CONSUMPTION
+financial stability	CREDIT-BANKING, RISK-FINRISK
+central scenario	EC-FORECAST
+unusually low	EC-INDICATOR
+global growth	EXT-INTLECON
+tradables prices	CORE-TRADABLENONTRADABLE
+broad based	EC-INDICATOR
+federal open market committee	EXT-INTLMONETARYPOLICY
+recent years	EC-INDICATOR
+bond market	CREDIT-BONDS
+broadly steady	EC-INDICATOR
+climate change	FUN-CLIMATE
+government finances	POL-GOVBUDGET
+pre delta	EC-INDICATOR
+delivery times	CORE-DISRUPTION
+latest forecasts	EC-FORECAST
+partly explained	EC-INDICATOR
+long lasting	EC-INDICATOR
+demographic trends	FUN-DEMOGRAPHICS
+retail sales volumes	CORE-CONSUMPTION
+asset holdings	CORE-WEALTH
+technical assumptions	EC-FORECAST
+australian government securities	CREDIT-GOVTDEBT
+debt ceiling	POL-GOVBUDGET
+current account surpluses	EXT-TRADE
+hourly earnings	CORE-WAGES
+energy price	CORE-INFLATION
+board considered	POL-MONETARY
+remained uncertain	EC-INDICATOR
+finding jobs	CORE-LABOUREXTENSIVE
+ongoing support	POL-STIMULUS
+providing support	POL-STIMULUS
+long run average pace	EC-FORECAST
+household income growth	CORE-HOUSEHOLDINCOMES, CORE-CONSUMPTION
+board concluded	POL-MONETARY
+greek banks	EXT-INTLECON
+favourable weather conditions	EXT-AGRICULTURAL
+annual gdp	CORE-ACTIVITY
+gentle turning point	CORE-CYCLES
+demand management	POL-STIMULUS
+supporting demand	POL-STIMULUS
+domestic financial markets	CREDIT-BANKING
+domestic economic activity	CORE-ACTIVITY
+servicing costs	CREDIT-HOUSEHOLDDEBT
+construction firms	CORE-MANUF, CORE-INVESTMENT
+higher rates	CREDIT-INTERESTRATES
+easy monetary policy	POL-MONETARY
+bank's central scenario	EC-FORECAST
+machinery & equipment investment	CORE-INVESTMENT
+long term bond	CREDIT-BONDS
+reducing inflation	POL-MONETARY, CORE-INFLATION
+forecast to pick	EC-FORECAST
+flexible medium term inflation	CORE-TARGET
+inflation remained	CORE-INFLATION
+international and domestic	EXT-INTLECON
+domestic price	CORE-INFLATION
+high saving	SAV-SAVING
+housing stock	RE-RESIDENTIAL
+developed countries	EXT-INTLECON
+labour markets	CORE-LABOUREXTENSIVE
+inflation targeting	CORE-TARGET
+reserve bank's	POL-MONETARY
+coal exports	EXT-COMMODITIES
+raw materials	EXT-AGRICULTURAL
+developed world	EXT-INTLECON
+business confidence	RISK-CONFIDENCE
+global developments	EXT-INTLECON
+export growth	EXT-TRADE
+lehman brothers	CORE-FINDISRUPTION
+price inflation	CORE-INFLATION
+equity raisings	CREDIT-EQUITIES
+loan facilities	CREDIT-BANKING
+great moderation	CORE-CYCLES
+hong kong	EXT-INTLECON
+national savings	SAV-SAVING
+demand pressures	CORE-DEMANDSHOCKS
+investment projects	CORE-INVESTMENT
+net wealth	CORE-WEALTH
+purchase programs	POL-MONETARY
+global inflation	CORE-INFLATION
+owner occupation	RE-RESIDENTIAL
+real household disposable income	CORE-HOUSEHOLDINCOMES
+medium term target	POL-MONETARY
+corporate bond	CREDIT-CORPDEBT
+cash rates	CREDIT-INTERESTRATES
+developed country	EXT-INTLECON
+emerging market countries	EXT-INTLECON
+weak income growth	CORE-HOUSEHOLDINCOMES
+services inflation	CORE-INFLATION
+funding conditions	CREDIT-BANKING
+september quarter cpi	EC-INDICATOR
+non residential construction	RE-CONSTRUCTION
+exchange markets	EXT-CURRENCIES
+government's fiscal	POL-FISCAL
+pressure on household budgets	CORE-HOUSEHOLDINCOMES
+hour worked	CORE-LABOURINTENSIVE
+labour market spare	CORE-LABOURCAPACITY
+domestic prices	CORE-INFLATION
+demand for housing finance	CREDIT-CREDITGROWTH
+tighter lending	CREDIT-BANKING
+mortgage backed	CREDIT-BONDS
+metals prices	EXT-COMMODITIES
+alterations and additions	RE-RESIDENTIAL
+broader measures of labour costs	CORE-WAGES
+key commodity prices	EXT-COMMODITIES
+us federal funds rate	EXT-INTLMONETARYPOLICY
+recent volatility	CREDIT-VOLATILITY
+demand for commodities	EXT-COMMODITIES
+investment plans	CORE-INVESTMENT
+wages growth	CORE-WAGES
+mortgage rates	CREDIT-INTERESTRATES, CREDIT-HOUSEHOLDDEBT
+inflationary expectations	CORE-INFLATIONEXPECTATIONS
+longer run	EC-FORECAST
+risk taking	RISK-FINRISK
+international borders	EXT-TRADE, EXT-INTLECON
+supply chain	CORE-SUPPLYSHOCKS
+money markets	CREDIT-INTERESTRATES
+nominal anchor	POL-MONETARY, CORE-INFLATIONEXPECTATIONS
+traded sector	CORE-TRADABLENONTRADABLE
+policy package	POL-MONETARY, POL-STIMULUS
+lifting productivity	CORE-PRODUCTIVITY
+manufactured exports	CORE-TRADABLENONTRADABLE
+household budgets	CORE-HOUSEHOLDINCOMES
+resource companies	EXT-MINING
+household services	CORE-CONSUMPTION
+household leverage	CREDIT-HOUSEHOLDDEBT
+corporate bond issuance	CREDIT-CORPDEBT
+resources companies	EXT-MINING
+real economy	CORE-ACTIVITY
+downside scenarios	EC-FORECAST
+inflation prone	CORE-INFLATION
+historical average	EC-FORECAST
+revised slightly	EC-INDICATOR
+housing loan commitments	CREDIT-HOUSEHOLDDEBT, RE-RESIDENTIAL
+abs capital expenditure	CORE-INVESTMENT
+higher housing prices	CORE-AFFORDABILITY, RE-RESIDENTIAL
+euro area countries	EXT-INTLECON
+english speaking	EXT-INTLECON
+major australian banks	CREDIT-BANKING
+weak productivity growth	CORE-PRODUCTIVITY
+covid 19 cases	CORE-DISRUPTION
+product markets	CORE-COMPETITION
+private spending	CORE-CONSUMPTION
+real yields	CREDIT-PRICING
+total credit	CREDIT-CREDITGROWTH
+spot price for iron ore	EXT-COMMODITIES
+sharp contraction	CORE-CYCLES
+international developments	EXT-INTLECON
+housing loan rates	CREDIT-INTERESTRATES, CREDIT-HOUSEHOLDDEBT
+lower fuel prices	CORE-AFFORDABILITY, CORE-INFLATION
+high prices	CORE-AFFORDABILITY, CORE-INFLATION
+june quarter national accounts	EC-INDICATOR
+slower pace	EC-FORECAST
+business conditions remained	EC-INDICATOR
+annualised basis	EC-FORECAST
+strong investment	CORE-INVESTMENT
+households and businesses	CORE-CONSUMPTION
+strong demand for labour	CORE-LABOUREXTENSIVE
+issuance of residential mortgage backed	CREDIT-BONDS
+reduced demand	CORE-DEMANDSHOCKS
+australian iron	EXT-COMMODITIES
+slower rate	EC-FORECAST
+expected to rise gradually	EC-FORECAST
+board decided to lower	POL-MONETARY
+domestic supply	CORE-SUPPLYSHOCKS
+central banks	POL-MONETARY
+fiscal stimulus	POL-STIMULUS
+fiscal support	POL-STIMULUS
+central banking	POL-MONETARY
+chinese authorities	EXT-INTLECON
+commonwealth bank	CREDIT-BANKING
+investment grade	CREDIT-BONDS
+credit conditions	CREDIT-CREDITGROWTH
+residential property	RE-RESIDENTIAL, CORE-ACTIVITY
+declined sharply	CORE-CYCLES
+automotive fuel	CORE-AFFORDABILITY
+standard variable	CREDIT-INTERESTRATES
+fixed asset investment	CORE-INVESTMENT
+financial events	CORE-FINDISRUPTION
+labour market indicators	CORE-LABOUREXTENSIVE, CORE-LABOURINTENSIVE
+assistant governor	OTH-CBGOVERNANCE
+previous peak	CORE-CYCLES
+flexible inflation targeting	CORE-TARGET
+regulatory framework	POL-LEGISLATIONREGULATION
+retail competition	CORE-COMPETITION
+bond holdings	CREDIT-BONDS
+equity capital	CREDIT-EQUITIES
+mining firms	EXT-MINING
+risky assets	RISK-FINRISK
+property markets	RE-RESIDENTIAL
+forward looking indicators	EC-FORECAST
+consumer goods	CORE-CONSUMPTION
+additional stimulus	POL-STIMULUS
+share price	CREDIT-EQUITIES
+australian production	CORE-ACTIVITY
+business borrowing	CREDIT-CREDITGROWTH
+russia's invasion of ukraine	RISK-GEOPOLITICAL, CORE-DISRUPTION
+supply chain issues	CORE-DISRUPTION
+retail deposit rates	CREDIT-INTERESTRATES
+actual inflation	CORE-INFLATION
+government payments	POL-FISCAL
+bank's central forecast	EC-FORECAST
+international investors	EXT-INTLECON
+resource sector	EXT-MINING
+bonds issued	CREDIT-BONDS
+labour cost growth	CORE-WAGES
+outstanding loans	CREDIT-CREDITGROWTH
+iron ore and oil	EXT-COMMODITIES
+capital and liquidity	CREDIT-BANKING
+lower fuel	CORE-AFFORDABILITY
+future demand	EC-FORECAST
+prices rose	CORE-INFLATION
+large declines	CORE-CYCLES
+in year ended terms	EC-INDICATOR
+higher income	CORE-HOUSEHOLDINCOMES
+bank of japan's	EXT-INTLMONETARYPOLICY
+strong rebound	CORE-CYCLES
+monetary stimulus	POL-STIMULUS, POL-MONETARY
+retail spending	EC-INDICATOR, CORE-CONSUMPTION
+lending standards	CREDIT-BANKING
+utilities prices	CORE-AFFORDABILITY
+pandemic related	CORE-DISRUPTION
+bank's liaison	CREDIT-BANKING
+asset price	CREDIT-PRICING
+public investment	POL-FISCAL, CORE-INVESTMENT
+tax incentives	POL-TAX, POL-STIMULUS
+precautionary behaviour	CORE-CONSUMPTION, SAV-SAVING
+indian economy	EXT-INTLECON
+tighter financial conditions	CREDIT-BANKING, POL-MONETARY
+fiscal contraction	POL-FISCAL
+contract prices	CORE-AFFORDABILITY
+renovation activity	CORE-INVESTMENT
+service sectors	CORE-SERVICES
+australian government bonds	CREDIT-GOVTDEBT
+term deposits	CREDIT-BANKING
+growth outlook	EC-FORECAST
+future income	CORE-HOUSEHOLDINCOMES
+net service exports	CORE-TRADABLENONTRADABLE
+revised forecasts	EC-FORECAST
+cautious behaviour	CORE-CONSUMPTION
+macroeconomic policy settings	POL-MONETARY, POL-FISCAL
+previous forecasts	EC-FORECAST
+chinese property	EXT-INTLECON
+tightened policy	POL-MONETARY
+real household incomes	CORE-HOUSEHOLDINCOMES
+monthly cpi indicator	EC-INDICATOR, CORE-INFLATION
+price setting behaviour	CORE-INFLATION
+significant uncertainty	RISK-CONFIDENCE
+rising housing prices	CORE-AFFORDABILITY, CORE-INFLATION
+global activity	EXT-INTLECON
+recent national accounts	CORE-ACTIVITY
+boom and bust	CORE-CYCLES
+capital investment	CORE-INVESTMENT
+non farm gdp	CORE-ACTIVITY
+liaison with retailers suggested	EC-INDICATOR
+australian government bond	CREDIT-GOVTDEBT
+australian securities and investments	CREDIT-EQUITIES
+household balance	CORE-HOUSEHOLDINCOMES
+liaison suggest	CORE-BUSACTIVITY
+rate reductions	POL-MONETARY
+prices of tradable items	CORE-INFLATION
+minimum and award	CORE-WAGES
+higher wages growth	CORE-WAGES
+wages growth and underlying inflation	CORE-WAGES, CORE-INFLATION
+expected to strengthen	EC-FORECAST
+job vacancies	CORE-LABOUREXTENSIVE
+wage outcomes	CORE-WAGES
+advertised rents	RE-RESIDENTIAL, CORE-AFFORDABILITY
+real wages	CORE-WAGES, CORE-INFLATION
+liaison contacts	CORE-BUSACTIVITY
+economic conditions	CORE-ACTIVITY
+property developers	RE-COMMERCIAL, RE-RESIDENTIAL
+long run	CORE-CYCLES
+corporate earnings	CORE-BUSACTIVITY
+consumption growth	CORE-CONSUMPTION
+utility prices	CORE-AFFORDABILITY, CORE-INFLATION
+monetary policy's	POL-MONETARY
+exchange rate movements	EXT-CURRENCIES
+historical lows	EC-INDICATOR
+world war	CORE-DISRUPTION
+economic policies	POL-MONETARY, POL-FISCAL, POL-STIMULUS
+greater confidence	RISK-CONFIDENCE
+mining related	EXT-MINING
+gdp data	CORE-ACTIVITY
+trend growth	EC-FORECAST
+transmission channels	POL-MONETARY
+trend pace	CORE-CYCLES
+labour market data	CORE-LABOUREXTENSIVE
+trade weighted basket	EXT-CURRENCIES
+spending decisions	CORE-CONSUMPTION
+public engineering	POL-FISCAL, CORE-INVESTMENT
+monetary support	POL-MONETARY
+potential growth rate	CORE-PRODUCTIVITY
+tighter credit standards	CREDIT-BANKING
+international travel restrictions	EXT-TRADE
+export sector	EXT-TRADE
+investment flows	CORE-INVESTMENT
+global growth forecasts	EC-FORECAST
+swap rate	CREDIT-INTERESTRATES
+covid 19	CORE-DISRUPTION
+japanese economy	EXT-INTLECON
+november statement on monetary policy	POL-MONETARY
+economy's productive capacity	CORE-CAPACITY
+significant spare capacity	CORE-CAPACITY
+expansionary fiscal	POL-FISCAL
+private non residential building approvals	RE-CONSTRUCTION
+market yields	CREDIT-PRICING
+target bond	CREDIT-BONDS
+near term	EC-FORECAST
+ongoing spare capacity	CORE-CAPACITY
+bank of japan	EXT-INTLMONETARYPOLICY
+support jobs	CORE-LABOUREXTENSIVE
+wages and prices	CORE-WAGES, CORE-INFLATION
+decline in commodity prices	EXT-COMMODITIES
+spending on discretionary	CORE-CONSUMPTION
+retail sector	CORE-SERVICES
+finance sector	CREDIT-BANKING
+rate of saving	SAV-SAVING
+job advertisements	CORE-LABOUREXTENSIVE
+policy settings	POL-MONETARY, POL-FISCAL
+unemployment rate	CORE-LABOUREXTENSIVE
+small businesses	CORE-BUSACTIVITY
+revised lower	EC-FORECAST
+banking sector	CREDIT-BANKING
+housing construction	CORE-ACTIVITY, RE-CONSTRUCTION
+motor vehicles	CORE-ACTIVITY, CORE-MANUF
+financial infrastructure	CREDIT-INFRASTRUCTURE
+information technology	CORE-PRODUCTIVITY
+long run averages	EC-INDICATOR
+higher cost	CORE-INFLATION
+financial risks	RISK-FINRISK
+tentative signs	EC-FORECAST
+budget surpluses	POL-GOVBUDGET
+company profits	CORE-BUSACTIVITY
+household disposable income	CORE-HOUSEHOLDINCOMES
+manufacturing sectors	CORE-MANUF
+considerable spare capacity	CORE-CAPACITY
+global goods	EXT-TRADE
+housing sector	CORE-ACTIVITY, RE-RESIDENTIAL
+business profits	CORE-BUSACTIVITY
+australian government	POL-FISCAL
+asian crisis	CORE-FINDISRUPTION
+stimulatory monetary policy	POL-MONETARY
+increased substantially	CORE-ACTIVITY
+lower rates	POL-MONETARY
+excluding volatile items and tobacco	CORE-INFLATION
+remained expansionary	POL-MONETARY
+securities markets	CREDIT-EQUITIES, CREDIT-BONDS
+inflation remained low	CORE-INFLATION
+non farm payrolls	EC-INDICATOR, CORE-LABOUREXTENSIVE
+rate of home building	RE-RESIDENTIAL, CORE-ACTIVITY
+high exchange rate	EXT-CURRENCIES
+private sector wage growth	CORE-WAGES
+inflation remained high	CORE-INFLATION
+german government	EXT-INTLECON
+gradual pick up in wages growth	CORE-WAGES, CORE-LABOURINTENSIVE
+tightening in credit conditions	CREDIT-BANKING
+reserve bank of new zealand	EXT-INTLMONETARYPOLICY
+expected to fall	EC-FORECAST
+growth in total social financing	CREDIT-CREDITGROWTH
+rate rise	POL-MONETARY
+expected to decline gradually	EC-FORECAST
+consumer prices	CORE-INFLATION
+unit labour costs	CORE-PRODUCTIVITY, CORE-WAGES
+public sector	POL-FISCAL, POL-GOVBUDGET
+government debt	CREDIT-GOVTDEBT, POL-GOVBUDGET
+policy measures	POL-MONETARY, POL-FISCAL
+productive capacity	CORE-CAPACITY
+foreign debt	CREDIT-CORPDEBT
+omicron outbreak	CORE-DISRUPTION
+high inflation	CORE-INFLATION, POL-MONETARY
+monetary policy	POL-MONETARY
+credit markets	CREDIT-BANKING, CREDIT-CREDITGROWTH
+labour income	CORE-WAGES, CORE-HOUSEHOLDINCOMES
+bond spreads	CREDIT-BONDS
+home loan	CREDIT-HOUSEHOLDDEBT
+domestic inflationary pressures	CORE-INFLATION
+labour productivity	CORE-PRODUCTIVITY
+negative equity	CREDIT-HOUSEHOLDDEBT, RE-RESIDENTIAL
+bank's regular half yearly assessment	POL-MONETARY
+global gdp	EXT-INTLECON
+economic prosperity	CORE-ACTIVITY
+net worth	CORE-WEALTH
+regulatory regime	POL-LEGISLATIONREGULATION
+higher prices	CORE-INFLATION
+global economic activity	EXT-INTLECON, CORE-ACTIVITY
+fiscal response	POL-FISCAL
+consumption decisions	CORE-CONSUMPTION
+import growth	EXT-TRADE, EC-INDICATOR
+improved outlook	EC-FORECAST
+business debt	CREDIT-CORPDEBT
+household saving ratio	SAV-SAVING
+english speaking countries	EXT-INTLECON
+average hourly earnings	CORE-WAGES, EC-INDICATOR
+payment costs	CORE-AFFORDABILITY
+loan to valuation ratios	CREDIT-HOUSEHOLDDEBT
+foreign bank	EXT-INTLECON, CREDIT-BANKING
+higher inflation outcomes	CORE-INFLATION, POL-MONETARY
+smaller banks	CREDIT-BANKING
+growth of australia's major trading partners	EXT-INTLECON, EXT-TRADE
+price and wage setting behaviour	CORE-INFLATION, CORE-WAGES
+bank credit	CREDIT-BANKING, CREDIT-CREDITGROWTH
+established housing market	RE-RESIDENTIAL
+low cost funding	CREDIT-INTERESTRATES
+expected to continue	EC-FORECAST
+purchase program	POL-MONETARY
+real exchange	EXT-CURRENCIES
+broader measures of labour	CORE-LABOURINTENSIVE
+banknotes on issue	POL-MONETARY
+new zealand	EXT-INTLECON
+debt to income	CREDIT-HOUSEHOLDDEBT
+domestic demand	CORE-ACTIVITY
+job losses	CORE-LABOUREXTENSIVE
+fiscal consolidation	POL-FISCAL
+price increases	CORE-INFLATION
+revised higher	EC-FORECAST
+economic downturn	CORE-CYCLES
+asset markets	CREDIT-PRICING
+budget deficit	POL-GOVBUDGET
+term funding facility	CREDIT-BANKING
+fiscal position	POL-FISCAL
+tax revenues	POL-TAX
+inflation targets	CORE-TARGET
+china's economy	EXT-INTLECON
+award wages	CORE-WAGES
+trade protectionism	EXT-TRADE
+financial distress	CORE-FINDISRUPTION
+foreign reserves	EXT-INTLECON
+world growth	EXT-INTLECON
+lng project	EXT-COMMODITIES
+yield target	CREDIT-INTERESTRATES
+earnings reports	CORE-BUSACTIVITY
+domestic economy	CORE-ACTIVITY
+risk spreads	RISK-FINRISK
+domestic financial conditions	CREDIT-BANKING
+resources investment	CORE-INVESTMENT
+corporate bond markets	CREDIT-BONDS
+g7 economies	EXT-INTLECON
+global level	EXT-INTLECON
+low inflation outcomes	CORE-INFLATION
+earlier thought	EC-FORECAST
+level reached	EC-INDICATOR
+medium term risks	EC-FORECAST
+conduct of monetary policy	POL-MONETARY
+rates unchanged	POL-MONETARY
+australian bonds	CREDIT-GOVTDEBT
+upward pressure on wages	CORE-WAGES
+household and business balance sheets	CORE-HOUSEHOLDINCOMES
+demand and supply	CORE-CAPACITY
+demand and output	CORE-ACTIVITY
+jobs growth	CORE-LABOUREXTENSIVE
+global financial conditions	EXT-INTLECON
+quality borrowers	CREDIT-BANKING
+nominal exchange	EXT-CURRENCIES
+higher than expected	EC-FORECAST
+previous board meeting	POL-MONETARY
+considerable uncertainty about	EC-FORECAST
+household and business	CORE-HOUSEHOLDINCOMES
+growth in household income	CORE-HOUSEHOLDINCOMES
+strong growth in employment	CORE-LABOUREXTENSIVE
+disposable income	CORE-HOUSEHOLDINCOMES, CORE-CONSUMPTION
+infrastructure projects	POL-FISCAL, CORE-INVESTMENT
+economic recovery	CORE-CYCLES
+bond issuance	CREDIT-BONDS
+capital spending	CORE-INVESTMENT
+price movements	CORE-INFLATION
+service exports	CORE-SERVICES, EXT-TRADE
+reserve bank board	POL-MONETARY
+omicron variant	CORE-DISRUPTION
+wage costs	CORE-WAGES
+risk free	RISK-FINRISK
+pricing power	CORE-INFLATION, CORE-COMPETITION
+east asian	EXT-INTLECON
+exchange settlement balances	CREDIT-BANKING, POL-MONETARY
+resources exports	EXT-COMMODITIES
+retail payments	CREDIT-BANKING, CORE-CONSUMPTION
+banking services	CREDIT-BANKING
+controlling inflation	CORE-TARGET
+liquidity operations	POL-MONETARY
+asian currencies	EXT-CURRENCIES, EXT-INTLECON
+housing debt	CREDIT-HOUSEHOLDDEBT
+strong domestic demand	CORE-ACTIVITY, CORE-DEMANDSHOCKS
+forecast errors	EC-FORECAST
+business borrowers	CREDIT-CORPDEBT
+underlying profits	CORE-BUSACTIVITY
+inflation forecasts	EC-FORECAST, CORE-INFLATIONEXPECTATIONS
+debt issuance	CREDIT-GOVTDEBT, CREDIT-CORPDEBT
+gas prices	EXT-COMMODITIES
+export orders	EXT-TRADE
+central bank targets	CORE-TARGET
+national disability insurance	POL-FISCAL
+currency markets	EXT-CURRENCIES
+fiscal and monetary policy	POL-FISCAL, POL-MONETARY
+portfolio investment	EXT-INTLECON
+financial activity	CREDIT-BANKING
+weak demand	CORE-DEMANDSHOCKS, CORE-ACTIVITY
+rising unemployment	CORE-LABOUREXTENSIVE
+global prices	EXT-INTLECON
+housing lending rates	CREDIT-HOUSEHOLDDEBT, CREDIT-INTERESTRATES
+tight labour	CORE-LABOURCAPACITY
+economic welfare	CORE-ACTIVITY
+growth in unit labour costs	CORE-WAGES, CORE-PRODUCTIVITY
+indicators of activity	CORE-ACTIVITY
+difficult to predict	EC-FORECAST
+sub prime mortgage market	CREDIT-HOUSEHOLDDEBT
+headline and underlying inflation	CORE-INFLATION
+interest rate on exchange settlement balances	POL-MONETARY
+long term government bond	CREDIT-GOVTDEBT
+non bank financial institutions	CREDIT-BANKING
+too big to fail	CREDIT-BANKING, RISK-FINRISK
+quarterly statement on monetary	POL-MONETARY
+equity markets	CREDIT-EQUITIES
+input costs	CORE-INFLATION
+australian dollar	EXT-CURRENCIES
+bond markets	CREDIT-BONDS
+bank deposits	CREDIT-BANKING
+electronic payments	CREDIT-BANKING
+bear stearns	CORE-FINDISRUPTION
+federal reserve	EXT-INTLMONETARYPOLICY
+spot prices	EXT-COMMODITIES
+bank lending	CREDIT-CREDITGROWTH
+cost cutting	CORE-BUSACTIVITY
+contractionary effects	POL-MONETARY, CORE-CYCLES
+financial institution	CREDIT-BANKING
+policy framework	POL-MONETARY, POL-FISCAL
+emerging market economies	EXT-INTLECON
+counter cyclical	POL-MONETARY, CORE-CYCLES
+inflation objective	CORE-TARGET
+global downturn	EXT-INTLECON
+goods price inflation	CORE-INFLATION
+narrow path	CORE-TARGET
+capital movements	EXT-INTLECON
+resource projects	CORE-INVESTMENT
+asset performance	CREDIT-PRICING
+foreign exchange swap	EXT-CURRENCIES
+established housing prices	RE-RESIDENTIAL
+price indices	CORE-INFLATION
+additional income	CORE-HOUSEHOLDINCOMES
+past experience	EC-FORECAST
+public infrastructure investment	POL-FISCAL, POL-STIMULUS
+weather conditions	FUN-CLIMATE
+lower inflation	CORE-INFLATION
+real income growth	CORE-HOUSEHOLDINCOMES
+average inflation rate	CORE-INFLATION
+variable rates	CREDIT-INTERESTRATES
+financial capital	CORE-INVESTMENT
+low and middle income tax offset	POL-TAX
+united states and china	EXT-INTLECON
+targeting framework	POL-MONETARY
+spending on infrastructure	POL-FISCAL, CORE-INVESTMENT
+employment to population	CORE-LABOUREXTENSIVE
+appreciating exchange	EXT-CURRENCIES
+improvement in labour market conditions	CORE-LABOURCAPACITY
+subdued outlook	EC-FORECAST
+rate differentials	EXT-CURRENCIES, EXT-INTLECON
+exports to china	EXT-TRADE
+household income and consumption	CORE-HOUSEHOLDINCOMES, CORE-CONSUMPTION
+money market	POL-MONETARY, CREDIT-BANKING
+developed economies	EXT-INTLECON
+borrowing costs	CREDIT-INTERESTRATES
+reserve bank	POL-MONETARY
+jobkeeper program	POL-STIMULUS
+case numbers	CORE-DISRUPTION
+consumer demand	CORE-CONSUMPTION
+australian banks	CREDIT-BANKING
+services exports	CORE-SERVICES, EXT-TRADE
+price falls	CORE-INFLATION
+g7 countries	EXT-INTLECON
+australian dollars	EXT-CURRENCIES
+floating rate	CREDIT-INTERESTRATES
+housing demand	RE-RESIDENTIAL
+bank's goals	POL-MONETARY
+business services	CORE-SERVICES
+growth forecasts	EC-FORECAST
+labour underutilisation	CORE-LABOURINTENSIVE
+household consumption growth	CORE-CONSUMPTION
+trade exposed	CORE-TRADABLENONTRADABLE
+easier monetary policy	POL-MONETARY
+global trends	EXT-INTLECON
+japanese market	EXT-INTLECON
+housing market activity	RE-RESIDENTIAL
+forecasts published	EC-FORECAST
+comparable countries	EXT-INTLECON
+offset and redraw accounts	CREDIT-BANKING
+policy rate expectations	POL-MONETARY, CORE-INFLATIONEXPECTATIONS
+trading partner growth	EXT-TRADE, EXT-INTLECON
+inflation targeting approach	CORE-TARGET
+australia's trading partners	EXT-TRADE, EXT-INTLECON
+both owner occupiers and investors	RE-RESIDENTIAL
+underemployment rate	CORE-LABOURINTENSIVE
+target range	CORE-TARGET
+australia’s major trading partners	EXT-TRADE, EXT-INTLECON
+vegetable prices	CORE-INFLATION
+central banker	POL-MONETARY
+sentiment in financial markets	RISK-CONFIDENCE
+subdued wage	CORE-WAGES
+de leveraging	CREDIT-CORPDEBT
+resource exports	EXT-COMMODITIES
+bulk commodity prices	EXT-COMMODITIES
+housing turnover	RE-RESIDENTIAL
+savings buffers	SAV-SAVING
+hiring intentions	CORE-LABOUREXTENSIVE
+financial deregulation	POL-LEGISLATIONREGULATION
+prudential supervision	CREDIT-BANKING, POL-LEGISLATIONREGULATION
+resource investment	EXT-MINING
+productivity performance	CORE-PRODUCTIVITY
+trade links	EXT-TRADE
+social assistance	POL-STIMULUS
+plausible scenarios	EC-FORECAST
+large swings	CREDIT-VOLATILITY
+rental vacancy	RE-RESIDENTIAL
+global economic conditions	EXT-INTLECON
+risk averse	RISK-FINRISK
+board's judgement	POL-MONETARY
+business sector	CORE-BUSACTIVITY
+stronger demand	CORE-DEMANDSHOCKS
+base wage	CORE-WAGES
+scenario assumes	EC-FORECAST
+variable rate mortgages	CREDIT-HOUSEHOLDDEBT
+long running	CORE-CYCLES
+underlying demand	CORE-DEMANDSHOCKS
+faster growth	CORE-ACTIVITY
+depreciated significantly	EXT-CURRENCIES
+low oil prices	EXT-COMMODITIES
+labour force data	CORE-LABOUREXTENSIVE
+domestic uncertainty	RISK-CONFIDENCE
+trade data	EXT-TRADE
+non tradable items	CORE-TRADABLENONTRADABLE
+borrowers of high credit quality	CREDIT-HOUSEHOLDDEBT, CREDIT-BANKING
+board remained committed	POL-MONETARY
+fed funds	EXT-INTLMONETARYPOLICY
+strong economic growth	CORE-ACTIVITY
+australian iron ore	EXT-COMMODITIES
+growth in australia's major trading	EXT-TRADE
+household disposable	CORE-HOUSEHOLDINCOMES
+inflation risks	CORE-INFLATION
+expected to decline	EC-FORECAST
+supported by strong labour	CORE-LABOUREXTENSIVE
+forecasts for global growth	EC-FORECAST, EXT-INTLECON
+global economic	EXT-INTLECON
+private non residential	CORE-INVESTMENT
+australian households and businesses	CORE-HOUSEHOLDINCOMES, CORE-BUSACTIVITY
+sub prime	CREDIT-HOUSEHOLDDEBT
+a moderate pace	CORE-CYCLES
+pick up	CORE-CYCLES
+trough in early	CORE-CYCLES
+behaviour by households	CORE-CONSUMPTION
+monetary policy settings	POL-MONETARY
+risk aversion	RISK-FINRISK
+mortgage payments	CREDIT-HOUSEHOLDDEBT, CORE-HOUSEHOLDINCOMES
+economic outcomes	CORE-ACTIVITY
+mining investment	CORE-INVESTMENT
+merchandise exports	EXT-TRADE
+credit standards	CREDIT-PRICING
+trading conditions	CORE-BUSACTIVITY
+household finances	CORE-HOUSEHOLDINCOMES
+household indebtedness	CREDIT-HOUSEHOLDDEBT
+swap lines	POL-MONETARY, EXT-CURRENCIES
+indebted households	CREDIT-HOUSEHOLDDEBT
+credit cards	CREDIT-HOUSEHOLDDEBT
+major banks	CREDIT-BANKING
+accommodative financial conditions	POL-MONETARY
+economic development	CORE-ACTIVITY
+public health	POL-FISCAL
+tighter labour market	CORE-LABOURCAPACITY
+foreign assets	EXT-INTLECON
+discretionary spending	CORE-CONSUMPTION
+greek government	EXT-INTLECON
+asset backed	CREDIT-PRICING
+unit labour cost growth	CORE-WAGES, CORE-PRODUCTIVITY
+current policy settings	POL-MONETARY
+australian prudential regulation authority	CREDIT-BANKING
+korean war	CORE-DISRUPTION
+inflation forecast	CORE-INFLATIONEXPECTATIONS
+recent tax cuts	POL-TAX
+participants’ expectations	CORE-INFLATIONEXPECTATIONS
+growth in australia's major trading partners	EXT-INTLECON
+australian financial institutions	CREDIT-BANKING
+bank's liaison program suggested	CORE-BUSACTIVITY
+high income economies	EXT-INTLECON
+china and india	EXT-INTLECON
+global recovery	CORE-CYCLES
+historical standards	EC-FORECAST
+overnight cash	CREDIT-INTERESTRATES
+middle income	EXT-INTLECON
+goods markets	EXT-TRADE
+significant fiscal	POL-FISCAL
+larger than expected	EC-FORECAST
+business and household	CORE-CONSUMPTION
+ease policy	POL-MONETARY
+expected to remain strong	EC-FORECAST
+pass through of upstream	CORE-INFLATION
+spending on services	CORE-CONSUMPTION
+expected to recover	EC-FORECAST
+sources of uncertainty	CORE-DISRUPTION
+capital expenditure	CORE-INVESTMENT
+electricity prices	CORE-AFFORDABILITY
+financial sector	CREDIT-BANKING
+economic growth	CORE-ACTIVITY
+building activity	RE-CONSTRUCTION
+public consumption	POL-FISCAL
+housing market conditions	RE-RESIDENTIAL
+supply shock	CORE-SUPPLYSHOCKS
+financial turmoil	CORE-FINDISRUPTION
+prudential regulation	POL-LEGISLATIONREGULATION
+nominal income	CORE-HOUSEHOLDINCOMES
+policy support	POL-STIMULUS
+funding markets	CREDIT-PRICING
+housing lending	CREDIT-HOUSEHOLDDEBT, RE-RESIDENTIAL
+domestic incomes	CORE-HOUSEHOLDINCOMES
+asset managers	CREDIT-PRICING
+labour productivity growth	CORE-PRODUCTIVITY
+european policymakers	EXT-INTLECON
+cost control	CORE-AFFORDABILITY
+education exports	EXT-TRADE
+maintaining low inflation	CORE-INFLATION
+domestic saving	SAV-SAVING
+real disposable	CORE-HOUSEHOLDINCOMES
+emerging market currencies	EXT-CURRENCIES
+established housing	RE-RESIDENTIAL
+international outlook	EC-FORECAST
+inflation pressure	CORE-INFLATION
+excluding volatile items	CORE-INFLATION
+financial market sentiment	CREDIT-VOLATILITY, RISK-FINRISK
+quarterly gdp	CORE-ACTIVITY
+stimulatory policy	POL-STIMULUS
+real exchange rate	EXT-CURRENCIES
+united states and japan	EXT-INTLECON
+chinese steel demand	EXT-INTLECON
+issuance of residential mortgage backed securities	CREDIT-BONDS
+supply factors	CORE-SUPPLYSHOCKS
+slow growth in wages	CORE-WAGES
+authorised deposit	CREDIT-BANKING
+dollar funding	EXT-CURRENCIES
+market funding	CREDIT-PRICING, CREDIT-BANKING
+labour and capital	CORE-CAPACITY
+central bank's	POL-MONETARY
+upward pressure on prices	CORE-INFLATION
+reduced uncertainty	RISK-CONFIDENCE
+china and japan	EXT-INTLECON
+softer outlook	EC-FORECAST
+rate fell	CREDIT-INTERESTRATES
+lending rates	CREDIT-INTERESTRATES
+government bond yields	CREDIT-GOVTDEBT
+economic contraction	CORE-CYCLES
+consumer price index	EC-INDICATOR, CORE-INFLATION
+december meeting	POL-MONETARY
+thermal coal	EXT-COMMODITIES
+job creation	CORE-LABOUREXTENSIVE
+older workers	CORE-LABOUREXTENSIVE
+spending patterns	CORE-CONSUMPTION
+policy decisions	POL-MONETARY, POL-FISCAL
+newly constructed	RE-RESIDENTIAL
+suitable labour	CORE-SKILLS
+financial market volatility	CREDIT-VOLATILITY
+monetary targeting	POL-MONETARY
+political developments	RISK-GEOPOLITICAL
+liaison program	CORE-BUSACTIVITY
+local currency	EXT-CURRENCIES
+residential construction activity	RE-RESIDENTIAL, RE-CONSTRUCTION
+iron ore prices	EXT-COMMODITIES
+input prices	CORE-INFLATION
+support package	POL-STIMULUS
+recent floods	FUN-CLIMATE
+global standards	EXT-INTLECON
+global equity prices	EXT-INTLECON, CREDIT-EQUITIES
+policy setting	POL-MONETARY
+lower costs	CORE-INFLATION
+housing equity	CORE-WEALTH, RE-RESIDENTIAL
+bond yield	CREDIT-BONDS, POL-MONETARY
+gradual recovery	CORE-CYCLES
+tightening labour market	CORE-LABOURCAPACITY
+average earnings per hour	CORE-WAGES
+near term adjustment in monetary policy	POL-MONETARY
+housing construction activity	RE-CONSTRUCTION, RE-RESIDENTIAL
+expected to grow strongly	EC-FORECAST
+private sector wages growth	CORE-WAGES
+expected to grow	EC-FORECAST
+bringing inflation	CORE-INFLATION
+previous meeting	POL-MONETARY
+average hours	CORE-LABOURINTENSIVE
+forecast profile	EC-FORECAST
+australian equity market	CREDIT-EQUITIES
+russia’s invasion of ukraine	RISK-GEOPOLITICAL
+expected to ease	EC-FORECAST
+monetary and fiscal	POL-MONETARY, POL-FISCAL
+credit to owner occupiers	CREDIT-CREDITGROWTH
+measures of capacity utilisation	CORE-CAPACITY
+forecast to decline gradually	EC-FORECAST
+asian countries	EXT-INTLECON
+european countries	EXT-INTLECON
+oecd countries	EXT-INTLECON
+petrol prices	CORE-INFLATION
+partial indicators	EC-FORECAST
+housing markets	RE-RESIDENTIAL
+east asian economies	EXT-INTLECON
+abs capital expenditure survey	CORE-INVESTMENT
+national disability insurance scheme	POL-FISCAL
+financial assistance	POL-STIMULUS
+timely indicators suggested	EC-FORECAST
+elevated level	EC-FORECAST
+average level	EC-FORECAST
+historically low levels	EC-FORECAST
+european central bank's	EXT-INTLMONETARYPOLICY
+productivity improvements	CORE-PRODUCTIVITY
+residential mortgage backed securities	CREDIT-BONDS
+bank's forecasts	EC-FORECAST
+asset purchase program	POL-MONETARY
+strong population growth	FUN-DEMOGRAPHICS
+chinese renminbi	EXT-CURRENCIES
+australian equity prices	CREDIT-EQUITIES
+bank supervisors	POL-LEGISLATIONREGULATION
+non residential building approvals	RE-COMMERCIAL
+non residential building	RE-COMMERCIAL
+australian businesses	CORE-BUSACTIVITY
+measures of consumer confidence	RISK-CONFIDENCE
+revised down slightly	EC-FORECAST
+bank of england	EXT-INTLMONETARYPOLICY
+expected to add	EC-FORECAST
+coal export	EXT-COMMODITIES
+aggregate demand and supply	CORE-CAPACITY

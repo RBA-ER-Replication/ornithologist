@@ -1,0 +1,82 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "What type of business activity is being discussed (insolvencies, business credit, or other/general conditions)?",
+  "children": {
+    "Insolvencies": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is the environment for insolvencies best described as tougher, stable, or easier?",
+      "children": {
+        "Tougher": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Dovish",
+          "children": {}
+        },
+        "Stable or mixed": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        },
+        "Easier": {
+          "id": "n5",
+          "type": "terminal",
+          "assessment": "Leaning Hawkish",
+          "children": {}
+        }
+      }
+    },
+    "Business Credit": {
+      "id": "n6",
+      "type": "LLM",
+      "question": "Is the environment for business credit best described as tougher, stable, or easier?",
+      "children": {
+        "Tougher": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Dovish",
+          "children": {}
+        },
+        "Stable or mixed": {
+          "id": "n8",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        },
+        "Easier": {
+          "id": "n9",
+          "type": "terminal",
+          "assessment": "Leaning Hawkish",
+          "children": {}
+        }
+      }
+    },
+    "Other or general conditions": {
+      "id": "n10",
+      "type": "LLM",
+      "question": "Is the business activity environment best described as tougher, stable, or easier?",
+      "children": {
+        "Tougher": {
+          "id": "n11",
+          "type": "terminal",
+          "assessment": "Dovish",
+          "children": {}
+        },
+        "Stable or mixed": {
+          "id": "n12",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        },
+        "Easier": {
+          "id": "n13",
+          "type": "terminal",
+          "assessment": "Leaning Hawkish",
+          "children": {}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the discussion about general population growth or aging population?",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "terminal",
+      "assessment": "Neutral",
+      "children": {}
+    },
+    "No": {
+      "id": "n3",
+      "type": "LLM",
+      "question": "Does the paragraph express concerns about any effects short-term migration may have on inflation?",
+      "children": {
+        "Yes, inflationary": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "Yes, disinflationary": {
+          "id": "n5",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "No or unclear": {
+          "id": "n7",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Unrelated": {
+      "id": "n6",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

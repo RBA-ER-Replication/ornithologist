@@ -1,0 +1,75 @@
+{
+  "id": "n12",
+  "type": "LLM",
+  "question": "This paragraph is from the Reserve Bank of Australia. Does it describe Australian inflation (i.e. home-country inflation)?",
+  "children": {
+    "yes": {
+      "id": "n1",
+      "type": "SYMBOLIC",
+      "question": "{inflation_state}",
+      "children": {
+        "above_target": {
+          "id": "n2",
+          "type": "LLM",
+          "question": "Is inflation expected to remain above target for an extended period of time?",
+          "children": {
+            "yes": {
+              "id": "n3",
+              "assessment": "Hawkish (Sustained high inflation requires tightening policies)",
+              "children": {}
+            },
+            "no": {
+              "id": "n4",
+              "assessment": "Leaning Hawkish (inflation is above target but returning, implies caution but not necessarily long-term tightening)",
+              "children": {}
+            }
+          }
+        },
+        "on_target": {
+          "id": "n5",
+          "type": "LLM",
+          "question": "Are there any inflationary or disinflationary risks discussed?",
+          "children": {
+            "inflationary risks discussed": {
+              "id": "n6",
+              "assessment": "Leaning hawkish (inflation is within the target range, but inflationary pressures are a risk).",
+              "children": {}
+            },
+            "disinflationary risks discussed": {
+              "id": "n7",
+              "assessment": "Leaning dovish (inflation is within the target range, but disinflationary pressures are a risk).",
+              "children": {}
+            },
+            "not discussed": {
+              "id": "n8",
+              "assessment": "Neutral (Inflation within target range indicates a balanced approach)",
+              "children": {}
+            }
+          }
+        },
+        "below_target": {
+          "id": "n9",
+          "type": "LLM",
+          "question": "Is inflation expected to remain below target for an extended period of time?",
+          "children": {
+            "yes": {
+              "id": "n10",
+              "assessment": "Dovish (Sustained below-target inflation warrants easing policies)",
+              "children": {}
+            },
+            "no": {
+              "id": "n11",
+              "assessment": "Leaning Dovish (Current below-target inflation implies caution and potential easing)",
+              "children": {}
+            }
+          }
+        }
+      }
+    },
+    "no": {
+      "id": "n13",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

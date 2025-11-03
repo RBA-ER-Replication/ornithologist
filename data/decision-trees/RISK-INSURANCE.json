@@ -1,0 +1,19 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is insurance (e.g. firms) being described as a financial stability risk?",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "terminal",
+      "assessment": "Leaning dovish",
+      "children": {}
+    },
+    "No": {
+      "id": "n3",
+      "type": "terminal",
+      "assessment": "Neutral",
+      "children": {}
+    }
+  }
+}

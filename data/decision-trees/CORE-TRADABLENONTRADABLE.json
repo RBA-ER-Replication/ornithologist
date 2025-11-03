@@ -1,0 +1,75 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the paragraph talking primarily about the tradable sector, non-tradable sector, or both?",
+  "children": {
+    "Non-tradable Sector": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Does the paragraph talk about strong inflationary pressures, explicitly or implicitly?",
+      "children": {
+        "Yes": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Hawkish",
+          "children": {}
+        },
+        "No": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Tradable Sector": {
+      "id": "n5",
+      "type": "LLM",
+      "question": "Is there mention of inflationary pressures, explicitly or implicitly (e.g. due to exchange rates)?",
+      "children": {
+        "Yes": {
+          "id": "n6",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "No": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Both": {
+      "id": "n8",
+      "type": "LLM",
+      "question": "Does the paragraph cite broad inflationary pressures or deflationary pressures?",
+      "children": {
+        "Inflationary Pressures": {
+          "id": "n9",
+          "type": "terminal",
+          "assessment": "Hawkish (broad inflationary pressures across both sectors)",
+          "children": {}
+        },
+        "Deflationary Pressures": {
+          "id": "n10",
+          "type": "terminal",
+          "assessment": "Dovish (broad deflationary pressures across both sectors)",
+          "children": {}
+        },
+        "Mixed Signals": {
+          "id": "n11",
+          "type": "terminal",
+          "assessment": "Neutral (mixed inflationary and deflationary pressures across both sectors)",
+          "children": {}
+        }
+      }
+    },
+    "Unclear, overseas/global inflation, or other": {
+      "id": "n12",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

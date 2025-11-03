@@ -1,0 +1,38 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Does the text discuss household affordability factors (e.g., cost of living, rents, house prices, grocery prices, fuel prices)?",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "What is the nature of the cost of living/affordability pressures?",
+      "children": {
+        "Increasing cost of living pressures": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning hawkish (Rising costs of living lead to inflationary pressures)",
+          "children": {}
+        },
+        "Easing cost of living pressures": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning dovish (Falling costs of living reduce inflationary pressures)",
+          "children": {}
+        },
+        "Other or unknown": {
+          "id": "n5",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "No": {
+      "id": "n6",
+      "type": "terminal",
+      "assessment": "Neutral (No implications for affordability discussed)",
+      "children": {}
+    }
+  }
+}

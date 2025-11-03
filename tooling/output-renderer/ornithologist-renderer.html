@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Ornithologist</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f8fafc;
+  --panel: #ffffff;
+  --border: #e2e8f0;
+  --muted: #64748b;
+  --accent: #2563eb;
+  --danger: #dc2626;
+  --neutral: #94a3b8;
+  --mono: 'Space Mono', monospace;
+  --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--font); background: var(--bg); color:#0f172a; }
+header { padding: 16px 20px; background: var(--panel); border-bottom:1px solid var(--border); display:flex; flex-wrap:wrap; gap:18px; align-items:center; }
+header h1 { font-size: 20px; margin:0; font-weight:600; }
+input[type=file] { padding:6px; }
+#summary { display:flex; gap:28px; flex-wrap:wrap; align-items:center; }
+.summary-block { background: var(--panel); padding:12px 16px; border:1px solid var(--border); border-radius:10px; min-width:180px; }
+.summary-block h3 { margin:0 0 6px 0; font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; color: var(--muted); }
+.summary-block .value { font-size:28px; font-weight:600; }
+
+.layout { display:flex; gap:16px; padding:16px 20px; }
+.sidebar { width:300px; display:flex; flex-direction:column; gap:16px; }
+.panel { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:14px; }
+.panel h2 { margin:0 0 10px 0; font-size:16px; font-weight:600; }
+.panel h3 { margin:16px 0 8px 0; font-size:13px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; color: var(--muted); }
+
+.filter-group { display:flex; flex-direction:column; gap:8px; }
+.filter-group input[type=text], .filter-group select { width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:6px; font-family:inherit; font-size:14px; }
+.tag-filter-list { display:flex; flex-wrap:wrap; gap:6px; }
+.tag-chip { padding:4px 8px; background:#eef2ff; color:#1e293b; border-radius:999px; font-size:12px; cursor:pointer; user-select:none; }
+.tag-chip.active { background: var(--accent); color:#fff; }
+.category-checkboxes { display:flex; flex-wrap:wrap; gap:8px; font-size:12px; }
+.category-checkboxes label { display:flex; align-items:center; gap:4px; background:#f1f5f9; padding:4px 8px; border-radius:6px; cursor:pointer; }
+.category-checkboxes input { cursor:pointer; }
+button.small { padding:6px 10px; font-size:12px; background:var(--accent); color:#fff; border:none; border-radius:6px; cursor:pointer; }
+button.small.secondary { background:#334155; }
+button.small:disabled { opacity:0.5; cursor:not-allowed; }
+
+#chunksContainer { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:0; }
+.main { flex:1; display:flex; flex-direction:column; gap:16px; }
+/* Row holding chunks and detail side-by-side */
+.main-row { display:flex; gap:16px; align-items:stretch; }
+/* make chunk list scroll independently */
+#chunksContainer { flex:1; }
+/* Detail pane */
+#detailPane { width:420px; background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:16px; position:sticky; top:12px; align-self:flex-start; }
+#detailPane.empty { display:flex; align-items:center; justify-content:center; color: var(--muted); font-size:14px; }
+
+/* Chunk list row layout: text ~66%, score fixed 70px, tags ~34% */
+.chunk-row { border-bottom:1px solid var(--border); padding:12px 16px; display:flex; gap:16px; position:relative; }
+.chunk-row:last-child { border-bottom:none; }
+.chunk-text { flex:0 1 66%; font-size:14px; line-height:1.5; position:relative; }
+.score-badge { flex:0 0 70px; display:flex; flex-direction:column; align-items:flex-start; gap:4px; }
+.score-badge .avg { font-size:18px; font-weight:600; border-radius:8px; padding:4px 8px; color:#fff; }
+.score-badge .label { font-size:11px; text-transform:uppercase; letter-spacing:0.5px; color: var(--muted); }
+.tag-badges { flex:0 1 34%; display:flex; flex-wrap:wrap; column-gap:6px; row-gap:4px; min-width:180px; align-content:flex-start; }
+.tag-badge { padding:4px 10px; border-radius:6px; font-size:12px; background:#f1f5f9; cursor:pointer; position:relative; color:#0f172a; display:inline-flex; align-items:center; justify-content:center; height:24px; line-height:1; white-space:nowrap; }
+.tag-badge[data-cat="1"] { background:#2563eb; color:#fff; }
+.tag-badge[data-cat="2"] { background:#3b82f6; color:#fff; }
+.tag-badge[data-cat="3"] { background:#64748b; color:#fff; }
+.tag-badge[data-cat="4"] { background:#f59e0b; color:#fff; }
+.tag-badge[data-cat="5"] { background:#dc2626; color:#fff; }
+.tag-badge[data-cat="0"] { background:#e2e8f0; }
+.tag-badge:hover { filter:brightness(1.08); }
+.tag-badge.active { outline:2px solid var(--accent); }
+.tag-badge.skip { opacity:0.4; text-decoration:line-through; }
+
+#detailPane.empty { min-height:140px; }
+.detail-header { display:flex; flex-direction:column; gap:4px; margin-bottom:12px; }
+.detail-header h2 { margin:0; font-size:18px; font-weight:600; }
+.detail-meta { font-size:12px; color: var(--muted); }
+.assessment-badge { display:inline-block; padding:4px 10px; border-radius:6px; font-size:12px; font-weight:600; color:#fff; margin-right:8px; line-height:1; }
+.reasoning-steps { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; }
+.reasoning-steps li { background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:10px 12px; }
+.reasoning-steps .question { font-weight:600; font-size:13px; margin-bottom:4px; }
+.reasoning-steps .answer { display:inline-block; background:#334155; color:#fff; padding:2px 6px; border-radius:4px; font-size:11px; margin-right:6px; }
+.reasoning-steps .reasoning { font-size:13px; line-height:1.4; color:#334155; white-space:pre-line; }
+.copy-btn { background:#334155; color:#fff; border:none; padding:6px 10px; font-size:12px; border-radius:6px; cursor:pointer; }
+.raw-toggle { background:#64748b; color:#fff; border:none; padding:6px 10px; font-size:12px; border-radius:6px; cursor:pointer; margin-left:6px; }
+.raw-json { font-family: var(--mono); font-size:12px; background:#0f172a; color:#e2e8f0; padding:12px; border-radius:8px; margin-top:12px; max-height:300px; overflow:auto; }
+
+/* Final assessment styling */
+/* (final assessment now reuses .assessment-badge; helper container in case of future layout tweaks) */
+.final-assessment-wrapper { margin-top:16px; }
+
+.histogram { display:flex; align-items:flex-end; gap:6px; height:80px; }
+.histogram .bar { flex:1; background:#cbd5e1; position:relative; border-radius:4px 4px 0 0; display:flex; align-items:flex-end; justify-content:center; }
+.histogram .bar span { position:absolute; bottom:4px; font-size:11px; font-weight:600; }
+.histogram .bar-label { position:absolute; top:-16px; font-size:11px; color: var(--muted); }
+
+@media (max-width:1100px) {
+  .layout { flex-direction:column; }
+  .sidebar { width:100%; }
+  .chunk-row { flex-direction:column; }
+  .chunk-text, .tag-badges { flex:1 1 auto; min-width:0; }
+  .score-badge { flex-direction:row; width:auto; align-items:center; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Ornithologist</h1>
+  <input id="fileInput" type="file" accept="application/json" />
+  <div id="summary"></div>
+</header>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="panel" id="filtersPanel">
+      <h2>Filters</h2>
+      <div class="filter-group">
+        <input id="searchInput" type="text" placeholder="Search text or reasoning..." />
+        <h3>Tags</h3>
+        <div id="tagFilter" class="tag-filter-list"></div>
+        <h3>Categories</h3>
+        <div class="category-checkboxes" id="categoryBoxes">
+          <!-- dynamic -->
+        </div>
+        <div style="display:flex; gap:8px; margin-top:8px;">
+          <button id="resetFilters" class="small secondary" type="button">Reset</button>
+        </div>
+      </div>
+    </div>
+    <div class="panel" id="metricsPanel">
+      <h2>Metrics</h2>
+      <div id="metricsContent"></div>
+    </div>
+  </aside>
+  <main class="main">
+    <div class="main-row">
+      <div id="chunksContainer"></div>
+      <div id="detailPane" class="empty">Select a paragraph tag to view reasoning path.</div>
+    </div>
+  </main>
+</div>
+<script>
+(function(){
+  const state = {
+    raw: null,
+    chunks: [],
+    filters: { tags: new Set(), categories: new Set(), search: '' },
+    selected: { chunk_id: null, tag: null }
+  };
+
+  const CATEGORY_MAP = {
+    1: { label: 'Dovish', color: '#2563eb' },
+    2: { label: 'Leaning Dovish', color: '#3b82f6' },
+    3: { label: 'Neutral', color: '#64748b' },
+    4: { label: 'Leaning Hawkish', color: '#f59e0b' },
+    5: { label: 'Hawkish', color: '#dc2626' }
+  };
+
+  const fileInput = document.getElementById('fileInput');
+  fileInput.addEventListener('change', ev => { const f = ev.target.files && ev.target.files[0]; if(!f) return; loadJSONFile(f); });
+  document.getElementById('searchInput').addEventListener('input', e => { state.filters.search = e.target.value.toLowerCase(); renderChunks(); });
+  document.getElementById('resetFilters').addEventListener('click', () => { state.filters.tags.clear(); state.filters.categories.clear(); state.filters.search=''; document.getElementById('searchInput').value=''; syncTagFilterUI(); syncCategoryBoxes(); renderChunks(); });
+
+  function loadJSONFile(file){
+    const reader = new FileReader();
+    reader.onload = () => { try { const json = JSON.parse(reader.result); initFromJSON(json); } catch(e){ alert('Invalid JSON: '+e.message); } };
+    reader.readAsText(file);
+  }
+
+  function initFromJSON(json){
+    state.raw = json;
+    buildChunks(json);
+    buildFilters(json);
+    renderSummary();
+    renderMetrics();
+    renderChunks();
+    clearDetail();
+  }
+
+  function buildChunks(json){
+    const results = json.results || {};
+    const scores = json.scores || {};
+    const avgScores = json.scores_para_avg || {};
+    state.chunks = Object.entries(results).map(([chunk_id, payload]) => {
+      const tgr = payload['taxonomy-guided-reasoning'] || {};
+      const tags = Object.entries(tgr).map(([tag, info]) => {
+        const path = info.path || [];
+        const assessment = info.assessment || 'Unknown';
+        const category = categoryFromAssessment(assessment);
+        return { tag, path, assessment, category };
+      }).sort((a,b)=> a.tag.localeCompare(b.tag));
+      // compute average numeric score from scores_para_avg fallback
+      let avg = avgScores[chunk_id];
+      if(avg === undefined){
+        const rawScores = (scores[chunk_id]||[]).filter(x => x !== -1);
+        avg = rawScores.length ? rawScores.reduce((a,c)=>a+c,0)/rawScores.length : null;
+      }
+      return { chunk_id, text: payload.text, tags, avg };
+    }).sort((a,b)=> parseInt(a.chunk_id,10) - parseInt(b.chunk_id,10));
+  }
+
+  function categoryFromAssessment(assessment){
+    const a = assessment.toLowerCase();
+    if(a.includes('skip')) return -1;
+    if(a.includes('dovish') && a.includes('leaning')) return 2;
+    if(a.includes('dovish')) return 1;
+    if(a.includes('neutral')) return 3;
+    if(a.includes('hawkish') && a.includes('leaning')) return 4;
+    if(a.includes('hawkish')) return 5;
+    return 0; // unknown
+  }
+
+  function buildFilters(json){
+    const allTags = new Set();
+    for(const ch of state.chunks){ for(const t of ch.tags){ allTags.add(t.tag); } }
+    state.allTags = Array.from(allTags).sort();
+    syncTagFilterUI();
+    syncCategoryBoxes();
+  }
+
+  function syncTagFilterUI(){
+    const container = document.getElementById('tagFilter');
+    container.innerHTML='';
+    for(const tag of state.allTags){
+      const div = document.createElement('div');
+      div.className = 'tag-chip'+(state.filters.tags.has(tag)?' active':'');
+      div.textContent = tag;
+      div.onclick = () => { if(state.filters.tags.has(tag)) state.filters.tags.delete(tag); else state.filters.tags.add(tag); syncTagFilterUI(); renderChunks(); };
+      container.appendChild(div);
+    }
+  }
+
+  function syncCategoryBoxes(){
+    const catContainer = document.getElementById('categoryBoxes');
+    catContainer.innerHTML='';
+    for(const [code, meta] of Object.entries(CATEGORY_MAP)){
+      const id = 'cat_'+code;
+      const label = document.createElement('label');
+      const cb = document.createElement('input'); cb.type='checkbox'; cb.id=id; cb.checked = state.filters.categories.has(parseInt(code));
+      cb.onchange = () => { const val=parseInt(code); if(cb.checked) state.filters.categories.add(val); else state.filters.categories.delete(val); renderChunks(); };
+      const swatch = document.createElement('span'); swatch.style.width='10px'; swatch.style.height='10px'; swatch.style.background=meta.color; swatch.style.display='inline-block'; swatch.style.borderRadius='2px';
+      label.appendChild(cb); label.appendChild(swatch); label.appendChild(document.createTextNode(meta.label));
+      catContainer.appendChild(label);
+    }
+  }
+
+  function renderSummary(){
+    const summary = document.getElementById('summary');
+    summary.innerHTML='';
+    const docScore = state.raw.doc_score != null ? state.raw.doc_score.toFixed(3) : 'n/a';
+    const totalChunks = state.chunks.length;
+    const withTags = state.chunks.filter(c => c.tags.length>0).length;
+    // compute average excluding neutral (3) paragraph averages
+    const nonNeutralAvgs = state.chunks.map(c => c.avg).filter(a => a != null && Math.round(a) !== 3);
+    const adjusted = nonNeutralAvgs.length ? (nonNeutralAvgs.reduce((s,v)=>s+v,0)/nonNeutralAvgs.length).toFixed(3) : 'n/a';
+    const block = (title,val) => `<div class="summary-block"><h3>${title}</h3><div class="value">${val}</div></div>`;
+    summary.insertAdjacentHTML('beforeend', block('Doc Score', docScore));
+    summary.insertAdjacentHTML('beforeend', block('Paragraphs', totalChunks));
+    summary.insertAdjacentHTML('beforeend', block('Tagged Paras', withTags));
+    summary.insertAdjacentHTML('beforeend', block('Adj Score (excl neutral)', adjusted));
+  }
+
+  function renderMetrics(){
+    const container = document.getElementById('metricsContent');
+    container.innerHTML='';
+    // build category histogram
+    const counts = {1:0,2:0,3:0,4:0,5:0};
+    for(const ch of state.chunks){ for(const t of ch.tags){ if(t.category>0 && counts[t.category]!=null) counts[t.category]++; } }
+    const max = Math.max(1,...Object.values(counts));
+    const hist = document.createElement('div'); hist.className='histogram';
+    for(const code of [1,2,3,4,5]){
+      const bar = document.createElement('div'); bar.className='bar';
+      bar.style.height = (counts[code]/max*70 + 4) + 'px'; bar.style.background = CATEGORY_MAP[code].color;
+      const label = document.createElement('div'); label.className='bar-label'; label.textContent=code;
+      const span = document.createElement('span'); span.textContent=counts[code];
+      bar.appendChild(label); bar.appendChild(span); hist.appendChild(bar);
+    }
+    container.appendChild(hist);
+  }
+
+  function renderChunks(){
+    const container = document.getElementById('chunksContainer');
+    container.innerHTML='';
+    const filtered = state.chunks.filter(ch => passFilters(ch));
+    if(filtered.length===0){ container.innerHTML='<div style="padding:20px; color: var(--muted);">No paragraphs match filters.</div>'; return; }
+    for(const ch of filtered){
+      const row = document.createElement('div'); row.className='chunk-row'; row.dataset.chunkId = ch.chunk_id;
+      const textDiv = document.createElement('div'); textDiv.className='chunk-text'; textDiv.textContent = ch.text;
+      row.appendChild(textDiv);
+
+      const scoreDiv = document.createElement('div'); scoreDiv.className='score-badge';
+      const avg = ch.avg != null ? ch.avg.toFixed(2) : 'n/a';
+      const avgBadge = document.createElement('div'); avgBadge.className='avg'; avgBadge.textContent=avg;
+      avgBadge.style.background = scoreColor(ch.avg);
+      const lbl = document.createElement('div'); lbl.className='label'; lbl.textContent='Avg Score';
+      scoreDiv.appendChild(avgBadge); scoreDiv.appendChild(lbl);
+      row.appendChild(scoreDiv);
+
+      const tagWrap = document.createElement('div'); tagWrap.className='tag-badges';
+      for(const tag of ch.tags){
+        const t = document.createElement('div'); t.className='tag-badge';
+        t.textContent = tag.tag;
+        if(tag.category===-1) t.classList.add('skip');
+        t.dataset.cat = tag.category; // for CSS coloring
+        t.title = tag.assessment; // tooltip with assessment
+        if(state.selected.chunk_id===ch.chunk_id && state.selected.tag===tag.tag) t.classList.add('active');
+        t.onclick = () => { state.selected.chunk_id = ch.chunk_id; state.selected.tag = tag.tag; renderChunks(); renderDetail(); };
+        tagWrap.appendChild(t);
+      }
+      row.appendChild(tagWrap);
+      container.appendChild(row);
+    }
+  }
+
+  function passFilters(ch){
+    // tag filter: chunk must contain ALL selected tags (AND semantics)
+    for(const tag of state.filters.tags){ if(!ch.tags.some(t => t.tag===tag)) return false; }
+    // category filter: if categories picked, chunk must have at least one tag with that category
+    if(state.filters.categories.size>0){ const any = ch.tags.some(t => state.filters.categories.has(t.category)); if(!any) return false; }
+    // search filter: search in text or reasoning or assessment
+    if(state.filters.search){
+      const s = state.filters.search;
+      const textHit = ch.text.toLowerCase().includes(s);
+      let reasoningHit = false;
+      for(const tag of ch.tags){
+        if(tag.assessment.toLowerCase().includes(s)) { reasoningHit=true; break; }
+        for(const step of tag.path){ if(step.question.toLowerCase().includes(s) || (step.reasoning||'').toLowerCase().includes(s)) { reasoningHit=true; break; } }
+        if(reasoningHit) break;
+      }
+      if(!(textHit || reasoningHit)) return false;
+    }
+    return true;
+  }
+
+  function scoreColor(avg){
+    if(avg==null) return '#94a3b8';
+    // map 1-5 to gradient blue -> red via neutral in middle
+    // simple interpolation: we will pick color from CATEGORY_MAP nearest integer or blend
+    const nearest = Math.round(avg);
+    const base = CATEGORY_MAP[nearest] ? CATEGORY_MAP[nearest].color : '#94a3b8';
+    return base;
+  }
+
+  function clearDetail(){
+    const pane = document.getElementById('detailPane');
+    pane.className='empty'; pane.innerHTML='Select a paragraph tag to view reasoning path.';
+  }
+
+  function renderDetail(){
+    const pane = document.getElementById('detailPane');
+    const { chunk_id, tag } = state.selected;
+    if(!chunk_id || !tag){ clearDetail(); return; }
+    const ch = state.chunks.find(c => c.chunk_id===chunk_id);
+    if(!ch){ clearDetail(); return; }
+    const t = ch.tags.find(tt => tt.tag===tag);
+    if(!t){ clearDetail(); return; }
+    pane.className=''; pane.innerHTML='';
+    const header = document.createElement('div'); header.className='detail-header';
+    const title = document.createElement('h2'); title.textContent = `Chunk ${chunk_id} — ${tag}`;
+    const meta = document.createElement('div'); meta.className='detail-meta'; meta.textContent = `${ch.text.length} chars | ${t.path.length} steps`;
+    header.appendChild(title); header.appendChild(meta);
+
+    const assessment = document.createElement('div');
+    assessment.className='assessment-badge';
+    const catMeta = CATEGORY_MAP[t.category];
+    assessment.style.background = catMeta? catMeta.color : '#64748b';
+    assessment.textContent = t.assessment;
+    header.appendChild(assessment);
+
+    const paraFull = document.createElement('div'); paraFull.style.fontSize='14px'; paraFull.style.lineHeight='1.5'; paraFull.style.margin='8px 0 14px'; paraFull.textContent = ch.text;
+
+    pane.appendChild(header); pane.appendChild(paraFull);
+
+    if(t.path.length){
+      const ul = document.createElement('ul'); ul.className='reasoning-steps';
+      for(const step of t.path){
+        const li = document.createElement('li');
+        const q = document.createElement('div'); q.className='question'; q.textContent = step.question;
+        const a = document.createElement('span'); a.className='answer'; a.textContent = step.answer;
+        const r = document.createElement('div'); r.className='reasoning'; r.textContent = step.reasoning || '';
+        li.appendChild(q); li.appendChild(a); li.appendChild(r); ul.appendChild(li);
+      }
+      pane.appendChild(ul);
+        // Duplicate assessment badge at bottom
+        const finalWrap = document.createElement('div'); finalWrap.className='final-assessment-wrapper';
+        const bottomBadge = document.createElement('div'); bottomBadge.className='assessment-badge'; bottomBadge.style.background = catMeta? catMeta.color : '#64748b'; bottomBadge.textContent = t.assessment;
+        finalWrap.appendChild(bottomBadge);
+        pane.appendChild(finalWrap);
+    }
+
+    const actions = document.createElement('div'); actions.style.marginTop='12px';
+    const copyBtn = document.createElement('button'); copyBtn.className='copy-btn'; copyBtn.textContent='Copy JSON';
+    copyBtn.onclick = () => {
+      const exportObj = { chunk_id, tag, assessment: t.assessment, path: t.path };
+      navigator.clipboard.writeText(JSON.stringify(exportObj, null, 2)).then(()=>{ copyBtn.textContent='Copied!'; setTimeout(()=> copyBtn.textContent='Copy JSON', 1200); });
+    };
+    const rawBtn = document.createElement('button'); rawBtn.className='raw-toggle'; rawBtn.textContent='Show Raw';
+    rawBtn.onclick = () => {
+      const existing = pane.querySelector('.raw-json');
+      if(existing){ existing.remove(); rawBtn.textContent='Show Raw'; return; }
+      const pre = document.createElement('pre'); pre.className='raw-json'; pre.textContent = JSON.stringify({ chunk: ch, tag: t }, null, 2);
+      pane.appendChild(pre); rawBtn.textContent='Hide Raw';
+    };
+    actions.appendChild(copyBtn); actions.appendChild(rawBtn); pane.appendChild(actions);
+  }
+
+  // expose API for future extensibility
+  window.ornithologistRenderer = { load: initFromJSON };
+})();
+</script>
+</body>
+</html>

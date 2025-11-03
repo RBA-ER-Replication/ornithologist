@@ -1,0 +1,108 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the discussion related to corporate bonds, business loans via banks, or both?",
+  "children": {
+    "Corporate Bonds": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Are funding conditions (e.g. issuance, pricing) in the corporate bond market being described?",
+      "children": {
+        "Yes": {
+          "id": "n3",
+          "type": "LLM",
+          "question": "Are funding conditions described as tightening (e.g. low issuance or high pricing) or loosening?",
+          "children": {
+            "Tightening": {
+              "id": "n4",
+              "type": "terminal",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            },
+            "Loosening": {
+              "id": "n5",
+              "type": "terminal",
+              "assessment": "Leaning dovish",
+              "children": {}
+            }
+          }
+        },
+        "No": {
+          "id": "n6",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Business Loans": {
+      "id": "n7",
+      "type": "LLM",
+      "question": "Are funding conditions for businesses borrowing from banks described?",
+      "children": {
+        "Yes": {
+          "id": "n8",
+          "type": "LLM",
+          "question": "Are funding conditions described as tightening (e.g. lower borrowing or higher interest rates) or loosening?",
+          "children": {
+            "Tightening": {
+              "id": "n9",
+              "type": "terminal",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            },
+            "Loosening": {
+              "id": "n10",
+              "type": "terminal",
+              "assessment": "Leaning dovish",
+              "children": {}
+            }
+          }
+        },
+        "No": {
+          "id": "n11",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Both": {
+      "id": "n12",
+      "type": "LLM",
+      "question": "Are funding conditions in the corporate bond and business loan markets being described?",
+      "children": {
+        "Yes": {
+          "id": "n13",
+          "type": "LLM",
+          "question": "Are funding conditions described as tightening or loosening?",
+          "children": {
+            "Tightening": {
+              "id": "n14",
+              "type": "terminal",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            },
+            "Loosening": {
+              "id": "n15",
+              "type": "terminal",
+              "assessment": "Leaning dovish",
+              "children": {}
+            }
+          }
+        },
+        "No": {
+          "id": "n16",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Neither, other, or unclear": {
+      "id": "n17",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

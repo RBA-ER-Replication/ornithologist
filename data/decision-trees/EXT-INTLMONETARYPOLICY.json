@@ -1,0 +1,56 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the paragraph discussing other central banks' policies (i.e. not the RBA)?",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is it talking primarily about major advanced economy central banks (e.g., Fed, ECB, RBNZ, BoE)? Or is it talking about Japan, or other economies?",
+      "children": {
+        "Advanced": {
+          "id": "n3",
+          "type": "LLM",
+          "question": "Are the major central banks, broadly, increasing or decreasing rates?",
+          "children": {
+            "Increasing": {
+              "id": "n4",
+              "type": "terminal",
+              "assessment": "Hawkish",
+              "children": {}
+            },
+            "Decreasing": {
+              "id": "n5",
+              "type": "terminal",
+              "assessment": "Dovish",
+              "children": {}
+            },
+            "Unchanged or mixed": {
+              "id": "n6",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        },
+        "Japan": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        },
+        "Other": {
+          "id": "n8",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "No": {
+      "id": "n9",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

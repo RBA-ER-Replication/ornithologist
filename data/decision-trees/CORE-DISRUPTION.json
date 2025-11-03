@@ -1,0 +1,50 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the economic disruption best described as significant or mild?",
+  "children": {
+    "Significant": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Does the paragraph mention inflationary pressures as a result of the disruption?",
+      "children": {
+        "Yes": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Hawkish",
+          "children": {}
+        },
+        "No": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning Hawkish",
+          "children": {}
+        }
+      }
+    },
+    "Mild or potential": {
+      "id": "n5",
+      "type": "LLM",
+      "question": "Does the paragraph mention inflationary pressures as a result of the disruption?",
+      "children": {
+        "Yes": {
+          "id": "n6",
+          "type": "terminal",
+          "assessment": "Leaning Hawkish",
+          "children": {}
+        },
+        "No": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "No disruption": {
+      "id": "n8",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

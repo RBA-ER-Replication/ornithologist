@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Woodpecker / Decision Tree Editor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111826;
+      --panel-2: #0b1220;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #10b981;
+      --danger: #ef4444;
+      --warn: #f59e0b;
+      --node-bg: #1f2937;
+      --leaf-bg: #0b3d2e;
+      --leaf-stroke: #166534;
+      --node-stroke: #4b5563;
+      --root-bg: #0ea5e9;
+      --root-text: #001218;
+      --btn-bg: #1e293b;
+      --btn-bg-hover: #334155;
+      --btn-border: #475569;
+      --link: #64748b;
+      --link-label-bg: #0b1220aa;
+      --sel: #a78bfa;
+      --llm-bg: #052f3a;
+      --llm-stroke: #06b6d4;
+      --symbolic-bg: #2b1a05;
+      --symbolic-stroke: #f97316;
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .app {
+      height: 100%;
+      display: grid;
+      /* Single row: the toolbar is floating (removed from flow) */
+      grid-template-rows: 1fr;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 8px 12px;
+      background: linear-gradient(180deg, rgba(17, 24, 38, 0.95), rgba(11, 18, 32, 0.85));
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      position: fixed;
+      top: 12px;
+      left: 12px;
+      z-index: 120;
+      box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+      pointer-events: auto;
+    }
+
+    .toolbar .title {
+      font-weight: 700;
+      color: var(--accent);
+      margin-right: 8px;
+      font-size: 14px;
+      letter-spacing: 0.4px;
+    }
+
+    /* Simple menu bar */
+    .menubar {
+      display: flex;
+      gap: 12px;
+    }
+
+    .menubar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 8px;
+    }
+
+    .menubar .menu {
+      position: relative;
+      color: var(--muted);
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .menubar .menu:hover {
+      color: var(--text);
+    }
+
+    .menubar .submenu {
+      display: none;
+      position: absolute;
+      top: 28px;
+      left: 0;
+      background: var(--panel-2);
+      border: 1px solid #223045;
+      padding: 8px;
+      border-radius: 6px;
+      min-width: 180px;
+      z-index: 40;
+      flex-direction: column;
+    }
+
+    .menubar .menu:hover .submenu {
+      display: flex;
+    }
+
+    .menubar .submenu li {
+      margin: 4px 0;
+    }
+
+    .menubar .submenu button {
+      width: 100%;
+      text-align: left;
+    }
+
+    .toolbar .group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .toolbar label {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .toolbar textarea {
+      width: 560px;
+      height: 80px;
+      resize: vertical;
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid #223045;
+      border-radius: 6px;
+      padding: 8px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    .btn {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--btn-border);
+      background: var(--btn-bg);
+      color: var(--text);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .btn:hover {
+      background: var(--btn-bg-hover);
+    }
+
+    .btn.primary {
+      border-color: #0ea5e9;
+      color: white;
+      background: #0284c7;
+    }
+
+    .btn.accent {
+      border-color: var(--accent-2);
+      background: #0f766e;
+    }
+
+    .btn.warn {
+      border-color: var(--warn);
+      background: #92400e;
+    }
+
+    .btn.danger {
+      border-color: var(--danger);
+      background: #7f1d1d;
+    }
+
+    .btn:disabled {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      height: 100%;
+      min-height: 0;
+    }
+
+    .canvas {
+      position: relative;
+      background: radial-gradient(ellipse at top left, #0b1220 0%, #0f172a 60%, #0b1220 100%);
+    }
+
+    /* Floating status */
+    .status {
+      position: fixed !important;
+      right: 12px;
+      bottom: 12px;
+      z-index: 120;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hint {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      color: var(--muted);
+      display: grid;
+      opacity: .8;
+      background: #0b1220b0;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #243044;
+    }
+
+    .status {
+      position: absolute;
+      right: 12px;
+      bottom: 12px;
+      color: var(--text);
+      font-size: 12px;
+      background: #0b1220b0;
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #243044;
+    }
+
+    /* Inline editor */
+    .inline-editor {
+      position: fixed;
+      z-index: 250;
+      background: var(--panel);
+      border: 1px solid #223045;
+      padding: 6px;
+      border-radius: 6px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      display: none;
+    }
+
+    .detached-pill {
+      background: #063b2d;
+      color: #9ff3d6;
+      padding: 2px 6px;
+      border-radius: 6px;
+      font-size: 11px;
+      margin-left: 8px;
+    }
+
+    .detached-outline {
+      stroke-dasharray: 6 4;
+      stroke: #4b5563;
+      stroke-opacity: 0.6;
+    }
+
+    .quick-add-row .btn {
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+
+    /* larger invisible hit area for ports */
+    .port-hit {
+      fill: transparent;
+      pointer-events: all;
+      cursor: pointer;
+    }
+
+    .port-hit:hover {
+      fill: rgba(255, 255, 255, 0.02);
+    }
+
+    /* small tooltip for ports */
+    .port-tooltip {
+      position: fixed;
+      z-index: 300;
+      background: var(--panel);
+      color: var(--text);
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #223045;
+      font-size: 12px;
+      display: none;
+      white-space: nowrap;
+    }
+
+    .answers-editor {
+      position: fixed;
+      z-index: 260;
+      background: var(--panel);
+      border: 1px solid #223045;
+      padding: 8px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      display: none;
+      min-width: 220px;
+    }
+
+    .answers-editor .row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .answers-editor input {
+      flex: 1;
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid #223045;
+      padding: 6px;
+      border-radius: 6px;
+    }
+
+    .answers-editor .small-btn {
+      padding: 6px 8px;
+      font-size: 12px;
+    }
+
+    /* Node context menu */
+    .context-menu {
+      position: fixed;
+      background: var(--panel);
+      border: 1px solid #223045;
+      padding: 6px;
+      border-radius: 6px;
+      z-index: 220;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+      display: none;
+      min-width: 160px;
+    }
+
+    .context-menu button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      background: transparent;
+      border: none;
+      color: var(--text);
+      padding: 6px 8px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .context-menu button:hover {
+      background: var(--btn-bg-hover);
+    }
+
+    .reconnect-mode {
+      color: #ffe08a;
+    }
+
+    .inspector {
+      padding: 12px;
+      background: var(--panel);
+      border-left: 1px solid #1f2937;
+      overflow: auto;
+    }
+
+    .inspector h3 {
+      margin: 6px 0 8px;
+      font-size: 16px;
+    }
+
+    .inspector .field {
+      margin-bottom: 10px;
+    }
+
+    .inspector .field label {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .inspector input[type="text"],
+    .inspector textarea,
+    .inspector select {
+      width: 100%;
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid #223045;
+      border-radius: 6px;
+      padding: 6px 8px;
+    }
+
+    .inspector textarea {
+      resize: vertical;
+      height: 84px;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      margin-left: 6px;
+      background: #1f2937;
+      color: var(--muted);
+    }
+
+    .children-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .child-row {
+      border: 1px solid #223045;
+      border-radius: 8px;
+      padding: 8px;
+      background: var(--panel-2);
+    }
+
+    .child-row .row {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .child-row .grow {
+      flex: 1;
+    }
+
+    .link {
+      fill: none;
+      stroke: var(--link);
+      stroke-width: 1.5px;
+      opacity: .9;
+    }
+
+    .node rect {
+      stroke-width: 1.5px;
+      filter: drop-shadow(0 1px 1px rgba(0, 0, 0, .3));
+    }
+
+    .node.question rect {
+      fill: var(--node-bg);
+      stroke: var(--node-stroke);
+    }
+
+    /* Subtype-specific styling */
+    .node.subtype-LLM rect {
+      fill: var(--llm-bg);
+      stroke: var(--llm-stroke);
+    }
+
+    .node.subtype-SYMBOLIC rect {
+      fill: var(--symbolic-bg);
+      stroke: var(--symbolic-stroke);
+    }
+
+    .node.leaf rect {
+      fill: var(--leaf-bg);
+      stroke: var(--leaf-stroke);
+    }
+
+    .node.root rect {
+      fill: var(--root-bg);
+      stroke: #0ea5e9;
+    }
+
+    .node.root text {
+      fill: var(--root-text);
+      font-weight: 700;
+    }
+
+    .node.selected rect {
+      stroke: var(--sel);
+      stroke-width: 2.5px;
+    }
+
+    .node text {
+      fill: #e5e7eb;
+      font-size: 12px;
+    }
+
+    .node .type-pill {
+      font-size: 10px;
+      fill: #93c5fd;
+    }
+
+    .node.subtype-LLM .type-pill {
+      fill: var(--llm-stroke);
+    }
+
+    .node.subtype-SYMBOLIC .type-pill {
+      fill: var(--symbolic-stroke);
+    }
+
+    .link-label {
+      pointer-events: none;
+    }
+
+    .link-label rect {
+      fill: var(--link-label-bg);
+      stroke: #1f2937;
+      stroke-width: 1;
+      rx: 4;
+      ry: 4;
+    }
+
+    .link-label text {
+      fill: #cbd5e1;
+      font-size: 11px;
+    }
+
+    .port {
+      fill: #94a3b8;
+      stroke: none;
+      opacity: .5;
+    }
+
+    .port.in {
+      fill: #10b981;
+      opacity: .7;
+    }
+
+    .port.out {
+      fill: #f59e0b;
+      opacity: .7;
+    }
+
+    /* legend removed */
+
+    /* Toolbar select sizing */
+    .toolbar select {
+      min-width: 220px;
+      background: var(--panel-2);
+      color: var(--text);
+      border: 1px solid #223045;
+      border-radius: 6px;
+      padding: 6px 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <div class="toolbar">
+      <div class="title">Woodpecker</div>
+      <nav class="menubar">
+        <ul>
+          <li class="menu">File
+            <ul class="submenu">
+              <li><button id="openBtn" class="btn" title="Open JSON file (single tree or array/forest)">Open
+                  JSON</button></li>
+              <li><button id="exportBtn" class="btn"
+                  title="Copy the current tree (or entire forest when multiple roots) to the clipboard">Copy
+                  JSON</button></li>
+              <li><button id="pasteJsonBtn" class="btn"
+                  title="Paste JSON from clipboard — accepts either a single tree object or an array of trees">Paste
+                  JSON</button></li>
+              <li><button id="downloadBtn" class="btn" title="Save the currently active tree to a file (Save As)">Save as...</button></li>
+              <li><input id="fileInput" type="file" accept="application/json" style="display:none" /></li>
+              <!-- file input moved above -->
+            </ul>
+          </li>
+          <li class="menu">Edit
+            <ul class="submenu">
+              <li><button id="undoBtn" class="btn">Undo</button></li>
+              <li><button id="redoBtn" class="btn">Redo</button></li>
+              <li><button id="autoLayoutBtn" class="btn">Auto-Layout</button></li>
+              <li><button id="addTreeBtn" class="btn">Add Tree</button></li>
+              <li><button id="newDetachedBtn" class="btn">New Detached Subtree</button></li>
+              <li><button id="deleteTreeBtn" class="btn danger">Delete Tree</button></li>
+            </ul>
+          </li>
+          <li class="menu">View
+            <ul class="submenu">
+              <li><button id="fitViewBtn" class="btn">Fit to View</button></li>
+              <li><button id="zoomInBtn" class="btn">Zoom In</button></li>
+              <li><button id="zoomOutBtn" class="btn">Zoom Out</button></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- JSON textarea moved to modal to avoid pushing content -->
+      <!-- floating legend module -->
+      <!-- legend removed -->
+    </div>
+
+    <div class="main">
+      <div class="canvas">
+        <svg id="svg">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerUnits="strokeWidth" markerWidth="6"
+              markerHeight="6" orient="auto">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"></path>
+            </marker>
+            <!-- subtle grid pattern for canvas background -->
+            <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M40 0 L0 0 0 40" stroke="#ffffff" stroke-width="0.8" stroke-opacity="0.12" fill="none"></path>
+            </pattern>
+            <!-- major grid lines every 200px to help orientation (lighter than nodes) -->
+            <pattern id="gridPatternMajor" width="200" height="200" patternUnits="userSpaceOnUse">
+              <path d="M200 0 L0 0 0 200" stroke="#ffffff" stroke-width="1.2" stroke-opacity="0.16" fill="none"></path>
+            </pattern>
+          </defs>
+          <g id="zoomLayer">
+            <!-- grid rect covers a large area; it's inside zoomLayer so it pans/zooms with the view -->
+            <rect class="grid-rect" x="-5000" y="-5000" width="10000" height="10000" fill="url(#gridPattern)"
+              pointer-events="none"></rect>
+            <rect class="grid-rect-major" x="-5000" y="-5000" width="10000" height="10000" fill="url(#gridPatternMajor)"
+              pointer-events="none"></rect>
+            <g class="links"></g>
+            <g class="link-labels"></g>
+            <g class="nodes"></g>
+          </g>
+        </svg>
+        <div class="hint">
+          - Scroll to zoom, drag to pan
+          - Drag nodes to nudge positions (live)
+          - Click a node to edit in the inspector
+          - Use "Reparent (Move)" in the inspector to connect to a new parent
+        </div>
+        <div id="status" class="status"></div>
+      </div>
+
+      <div class="inspector">
+        <h3>Node Inspector <span id="nodeIdPill" class="pill"></span></h3>
+        <!-- Type is derived from Subtype; removed explicit Type selector -->
+        <div class="field">
+          <label>Type (node.type)</label>
+          <select id="nodeSubtype">
+            <option value=""></option>
+            <option value="LLM">LLM</option>
+            <option value="SYMBOLIC">SYMBOLIC</option>
+            <option value="TERMINAL">TERMINAL</option>
+          </select>
+        </div>
+        <div class="field">
+          <label id="nodeTextLabel">Question Text</label>
+          <textarea id="nodeText"></textarea>
+        </div>
+        <div id="questionSection">
+          <div class="field">
+            <label>Answers (children)</label>
+            <div class="children-list" id="childrenList"></div>
+          </div>
+          <div class="field">
+            <label>Add Child</label>
+            <div class="row" style="display:flex; gap:8px;">
+              <input id="newEdgeLabel" placeholder="Edge label (e.g., yes/no)" type="text" />
+              <select id="newChildType">
+                <option value="leaf">Leaf</option>
+                <option value="question">Question</option>
+              </select>
+            </div>
+            <div class="row" style="margin-top:6px;">
+              <input id="newChildText" type="text" placeholder="Child text (optional)" />
+            </div>
+            <div style="margin-top:6px;">
+              <button id="addChildBtn" class="btn accent">Add Child</button>
+            </div>
+          </div>
+        </div>
+        <hr style="border-color:#263243; margin:10px 0 12px;">
+        <div class="field" style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button id="reparentBtn" class="btn">Reparent (Move)</button>
+          <button id="makeRootBtn" class="btn warn">Make Root</button>
+          <button id="deleteNodeBtn" class="btn danger">Delete Node</button>
+        </div>
+        <div style="font-size:12px; color:var(--muted);">
+          Tip: Click "Reparent (Move)" then click a new parent node in the canvas.
+        </div>
+        <hr style="border-color:#263243; margin:10px 0 12px;">
+        <h3>AI Prompt</h3>
+        <div class="field">
+          <label>Prompt Template</label>
+          <select id="promptTemplateSel">
+            <option value="default">Default: LLM uses f-strings, SYMBOLIC evaluated locally</option>
+            <option value="short">Short</option>
+            <option value="weaknesses">Find weaknesses</option>
+            <option value="test">Test tree (generate test cases)</option>
+            <option value="improvements">Suggest improvements (return JSON tree)</option>
+              <option value="path-only">Path only (sequence of nodes to selected)</option>
+          </select>
+          <textarea id="promptTemplate"
+            style="height:84px; margin-top:6px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;">System: You are given a decision tree. Nodes may have type 'LLM' (their f-strings should be filled and sent to an LLM) or 'SYMBOLIC' (their f-strings should be evaluated in Python). Use the provided full tree JSON and the path to the target node to answer the user.</textarea>
+        </div>
+        <div class="field">
+          <label>Prompt (full tree + path to selected node)</label>
+          <textarea id="aiPrompt" readonly
+            style="height:140px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;"></textarea>
+        </div>
+        <div class="field" style="display:flex; gap:12px; align-items:center;">
+          <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted);">
+            <input type="checkbox" id="structuredOutputChk" />
+            Structured JSON output
+          </label>
+          <button id="copyAIPromptBtn" class="btn">Copy Prompt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Inline editor popup -->
+  <div id="inlineEditor" class="inline-editor" style="display:none;">
+    <textarea id="inlineEditorText"></textarea>
+    <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:6px;">
+      <button id="inlineSaveBtn" class="btn primary">Save</button>
+      <button id="inlineCancelBtn" class="btn">Cancel</button>
+    </div>
+  </div>
+  <div id="edgeInlineEditor" class="inline-editor" style="display:none; min-width:220px;">
+    <input id="edgeInlineInput" type="text"
+      style="width:100%; background:var(--panel-2); color:var(--text); border:1px solid #223045; border-radius:6px; padding:6px;" />
+    <div style="display:flex; gap:8px; justify-content:flex-end; margin-top:6px;">
+      <button id="edgeInlineSaveBtn" class="btn primary">Save</button>
+      <button id="edgeInlineCancelBtn" class="btn">Cancel</button>
+    </div>
+  </div>
+  <div id="answersEditor" class="answers-editor" style="display:none;">
+    <div id="answersList"></div>
+    <div style="display:flex; gap:8px; margin-top:8px; justify-content:flex-end;">
+      <button id="answersAddBtn" class="btn small-btn">Add Answer</button>
+      <button id="answersCloseBtn" class="btn">Close</button>
+    </div>
+  </div>
+  <div id="portTooltip" class="port-tooltip" style="display:none;">Edit answers</div>
+
+  <!-- JSON panel removed: use clipboard Copy JSON instead -->
+
+  <script>
+    (function () {
+      // Configuration
+      const NODE_WIDTH = 260;
+      const NODE_PADDING = 10;
+      const LINE_HEIGHT = 14;
+      const BETWEEN_NODES_VPAD = 50;
+      const LEVEL_X_GAP = 500;
+      const MAX_HISTORY = 150;
+
+      // App state
+      const state = {
+        meta: { tag: "", topic: "", topicDescription: "" },
+        nodes: new Map(), // id -> {id, type, text, children:[{label, childId}], parentId, offsetX, offsetY}
+        rootId: null,
+        roots: [],
+        selectedId: null,
+        pendingMoveId: null,
+        pendingAttachId: null,
+        history: [],
+        future: [],
+        idCounter: 1
+      };
+
+      // DOM references
+      const svg = d3.select("#svg");
+      const zoomLayer = d3.select("#zoomLayer");
+      const gLinks = d3.select(".links");
+      const gLinkLabels = d3.select(".link-labels");
+      const gNodes = d3.select(".nodes");
+      const statusEl = document.getElementById("status");
+
+      const exportBtn = document.getElementById("exportBtn");
+      const downloadBtn = document.getElementById("downloadBtn");
+      // remembers file name when opening/downloading
+      let openedFileName = '';
+
+      const openBtn = document.getElementById("openBtn");
+      const fileInput = document.getElementById("fileInput");
+      const addTreeBtn = document.getElementById("addTreeBtn");
+      const deleteTreeBtn = document.getElementById("deleteTreeBtn");
+
+      const undoBtn = document.getElementById("undoBtn");
+      const redoBtn = document.getElementById("redoBtn");
+      const autoLayoutBtn = document.getElementById("autoLayoutBtn");
+
+      // Metadata editor inputs removed from the UI
+
+      const nodeIdPill = document.getElementById("nodeIdPill");
+      const nodeSubtype = document.getElementById("nodeSubtype");
+      const nodeTextLabel = document.getElementById("nodeTextLabel");
+      const nodeText = document.getElementById("nodeText");
+      const promptTemplateSel = document.getElementById('promptTemplateSel');
+      const promptTemplate = document.getElementById('promptTemplate');
+  const structuredOutputChk = document.getElementById('structuredOutputChk');
+      const questionSection = document.getElementById("questionSection");
+      const childrenList = document.getElementById("childrenList");
+      const addChildBtn = document.getElementById("addChildBtn");
+      const newEdgeLabel = document.getElementById("newEdgeLabel");
+      const newChildType = document.getElementById("newChildType");
+      const newChildText = document.getElementById("newChildText");
+      const deleteNodeBtn = document.getElementById("deleteNodeBtn");
+      const makeRootBtn = document.getElementById("makeRootBtn");
+      const reparentBtn = document.getElementById("reparentBtn");
+      const aiPromptEl = document.getElementById("aiPrompt");
+      const copyAIPromptBtn = document.getElementById("copyAIPromptBtn");
+
+  if (structuredOutputChk) structuredOutputChk.addEventListener('change', () => refreshAIPrompt());
+
+      // Inline editor helpers
+      const inlineEditor = document.getElementById('inlineEditor');
+      const inlineEditorText = document.getElementById('inlineEditorText');
+      const inlineSaveBtn = document.getElementById('inlineSaveBtn');
+      const inlineCancelBtn = document.getElementById('inlineCancelBtn');
+      let inlineTargetId = null;
+      function showInlineEditor(x, y, nodeId) {
+        inlineTargetId = nodeId;
+        if (!inlineEditor || !inlineEditorText) return;
+        const n = state.nodes.get(nodeId); if (!n) return;
+        inlineEditor.style.display = 'block';
+        inlineEditor.style.left = (Math.max(8, x - 180)) + 'px';
+        inlineEditor.style.top = (Math.max(8, y - 80)) + 'px';
+        inlineEditorText.value = n.text || '';
+        inlineEditorText.focus(); inlineEditorText.select();
+      }
+      function hideInlineEditor() { if (!inlineEditor) return; inlineEditor.style.display = 'none'; inlineTargetId = null; }
+
+      inlineCancelBtn.addEventListener('click', () => { hideInlineEditor(); });
+      inlineSaveBtn.addEventListener('click', () => {
+        if (!inlineTargetId) { hideInlineEditor(); return; }
+        pushHistory();
+        const n = state.nodes.get(inlineTargetId); if (!n) { hideInlineEditor(); return; }
+        n.text = inlineEditorText.value;
+        update({ skipFit: true }); updateInspector(); hideInlineEditor();
+      });
+
+      // Edge inline editor
+      const edgeInline = document.getElementById('edgeInlineEditor');
+      const edgeInlineInput = document.getElementById('edgeInlineInput');
+      const edgeInlineSaveBtn = document.getElementById('edgeInlineSaveBtn');
+      const edgeInlineCancelBtn = document.getElementById('edgeInlineCancelBtn');
+      let edgeEditorCtx = null; // { parentId, edgeIndex }
+      function showEdgeInlineEditor(x, y, parentId, edgeIndex) {
+        edgeEditorCtx = { parentId, edgeIndex };
+        if (!edgeInline) return;
+        const parent = state.nodes.get(parentId); if (!parent) return;
+        const edge = parent.children[edgeIndex]; if (!edge) return;
+        edgeInline.style.display = 'block';
+        edgeInline.style.left = (Math.max(8, x - 120)) + 'px';
+        edgeInline.style.top = (Math.max(8, y - 20)) + 'px';
+        edgeInlineInput.value = edge.label || '';
+        edgeInlineInput.focus(); edgeInlineInput.select();
+      }
+      function hideEdgeInlineEditor() { if (!edgeInline) return; edgeInline.style.display = 'none'; edgeEditorCtx = null; }
+
+      edgeInlineCancelBtn.addEventListener('click', () => { hideEdgeInlineEditor(); });
+      edgeInlineSaveBtn.addEventListener('click', () => {
+        if (!edgeEditorCtx) { hideEdgeInlineEditor(); return; }
+        const { parentId, edgeIndex } = edgeEditorCtx;
+        const parent = state.nodes.get(parentId); if (!parent) { hideEdgeInlineEditor(); return; }
+        const edge = parent.children[edgeIndex]; if (!edge) { hideEdgeInlineEditor(); return; }
+        pushHistory();
+        edge.label = (edgeInlineInput.value || '').trim() || edge.label;
+        // update last export snapshot
+        lastExport = JSON.stringify(exportAll(), null, 2);
+        update({ skipFit: true });
+        hideEdgeInlineEditor();
+      });
+
+      // Answers editor (right-side node popup)
+      const answersEditor = document.getElementById('answersEditor');
+      const answersList = document.getElementById('answersList');
+      const answersAddBtn = document.getElementById('answersAddBtn');
+      const answersCloseBtn = document.getElementById('answersCloseBtn');
+      let answersCtx = null; // { nodeId }
+
+      function renderAnswersEditor() {
+        if (!answersCtx) return;
+        const node = state.nodes.get(answersCtx.nodeId); if (!node) return;
+        answersList.innerHTML = '';
+        for (let i = 0; i < (node.children || []).length; i++) {
+          const edge = node.children[i];
+          const row = document.createElement('div'); row.className = 'row';
+          const inp = document.createElement('input'); inp.value = edge.label || '';
+          const saveBtn = document.createElement('button'); saveBtn.className = 'btn small-btn'; saveBtn.textContent = 'Save';
+          const delBtn = document.createElement('button'); delBtn.className = 'btn small-btn danger'; delBtn.textContent = 'Delete';
+          saveBtn.addEventListener('click', () => {
+            pushHistory(); edge.label = inp.value.trim() || edge.label; lastExport = JSON.stringify(exportAll(), null, 2); update({ skipFit: true }); renderAnswersEditor();
+          });
+          delBtn.addEventListener('click', () => {
+            const ok = confirm('Delete this answer and its subtree?'); if (!ok) return; pushHistory(); deleteSubtree(edge.childId); node.children.splice(i, 1); lastExport = JSON.stringify(exportAll(), null, 2); update(); renderAnswersEditor();
+          });
+          row.appendChild(inp); row.appendChild(saveBtn); row.appendChild(delBtn);
+          answersList.appendChild(row);
+        }
+      }
+
+      function openAnswersEditorForNode(nodeId, x, y) {
+        answersCtx = { nodeId };
+        if (!answersEditor) return;
+        answersEditor.style.display = 'block';
+        answersEditor.style.left = (Math.max(8, x + 12)) + 'px';
+        answersEditor.style.top = (Math.max(8, y - 40)) + 'px';
+        renderAnswersEditor();
+      }
+
+      answersAddBtn.addEventListener('click', () => {
+        if (!answersCtx) return; const node = state.nodes.get(answersCtx.nodeId); if (!node) return;
+        pushHistory(); const cid = newId(); state.nodes.set(cid, { id: cid, type: 'leaf', text: 'new leaf', children: [], parentId: answersCtx.nodeId, offsetX: 0, offsetY: 0 });
+        node.children.push({ label: 'new-answer', childId: cid }); lastExport = JSON.stringify(exportAll(), null, 2); update(); renderAnswersEditor();
+      });
+
+      answersCloseBtn.addEventListener('click', () => { answersEditor.style.display = 'none'; answersCtx = null; });
+
+      // Close editors when clicking outside (use capture + composedPath for robustness)
+      window.addEventListener('mousedown', (e) => {
+        const path = e.composedPath ? e.composedPath() : (e.path || []);
+        const inInline = inlineEditor && (path.indexOf(inlineEditor) >= 0);
+        const inEdge = edgeInline && (path.indexOf(edgeInline) >= 0);
+        const inAnswers = answersEditor && (path.indexOf(answersEditor) >= 0);
+        const contextEl = document.getElementById('nodeContextMenu');
+        const inContext = contextEl && (path.indexOf(contextEl) >= 0);
+        if (!inInline) hideInlineEditor();
+        if (!inEdge) hideEdgeInlineEditor();
+        if (!inAnswers && !inContext) { if (answersEditor) { answersEditor.style.display = 'none'; answersCtx = null; } }
+      }, true);
+
+      // Quick-add answer buttons in inspector
+      const childrenListEl = document.getElementById('childrenList');
+      const quickAddRow = document.createElement('div'); quickAddRow.className = 'quick-add-row';
+      const quickYes = document.createElement('button'); quickYes.className = 'btn'; quickYes.textContent = 'Add Yes';
+      const quickNo = document.createElement('button'); quickNo.className = 'btn'; quickNo.textContent = 'Add No';
+      quickAddRow.appendChild(quickYes); quickAddRow.appendChild(quickNo);
+      // place under questionSection header
+      const qsection = document.getElementById('questionSection'); if (qsection) qsection.insertBefore(quickAddRow, qsection.firstChild);
+
+      quickYes.addEventListener('click', () => {
+        const id = state.selectedId; if (!id) return; const parent = state.nodes.get(id); if (!parent || parent.type !== 'question') return;
+        pushHistory(); const childId = newId(); state.nodes.set(childId, { id: childId, type: 'leaf', text: 'Yes', children: [], parentId: id, offsetX: 0, offsetY: 0 });
+        parent.children.push({ label: 'yes', childId }); update(); updateInspector();
+      });
+      quickNo.addEventListener('click', () => {
+        const id = state.selectedId; if (!id) return; const parent = state.nodes.get(id); if (!parent || parent.type !== 'question') return;
+        pushHistory(); const childId = newId(); state.nodes.set(childId, { id: childId, type: 'leaf', text: 'No', children: [], parentId: id, offsetX: 0, offsetY: 0 });
+        parent.children.push({ label: 'no', childId }); update(); updateInspector();
+      });
+
+      // Autosave: store exportAll() to localStorage every 5 seconds if changed
+      let lastAutosave = 0; let autosaveKey = 'ornithologist_autosave_v1';
+      function autosaveIfNeeded() {
+        try {
+          const now = Date.now();
+          if (now - lastAutosave < 3000) return; // throttle
+          const payload = exportAll();
+          localStorage.setItem(autosaveKey, JSON.stringify(payload));
+          lastAutosave = now; setStatus('Autosaved', '');
+        } catch (e) { /* ignore */ }
+      }
+      setInterval(autosaveIfNeeded, 5000);
+
+      // Zoom behavior
+      const zoom = d3.zoom()
+        .scaleExtent([0.2, 2.5])
+        .on("zoom", (event) => {
+          zoomLayer.attr("transform", event.transform);
+        });
+      svg.call(zoom);
+
+      // Utility
+      function newId() { return "n" + (state.idCounter++); }
+      function getNode(id) { return state.nodes.get(id); }
+      function getOffsetX(id) { const n = getNode(id); return (n && n.offsetX) || 0; }
+      function getOffsetY(id) { const n = getNode(id); return (n && n.offsetY) || 0; }
+
+      function updateUndoRedoButtons() {
+        undoBtn.disabled = state.history.length === 0;
+        redoBtn.disabled = state.future.length === 0;
+      }
+
+      function setStatus(msg, cls) {
+        statusEl.className = "status" + (cls ? " " + cls : "");
+        statusEl.textContent = msg || "";
+      }
+
+      // Legacy multi-file synchronization removed.
+
+      function exportCurrentTree() {
+        // Always serialize only the active root to produce a single-tree object
+        if (!state.rootId) return null;
+        return serializeNode(state.rootId);
+      }
+
+      function pushHistory() {
+        // Snapshot the full workspace (single tree object or array for a forest)
+        const snapshot = exportAll();
+        if (!snapshot) return;
+        snapshot._nudges = {};
+        state.nodes.forEach((n, id) => { if (n.offsetX || n.offsetY) snapshot._nudges[id] = { offsetX: n.offsetX || 0, offsetY: n.offsetY || 0 }; });
+        state.history.push(snapshot);
+        if (state.history.length > MAX_HISTORY) state.history.shift();
+        state.future = [];
+        updateUndoRedoButtons();
+      }
+      function undo() {
+        if (!state.history.length) return;
+        const current = exportAll();
+        if (current) {
+          current._nudges = {};
+          state.nodes.forEach((n, id) => { if (n.offsetX || n.offsetY) current._nudges[id] = { offsetX: n.offsetX || 0, offsetY: n.offsetY || 0 }; });
+          state.future.push(current);
+        }
+        const prev = state.history.pop();
+        importAll(prev, { pushHist: false });
+        if (prev && prev._nudges) for (const [id, off] of Object.entries(prev._nudges)) { const n = state.nodes.get(id); if (n) { n.offsetX = off.offsetX || 0; n.offsetY = off.offsetY || 0; } }
+        update();
+        updateInspector();
+        updateUndoRedoButtons();
+      }
+      function redo() {
+        if (!state.future.length) return;
+        const current = exportAll();
+        if (current) {
+          current._nudges = {};
+          state.nodes.forEach((n, id) => { if (n.offsetX || n.offsetY) current._nudges[id] = { offsetX: n.offsetX || 0, offsetY: n.offsetY || 0 }; });
+          state.history.push(current);
+        }
+        const next = state.future.pop();
+        importAll(next, { pushHist: false });
+        if (next && next._nudges) for (const [id, off] of Object.entries(next._nudges)) { const n = state.nodes.get(id); if (n) { n.offsetX = off.offsetX || 0; n.offsetY = off.offsetY || 0; } }
+        update();
+        updateInspector();
+        updateUndoRedoButtons();
+      }
+
+      // JSON import/export
+      function importAll(json, opts = { pushHist: true }) {
+        // Accept either the new format (root node object) or a wrapper with
+        // metadata: { tag, topic, "topic-description", tree }.
+        const payload = typeof json === "string" ? JSON.parse(json) : json;
+        // If payload is an array, treat it as a forest and enter multi-tree mode
+        if (Array.isArray(payload)) {
+          // Import an array directly as a forest on the single canvas
+          importArrayAsForest(payload, (payload.fileName || 'imported-forest.json'));
+          return;
+        }
+        // If payload has a 'tree' property, use it; otherwise assume payload
+        // is the root node itself.
+        const tree = payload && payload.tree ? payload.tree : payload;
+
+        state.nodes = new Map();
+        state.idCounter = 1;
+        state.pendingMoveId = null;
+        state.selectedId = null;
+        // Remember the opened filename for download defaults (no metadata UI)
+        // openedFileName is set by callers when loading from a file
+        const rootId = buildInternalTree(tree, null);
+        state.rootId = rootId;
+        // after building nodes, recompute roots list (supports detached subtrees)
+        recomputeRoots();
+
+        // For new-format-only behavior we capture the payload for diagnostics
+        lastExport = JSON.stringify(payload, null, 2);
+
+        if (opts.pushHist) {
+          state.history = [];
+          state.future = [];
+          updateUndoRedoButtons();
+        }
+      }
+
+      // Export the tree using the new format: top-level node object (with
+      // node.type stored as 'type' inside nodes where present). Metadata is
+      // optional and not wrapped by default.
+      function exportAll() {
+        // If we have multiple top-level roots, export as an array (forest)
+        const rootsList = (state.roots && state.roots.length) ? state.roots : (state.rootId ? [state.rootId] : []);
+        if (rootsList.length <= 1) return serializeNode(state.rootId);
+        const arr = [];
+        for (const rid of rootsList) arr.push(serializeNode(rid));
+        return arr;
+      }
+
+      function buildInternalTree(node, parentId) {
+        // Support legacy string leafs and the new object format which may
+        // include 'question' or 'assessment' keys and a node-level 'type'.
+        if (typeof node === "string") {
+          const id = newId();
+          state.nodes.set(id, { id, type: "leaf", text: node, children: [], parentId, offsetX: 0, offsetY: 0 });
+          return id;
+        } else {
+          const id = newId();
+          // Node text can be under 'question' or 'assessment'
+          const qtext = node.question || node.assessment || "";
+          const children = [];
+          // Determine base type: question vs leaf
+          const baseType = node.question ? "question" : (node.assessment ? "leaf" : "question");
+          const myNode = { id, type: baseType, subtype: node.type || null, text: qtext, children, parentId, offsetX: 0, offsetY: 0 };
+          state.nodes.set(id, myNode);
+          const ch = node.children || {};
+          for (const label of Object.keys(ch)) {
+            const childId = buildInternalTree(ch[label], id);
+            children.push({ label, childId });
+          }
+          return id;
+        }
+      }
+
+      function serializeNode(id) {
+        const n = state.nodes.get(id);
+        if (!n) return null;
+        // Output format: include node-level `type` and either 'question' or
+        // 'assessment' content depending on base type. Keep children as an
+        // object for compatibility with existing tooling.
+        const out = {};
+        // Always include the node id so downstream tools have stable refs
+        out.id = n.id;
+        if (n.subtype) out.type = n.subtype;
+        if (n.type === "leaf") {
+          // use 'assessment' field for leaf nodes
+          out.assessment = n.text || "";
+          out.children = {};
+          return out;
+        } else {
+          out.question = n.text || "";
+          out.children = {};
+          for (const edge of n.children) {
+            out.children[edge.label] = serializeNode(edge.childId);
+          }
+          return out;
+        }
+      }
+
+      // Build path from root to a node as array of edge labels / node ids
+      // Return the list of edge labels from root to target (answers sequence)
+      function buildPathToNode(targetId) {
+        const path = [];
+        function walk(id) {
+          if (id === targetId) return true;
+          const n = state.nodes.get(id);
+          if (!n || n.type !== 'question') return false;
+          for (const edge of n.children) {
+            path.push(edge.label);
+            if (walk(edge.childId)) return true;
+            path.pop();
+          }
+          return false;
+        }
+        walk(state.rootId);
+        return path;
+      }
+
+      // Build a sequence of node summaries from root to target node
+      function buildNodePathToNode(targetId) {
+        const path = [];
+        function walk(id) {
+          const n = state.nodes.get(id);
+          if (!n) return false;
+          path.push({ id: n.id, type: n.subtype || n.type || null, text: n.text || '' });
+          if (id === targetId) return true;
+          if (n.type === 'question') {
+            for (const edge of n.children) {
+              if (walk(edge.childId)) return true;
+            }
+          }
+          path.pop();
+          return false;
+        }
+        walk(state.rootId);
+        return path;
+      }
+
+      // Build a sequence that alternates node summaries and edge labels
+      // Example: [{node:...}, {edge:'Yes'}, {node:...}, {edge:'No'}, {node:...}]
+      function buildNodeEdgePathToNode(targetId) {
+        const seq = [];
+        function walk(id) {
+          const n = state.nodes.get(id);
+          if (!n) return false;
+          // push node summary
+          seq.push({ node: { id: n.id, type: n.subtype || n.type || null, text: n.text || '' } });
+          if (id === targetId) return true;
+          if (n.type === 'question') {
+            for (const edge of n.children) {
+              // push edge label
+              seq.push({ edge: edge.label });
+              if (walk(edge.childId)) return true;
+              // if not found down this branch, pop the edge and continue
+              seq.pop();
+            }
+          }
+          // pop the node if not successful
+          seq.pop();
+          return false;
+        }
+        walk(state.rootId);
+        return seq;
+      }
+
+      // Build a compact, human-readable compatibility summary from the
+      // alternating node/edge sequence. Each step includes the question
+      // (or assessment) and the chosen answer label.
+      function buildCompatSummary(nodeEdgeSeq) {
+        if (!nodeEdgeSeq || !nodeEdgeSeq.length) return '(no path)';
+        const lines = [];
+        // expect sequence starting with node
+        for (let i = 0; i < nodeEdgeSeq.length; i++) {
+          const item = nodeEdgeSeq[i];
+          if (item.node) {
+            const n = item.node;
+            const typ = n.type || 'question';
+            if (typ && typ.toLowerCase() === 'terminal') {
+              lines.push(`Assessment (id=${n.id}): ${n.text || ''}`);
+            } else {
+              lines.push(`Question (id=${n.id}): ${n.text || ''}`);
+            }
+          } else if (item.edge) {
+            lines.push(`Answer: ${item.edge}`);
+          }
+        }
+        return lines.join('\n');
+      }
+
+      // Build a human-readable "path-only" prompt for a target node id.
+      function generatePathOnlyHumanPrompt(targetId) {
+        const sys = (promptTemplate && promptTemplate.value && promptTemplate.value.trim()) ? promptTemplate.value.trim() : 'System: does the assessment make sense given the path';
+        const nodeEdgePath = targetId ? buildNodeEdgePathToNode(targetId) : [];
+        const node = targetId ? state.nodes.get(targetId) : null;
+        const parts = [];
+        parts.push(sys);
+        parts.push('Compatibility summary (human-readable):');
+        if (!nodeEdgePath.length) parts.push('(none)'); else parts.push(buildCompatSummary(nodeEdgePath));
+        parts.push('\nSelected node details:');
+        if (!node) parts.push('(no selection)'); else parts.push(`id=${node.id}, type=${node.subtype || null}, text=${node.text || ''}`);
+        return parts.join('\n\n');
+      }
+
+      function generateAIPrompt() {
+        const rootObj = exportAll();
+        const sel = state.selectedId;
+        const edgePath = sel ? buildPathToNode(sel) : [];
+        const node = sel ? state.nodes.get(sel) : null;
+  const nodePath = sel ? buildNodePathToNode(sel) : [];
+  const nodeEdgePath = sel ? buildNodeEdgePathToNode(sel) : [];
+        const prompt = [];
+        // include template/system prompt first
+        if (promptTemplate && promptTemplate.value) prompt.push(promptTemplate.value.trim());
+
+        const selTemplate = (promptTemplateSel && promptTemplateSel.value) ? promptTemplateSel.value : 'default';
+        if (selTemplate === 'path-only') {
+          const sys = (promptTemplate && promptTemplate.value && promptTemplate.value.trim()) ? promptTemplate.value.trim() : 'System: does the assessment make sense given the path';
+          const structured = document.getElementById('structuredOutputChk') && document.getElementById('structuredOutputChk').checked;
+          if (structured) {
+            // Convert alternating nodeEdgePath into array of pairs for structured output
+            const pairs = [];
+            for (let i = 0; i < nodeEdgePath.length; i++) {
+              const item = nodeEdgePath[i];
+              if (item.node) {
+                // look ahead for an edge
+                const next = nodeEdgePath[i+1] && nodeEdgePath[i+1].edge ? nodeEdgePath[i+1].edge : null;
+                pairs.push({ node: item.node, answer: next });
+              }
+            }
+            const payload = { system: sys, path: pairs, selected: node ? { id: node.id, type: node.subtype || null, text: node.text || '' } : null };
+            prompt.push(JSON.stringify(payload, null, 2));
+          } else {
+            // Human-readable fallback
+            prompt.push(sys);
+            prompt.push('Compatibility summary (human-readable):');
+            if (!nodeEdgePath.length) prompt.push('(none)'); else prompt.push(buildCompatSummary(nodeEdgePath));
+            prompt.push('\nSelected node details:');
+            if (!node) prompt.push('(no selection)'); else prompt.push(`id=${node.id}, type=${node.subtype || null}, text=${node.text || ''}`);
+          }
+        } else {
+          prompt.push("Full tree (JSON):");
+          try { prompt.push(JSON.stringify(rootObj, null, 2)); } catch (e) { prompt.push(String(rootObj)); }
+          prompt.push("\nPath to selected node (sequence of answers from root):");
+          if (!edgePath.length) prompt.push("(none)"); else prompt.push(JSON.stringify(edgePath, null, 2));
+          prompt.push("\nSelected node details:");
+          if (!node) prompt.push("(no selection)"); else prompt.push(JSON.stringify({ id: node.id, type: node.subtype || null, text: node.text }, null, 2));
+        }
+        return prompt.join("\n\n");
+      }
+
+      function refreshAIPrompt() {
+        if (!aiPromptEl) return;
+        aiPromptEl.value = generateAIPrompt();
+      }
+
+      copyAIPromptBtn.addEventListener('click', async () => {
+        if (!aiPromptEl) return;
+        try {
+          await navigator.clipboard.writeText(aiPromptEl.value || '');
+          setStatus('Prompt copied to clipboard.', '');
+        } catch (e) {
+          // Fallback to execCommand for older browsers
+          try { aiPromptEl.select(); document.execCommand('copy'); setStatus('Prompt copied to clipboard.', ''); }
+          catch (err) { alert('Copy failed: ' + (err.message || err)); }
+        }
+      });
+
+      // Prompt template presets
+      const TEMPLATES = {
+        default: "System: You are given a decision tree. Nodes may have type 'LLM' (their f-strings should be filled and sent to an LLM) or 'SYMBOLIC' (their f-strings should be evaluated in Python). Use the provided full tree JSON and the path to the target node to answer the user.",
+        short: "Answer using the tree. Fill LLM f-strings, evaluate SYMBOLIC f-strings locally.",
+        weaknesses: "System: Review the decision tree and identify potential weaknesses: ambiguous or overlapping edge labels, missing branches, problematic f-strings, or nodes that lack sufficient context. Return a concise list of issues with line references or node ids where possible.",
+        test: "System: Generate a set of test cases for this decision tree. For each test include a path (sequence of answers/edge labels from root), a short description of expected behavior, and any example inputs to render f-strings. Return the tests as a JSON array of objects: {path: [...], description: '...', inputs: {...}}.",
+        improvements: "System: Suggest improvements to the decision tree. Produce a revised tree in the same JSON format as output (only the JSON). Focus on clarity of edge labels, missing branches, and more robust f-string usage."
+      };
+      if (promptTemplate && promptTemplateSel) {
+        promptTemplateSel.addEventListener('change', () => {
+          const v = promptTemplateSel.value || 'default';
+          promptTemplate.value = TEMPLATES[v] || '';
+          refreshAIPrompt();
+        });
+      }
+
+      // Context menu for nodes
+      const contextMenu = document.createElement('div');
+      contextMenu.className = 'context-menu';
+      contextMenu.id = 'nodeContextMenu';
+      contextMenu.innerHTML = `
+        <button id="ctxFocusEdit">Edit Text</button>
+        <button id="ctxCopyDefault">Copy Default Prompt</button>
+        <button id="ctxCopyPrompt">Copy Path Prompt</button>
+  <hr style="border-color:#223045; margin:6px 0;">
+  <button id="ctxDetach">Detach Subtree</button>
+  <button id="ctxAttach">Attach Subtree (select target)</button>
+  <button id="ctxSetActive">Set as Active Root</button>
+        <hr style="border-color:#223045; margin:6px 0;">
+        <button data-sub="LLM">Set Type: LLM</button>
+        <button data-sub="SYMBOLIC">Set Type: SYMBOLIC</button>
+        <button data-sub="TERMINAL">Set Type: TERMINAL</button>
+      `;
+      document.body.appendChild(contextMenu);
+
+      let ctxTargetNodeId = null;
+      function showContextMenu(x, y, nodeId) {
+        const m = document.getElementById('nodeContextMenu'); if (!m) return;
+        ctxTargetNodeId = nodeId;
+        m.style.display = 'block';
+        m.style.left = (x + 2) + 'px';
+        m.style.top = (y + 2) + 'px';
+      }
+      function hideContextMenu() { const m = document.getElementById('nodeContextMenu'); if (m) m.style.display = 'none'; ctxTargetNodeId = null; }
+
+      document.addEventListener('click', (e) => { if ((e.target).closest && !(e.target.closest && e.target.closest('#nodeContextMenu'))) hideContextMenu(); });
+
+      // Context menu actions
+      document.body.addEventListener('click', (e) => {
+        const btn = e.target.closest && e.target.closest('#nodeContextMenu button');
+        if (!btn) return;
+        const id = ctxTargetNodeId; if (!id) return;
+        if (btn.id === 'ctxFocusEdit') {
+          selectNode(id);
+          const el = document.getElementById('nodeText'); if (el) { el.focus(); el.select(); }
+          hideContextMenu();
+          return;
+        }
+        if (btn.id === 'ctxCopyPrompt') {
+          selectNode(id);
+          // Copy the human-readable "path-only" prompt for this node.
+          const text = generatePathOnlyHumanPrompt(id);
+          if (!text) { alert('No prompt available'); hideContextMenu(); return; }
+          navigator.clipboard.writeText(text).then(() => {
+            setStatus('Node prompt copied to clipboard.', '');
+          }).catch((e) => {
+            // Fallback: use a temporary textarea
+            try {
+              const ta = document.createElement('textarea');
+              ta.style.position = 'fixed'; ta.style.left = '-9999px'; ta.value = text; document.body.appendChild(ta);
+              ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+              setStatus('Node prompt copied to clipboard (fallback).', '');
+            } catch (err) { alert('Copy failed: ' + (err.message || err)); }
+          });
+          hideContextMenu();
+          return;
+        }
+        if (btn.id === 'ctxCopyDefault') {
+          // Copy the default AI prompt area (same as toolbar copy)
+          if (!aiPromptEl) { alert('Prompt area not available'); hideContextMenu(); return; }
+          const text = aiPromptEl.value || '';
+          navigator.clipboard.writeText(text).then(() => {
+            setStatus('Default prompt copied to clipboard.', '');
+          }).catch((e) => {
+            try { aiPromptEl.select(); document.execCommand('copy'); setStatus('Default prompt copied to clipboard.', ''); }
+            catch (err) { alert('Copy failed: ' + (err.message || err)); }
+          });
+          hideContextMenu();
+          return;
+        }
+        if (btn.id === 'ctxDetach') {
+          // Detach the subtree rooted at id
+          const node = state.nodes.get(id); if (!node) { hideContextMenu(); return; }
+          if (!node.parentId) { alert('Node is already a root.'); hideContextMenu(); return; }
+          pushHistory();
+          // remove from parent's children
+          const parent = state.nodes.get(node.parentId);
+          if (parent) parent.children = parent.children.filter(c => c.childId !== id);
+          node.parentId = null;
+          recomputeRoots();
+          update(); updateInspector();
+          setStatus('Detached subtree.', '');
+          hideContextMenu();
+          return;
+        }
+        if (btn.id === 'ctxAttach') {
+          // Enter attach mode for this subtree root
+          const node = state.nodes.get(id); if (!node) { hideContextMenu(); return; }
+          state.pendingAttachId = id;
+          setStatus('Attach mode: click a target node to attach this subtree.', 'attach-mode');
+          hideContextMenu();
+          return;
+        }
+        if (btn.id === 'ctxSetActive') {
+          state.rootId = id; if (!state.roots.includes(id)) state.roots.push(id);
+          update(); updateInspector(); setStatus('Set active root.', ''); hideContextMenu(); return;
+        }
+        const sub = btn.getAttribute('data-sub');
+        if (sub) {
+          pushHistory();
+          const n = state.nodes.get(id); if (!n) return;
+          const newSub = sub ? String(sub).toUpperCase() : '';
+          const newBase = (newSub === 'TERMINAL') ? 'leaf' : 'question';
+          n.subtype = newSub || null;
+          if (n.type !== newBase) {
+            if (newBase === 'leaf') {
+              if (n.children && n.children.length) {
+                for (const ch of n.children) deleteSubtree(ch.childId);
+              }
+              n.type = 'leaf'; n.children = [];
+            } else {
+              n.type = 'question'; n.children = n.children || [];
+            }
+          }
+          update({ skipFit: true }); updateInspector(); hideContextMenu();
+        }
+      });
+
+      // Build D3 hierarchy data
+      function buildVisData() {
+        function build(id, edgeLabel = null) {
+          const n = state.nodes.get(id);
+          const o = { id: n.id, type: n.type, text: n.text, edgeLabel, children: [] };
+          if (n.type === "question") {
+            for (const ch of n.children) o.children.push(build(ch.childId, ch.label));
+          }
+          return o;
+        }
+        // If we have multiple roots (forest), return a virtual root whose
+        // children are each top-level tree. This lets D3 layout multiple
+        // top-level trees while we suppress drawing the connecting edge.
+        const rootsList = (state.roots && state.roots.length) ? state.roots : (state.rootId ? [state.rootId] : []);
+        if (rootsList.length <= 1) {
+          return build(rootsList[0]);
+        } else {
+          const vr = { id: '__virtual_root__', type: 'virtual', text: '', edgeLabel: null, children: [] };
+          for (const rid of rootsList) vr.children.push(build(rid));
+          return vr;
+        }
+      }
+
+      // Drawing helpers
+      function wrapText(selection, width, lineHeight, maxLines = 8) {
+        selection.each(function () {
+          const text = d3.select(this);
+          const raw = text.text() || "";
+          const words = raw.split(/\s+/).filter(Boolean);
+          let line = [];
+          let lineNumber = 0;
+          const x = text.attr("x");
+          const y = +text.attr("y");
+          text.text(null);
+          let tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", "0");
+          let truncated = false;
+          for (let i = 0; i < words.length; i++) {
+            line.push(words[i]);
+            tspan.text(line.join(" "));
+            if (tspan.node().getComputedTextLength() > width) {
+              line.pop(); tspan.text(line.join(" "));
+              line = [words[i]];
+              lineNumber++;
+              if (lineNumber >= maxLines - 1) {
+                tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", lineNumber * lineHeight);
+                const remaining = [words[i], ...words.slice(i + 1)].join(" ");
+                let s = ""; tspan.text("");
+                for (let c of remaining.split("")) {
+                  tspan.text(s + c);
+                  if (tspan.node().getComputedTextLength() > width) {
+                    tspan.text(s.trim() + "…"); truncated = true; break;
+                  }
+                  s += c;
+                }
+                break;
+              }
+              tspan = text.append("tspan").attr("x", x).attr("y", y).attr("dy", lineNumber * lineHeight).text(words[i]);
+            }
+          }
+          text.attr("data-lines", lineNumber + 1 - (truncated ? 0 : 0));
+        });
+      }
+
+      function computeNodeHeight(textStr) {
+        const temp = gNodes.append("g").attr("visibility", "hidden");
+        const t = temp.append("text").attr("x", 0).attr("y", 0).text(textStr);
+        wrapText(t, NODE_WIDTH - 2 * NODE_PADDING, LINE_HEIGHT);
+        const lines = +t.attr("data-lines") || 1;
+        temp.remove();
+        return Math.max(28, 2 * NODE_PADDING + lines * LINE_HEIGHT);
+      }
+
+      function isDescendant(ancestorId, targetId) {
+        if (ancestorId === targetId) return true;
+        const anc = state.nodes.get(ancestorId);
+        if (anc.type !== "question") return false;
+        for (const ch of anc.children) {
+          if (ch.childId === targetId) return true;
+          if (isDescendant(ch.childId, targetId)) return true;
+        }
+        return false;
+      }
+
+      function selectNode(id) {
+        state.selectedId = id;
+        // When selecting a node via click, avoid re-fitting the whole view
+        // which would reset the user's current zoom/pan. Allow callers to
+        // override by calling update() with skipFit: false when a fit is
+        // desired.
+        update({ skipFit: true });
+        updateInspector();
+        refreshAIPrompt();
+      }
+
+      // Recompute the list of top-level roots from the nodes map
+      function recomputeRoots() {
+        const roots = [];
+        state.nodes.forEach((n, id) => {
+          if (!n.parentId) roots.push(id);
+        });
+        state.roots = roots;
+        // Ensure there's at least one active root
+        if (!state.rootId && roots.length) state.rootId = roots[0];
+      }
+
+      function deleteSubtree(id) {
+        const node = state.nodes.get(id);
+        if (!node) return;
+        if (node.type === "question") {
+          for (const ch of node.children) deleteSubtree(ch.childId);
+        }
+        state.nodes.delete(id);
+      }
+
+      // Inspector UI
+      function updateInspector() {
+        // Metadata inputs removed; no DOM to update
+
+        const id = state.selectedId;
+        const hasSelection = !!id && state.nodes.has(id);
+        nodeIdPill.textContent = hasSelection ? id : "no selection";
+        nodeSubtype.disabled = !hasSelection;
+        nodeText.disabled = !hasSelection;
+        deleteNodeBtn.disabled = !hasSelection || id === state.rootId;
+        makeRootBtn.disabled = !hasSelection || id === state.rootId;
+        reparentBtn.disabled = !hasSelection || id === state.rootId;
+
+        if (!hasSelection) {
+          nodeText.value = "";
+          nodeSubtype.value = "";
+          questionSection.style.display = "none";
+          return;
+        }
+
+        const node = state.nodes.get(id);
+        // Derive base type from subtype: 'terminal' -> leaf, otherwise question
+        nodeText.value = node.text || "";
+        nodeSubtype.value = node.subtype ? String(node.subtype).toUpperCase() : (node.type === 'leaf' ? 'TERMINAL' : '');
+        nodeTextLabel.textContent = node.type === "leaf" ? "Assessment Text" : "Question Text";
+        questionSection.style.display = node.type === "question" ? "block" : "none";
+
+        if (node.type === "question") {
+          childrenList.innerHTML = "";
+          for (let i = 0; i < node.children.length; i++) {
+            const edge = node.children[i];
+            const child = state.nodes.get(edge.childId);
+            const row = document.createElement("div");
+            row.className = "child-row";
+
+            const row1 = document.createElement("div");
+            row1.className = "row";
+            const lab = document.createElement("label");
+            lab.textContent = "Edge";
+            lab.style.fontSize = "12px";
+            lab.style.color = "var(--muted)";
+            const inp = document.createElement("input");
+            inp.value = edge.label;
+            inp.className = "grow";
+            inp.addEventListener("change", () => {
+              pushHistory();
+              edge.label = inp.value.trim() || edge.label;
+              // preserve view when editing edge labels
+              update({ skipFit: true });
+            });
+            row1.appendChild(lab); row1.appendChild(inp);
+
+            const row2 = document.createElement("div");
+            row2.className = "row";
+            const typ = document.createElement("span");
+            typ.textContent = child.type === "leaf" ? "Leaf" : "Question";
+            typ.className = "pill";
+            const prev = document.createElement("span");
+            prev.style.fontSize = "12px"; prev.style.color = "var(--muted)";
+            prev.textContent = " " + (child.text || "");
+            row2.appendChild(typ); row2.appendChild(prev);
+
+            const actions = document.createElement("div");
+            actions.className = "child-actions";
+            const selBtn = document.createElement("button");
+            selBtn.className = "btn"; selBtn.textContent = "Select";
+            selBtn.onclick = () => { selectNode(child.id); };
+            const delBtn = document.createElement("button");
+            delBtn.className = "btn danger"; delBtn.textContent = "Delete Child";
+            delBtn.onclick = () => {
+              const ok = confirm("Delete this child and its subtree?");
+              if (!ok) return;
+              pushHistory();
+              deleteSubtree(child.id);
+              const parent = state.nodes.get(id);
+              parent.children = parent.children.filter(c => c.childId !== edge.childId);
+              update(); updateInspector();
+            };
+            actions.appendChild(selBtn); actions.appendChild(delBtn);
+
+            row.appendChild(row1); row.appendChild(row2); row.appendChild(actions);
+            childrenList.appendChild(row);
+          }
+        }
+        // Refresh AI prompt when inspector updates
+        refreshAIPrompt();
+      }
+
+      // Subtype (node.type string) editing
+      nodeSubtype.addEventListener("change", () => {
+        const id = state.selectedId; if (!id) return;
+        const n = state.nodes.get(id); if (!n) return;
+        const newSub = nodeSubtype.value ? nodeSubtype.value.trim().toUpperCase() : '';
+        // derive base type from subtype: 'TERMINAL' -> leaf
+        const newBase = (newSub === 'TERMINAL') ? 'leaf' : 'question';
+        // If changing base type from question -> leaf, warn about deleting children
+        pushHistory();
+        n.subtype = newSub || null;
+        if (n.type !== newBase) {
+          if (newBase === 'leaf') {
+            if (n.children && n.children.length) {
+              const ok = confirm("Converting to leaf will delete all children. Continue?");
+              if (!ok) { nodeSubtype.value = n.subtype ? String(n.subtype).toUpperCase() : (n.type === 'leaf' ? 'TERMINAL' : ''); return; }
+              for (const ch of n.children) deleteSubtree(ch.childId);
+            }
+            n.type = 'leaf'; n.children = [];
+          } else {
+            n.type = 'question'; n.children = n.children || [];
+          }
+        }
+        lastExport = JSON.stringify(exportAll(), null, 2);
+        // small edit - preserve view
+        update({ skipFit: true });
+        updateInspector();
+      });
+
+      // Coordinate helpers with nudges
+      function nodeX(hnode) { return hnode.x + getOffsetY(hnode.data.id); } // vertical
+      function nodeY(hnode) { return hnode.y + getOffsetX(hnode.data.id); } // horizontal
+
+      // Live position refresh for nodes, links, labels
+      function refreshPositions() {
+        const nodeSel = gNodes.selectAll("g.node");
+        nodeSel.attr("transform", d => `translate(${nodeY(d)},${nodeX(d)})`);
+
+        const linkSel = gLinks.selectAll("path.link");
+        linkSel.attr("d", d => {
+          const sx = nodeX(d.source);
+          const sy = nodeY(d.source) + NODE_WIDTH / 2;
+          const tx = nodeX(d.target);
+          const ty = nodeY(d.target) - NODE_WIDTH / 2;
+          const mx = (sy + ty) / 2;
+          return `M${sy},${sx} C${mx},${sx} ${mx},${tx} ${ty},${tx}`;
+        });
+
+        const labelSel = gLinkLabels.selectAll("g.link-label");
+        labelSel.each(function (d) {
+          const g = d3.select(this);
+          const rect = g.select("rect");
+          const text = g.select("text");
+          if (rect.empty() || text.empty()) return;
+
+          const sx = nodeX(d.source);
+          const sy = nodeY(d.source) + NODE_WIDTH / 2;
+          const tx = nodeX(d.target);
+          const ty = nodeY(d.target) - NODE_WIDTH / 2;
+          const mx = (sy + ty) / 2;
+          const my = (sx + tx) / 2;
+
+          const w = +rect.attr("width");
+          const h = +rect.attr("height");
+          const pad = 6;
+          const baseX = mx - w / 2 + pad;
+          const baseY = my - h / 2 + 12;
+          const lineH = 12;
+
+          rect.attr("x", mx - w / 2).attr("y", my - h / 2);
+          text.attr("x", baseX).attr("y", baseY);
+          text.selectAll("tspan").each(function (_, i) {
+            d3.select(this)
+              .attr("x", baseX)
+              .attr("y", baseY + i * lineH)
+              .attr("dy", 0);
+          });
+        });
+      }
+
+      // Update visualization (full render)
+      function update(opts = { skipFit: false }) {
+        const data = buildVisData();
+
+        const nodeHeights = new Map();
+        state.nodes.forEach((n, id) => {
+          nodeHeights.set(id, computeNodeHeight(n.text || ""));
+        });
+
+        const root = d3.hierarchy(data, d => d.children);
+
+        const treeLayout = d3.tree()
+          .nodeSize([1, LEVEL_X_GAP])
+          .separation((a, b) => {
+            const ha = nodeHeights.get(a.data.id) || 44;
+            const hb = nodeHeights.get(b.data.id) || 44;
+            return (ha / 2 + BETWEEN_NODES_VPAD + hb / 2);
+          });
+        treeLayout(root);
+
+        // Links (exclude links originating from the virtual root so detached
+        // subtrees are laid out but not drawn as connected to a fake root)
+        const links = root.links().filter(l => !(l.source && l.source.data && l.source.data.id === '__virtual_root__'));
+        const linkSel = gLinks.selectAll("path.link").data(links, d => d.target.data.id);
+        linkSel.exit().remove();
+        const linkEnter = linkSel.enter().append("path")
+          .attr("class", "link")
+          .attr("marker-end", "url(#arrow)");
+        const linkMerge = linkEnter.merge(linkSel);
+        linkMerge.attr("d", d => {
+          const sx = nodeX(d.source);
+          const sy = nodeY(d.source) + NODE_WIDTH / 2;
+          const tx = nodeX(d.target);
+          const ty = nodeY(d.target) - NODE_WIDTH / 2;
+          const mx = (sy + ty) / 2;
+          return `M${sy},${sx} C${mx},${sx} ${mx},${tx} ${ty},${tx}`;
+        });
+
+        // Link labels
+        const labelSel = gLinkLabels.selectAll("g.link-label").data(links, d => d.target.data.id);
+        labelSel.exit().remove();
+        const labelEnter = labelSel.enter().append("g").attr("class", "link-label");
+        const labelMerge = labelEnter.merge(labelSel);
+        labelMerge.each(function (d) {
+          const g = d3.select(this);
+          g.selectAll("*").remove();
+          const label = d.target.data.edgeLabel || "";
+          if (!label) return;
+
+          const sx = nodeX(d.source);
+          const sy = nodeY(d.source) + NODE_WIDTH / 2;
+          const tx = nodeX(d.target);
+          const ty = nodeY(d.target) - NODE_WIDTH / 2;
+          const mx = (sy + ty) / 2;
+          const my = (sx + tx) / 2;
+          const w = 140, pad = 6;
+
+          const t = g.append("text")
+            .attr("x", mx - w / 2 + pad)
+            .attr("y", my)
+            .attr("dominant-baseline", "middle");
+          t.text(label);
+          wrapText(t, w - 2 * pad, 12, 2);
+          const lines = +t.attr("data-lines") || 1;
+          const h = 6 + lines * 12;
+
+          g.insert("rect", "text")
+            .attr("x", mx - w / 2)
+            .attr("y", my - h / 2)
+            .attr("width", w)
+            .attr("height", h);
+          t.attr("y", my - h / 2 + 12);
+
+          // attach dblclick for inline edge label editing
+          g.on('dblclick', (event) => {
+            event.preventDefault(); event.stopPropagation();
+            // find parent id and edge index
+            const parentId = d.source.data.id;
+            const edgeLabel = d.target.data.edgeLabel;
+            // locate edge index in parent children
+            const parent = state.nodes.get(parentId);
+            if (!parent) return;
+            const idx = parent.children.findIndex(c => c.childId === d.target.data.id);
+            showEdgeInlineEditor((event.sourceEvent ? event.sourceEvent.clientX : event.clientX), (event.sourceEvent ? event.sourceEvent.clientY : event.clientY), parentId, idx);
+          });
+        });
+
+        // Drag behavior
+        const drag = d3.drag()
+          .filter(event => !state.pendingMoveId)
+          .on("start", (event, d) => {
+            d3.select(event.currentTarget).raise();
+            selectNode(d.data.id);
+          })
+          .on("drag", (event, d) => {
+            const n = state.nodes.get(d.data.id);
+            n.offsetX = (n.offsetX || 0) + event.dx;
+            n.offsetY = (n.offsetY || 0) + event.dy;
+            refreshPositions();
+          })
+          .on("end", () => {
+            pushHistory();
+          });
+
+        // Nodes (exclude the virtual root placeholder from being rendered)
+        const nodesData = root.descendants().filter(n => !(n.data && n.data.id === '__virtual_root__'));
+        const nodeSel = gNodes.selectAll("g.node").data(nodesData, d => d.data.id);
+        nodeSel.exit().remove();
+
+        const nodeEnter = nodeSel.enter().append("g")
+          .attr("class", "node")
+          .on("click", (event, d) => {
+            event.stopPropagation();
+            if (state.pendingMoveId) {
+              const movingId = state.pendingMoveId;
+              const newParentId = d.data.id;
+              if (movingId === state.rootId) { alert("Cannot move root."); state.pendingMoveId = null; setStatus("", ""); return; }
+              if (isDescendant(movingId, newParentId)) { alert("Cannot move under its own descendant."); state.pendingMoveId = null; setStatus("", ""); return; }
+              const label = prompt("Edge label for connection to new parent:", "new-edge");
+              if (!label) { state.pendingMoveId = null; setStatus("", ""); return; }
+              pushHistory();
+              const movingNode = state.nodes.get(movingId);
+              const oldParent = state.nodes.get(movingNode.parentId);
+              if (oldParent) oldParent.children = oldParent.children.filter(c => c.childId !== movingId);
+              const newParent = state.nodes.get(newParentId);
+              if (newParent.type !== "question") { alert("New parent must be a Question node."); state.pendingMoveId = null; setStatus("", ""); return; }
+              newParent.children.push({ label, childId: movingId });
+              movingNode.parentId = newParentId;
+              state.pendingMoveId = null;
+              setStatus("", "");
+              update(); updateInspector();
+              return;
+            }
+            // If an attach operation is pending, attach pending subtree here
+            if (state.pendingAttachId) {
+              const detachedId = state.pendingAttachId;
+              if (detachedId === d.data.id) { alert('Cannot attach to itself.'); state.pendingAttachId = null; setStatus('', ''); return; }
+              if (isDescendant(detachedId, d.data.id)) { alert('Cannot attach to a node inside the same subtree (would create a cycle).'); state.pendingAttachId = null; setStatus('', ''); return; }
+              const target = state.nodes.get(d.data.id);
+              if (!target || target.type !== 'question') { alert('Target must be a Question node.'); state.pendingAttachId = null; setStatus('', ''); return; }
+              const label = prompt('Edge label for attachment:', 'new-edge');
+              if (!label) { state.pendingAttachId = null; setStatus('', ''); return; }
+              pushHistory();
+              // remove from old parent if any
+              const detNode = state.nodes.get(detachedId);
+              if (detNode.parentId) {
+                const oldParent = state.nodes.get(detNode.parentId);
+                if (oldParent) oldParent.children = oldParent.children.filter(c => c.childId !== detachedId);
+              } else {
+                // remove from roots list
+                state.roots = (state.roots || []).filter(x => x !== detachedId);
+              }
+              target.children.push({ label, childId: detachedId });
+              detNode.parentId = d.data.id;
+              state.pendingAttachId = null;
+              setStatus('', '');
+              update(); updateInspector();
+              return;
+            }
+            selectNode(d.data.id);
+          })
+          .on("contextmenu", (event, d) => {
+            event.preventDefault();
+            event.stopPropagation();
+            // show our custom context menu at mouse position
+            const [mx, my] = [event.sourceEvent ? event.sourceEvent.clientX : event.clientX, event.sourceEvent ? event.sourceEvent.clientY : event.clientY];
+            showContextMenu(mx, my, d.data.id);
+          })
+          .on('dblclick', (event, d) => {
+            event.preventDefault(); event.stopPropagation();
+            // compute screen pos of node element
+            const nodeEl = d3.select(event.currentTarget).node();
+            if (!nodeEl) return;
+            const rect = nodeEl.getBoundingClientRect();
+            const cx = rect.left + rect.width / 2; const cy = rect.top + rect.height / 2;
+            showInlineEditor(cx, cy, d.data.id);
+          })
+          .call(drag);
+
+        nodeEnter.append("rect");
+        nodeEnter.append("circle").attr("class", "port in").attr("r", 3.5);
+        nodeEnter.append("circle").attr("class", "port out").attr("r", 3.5);
+        // larger invisible hit area for easier clicks
+        nodeEnter.append("circle").attr("class", "port-hit").attr("r", 18).attr("cx", NODE_WIDTH / 2 + 6).attr("cy", 0);
+        nodeEnter.append("text").attr("class", "type-pill").attr("text-anchor", "middle");
+        nodeEnter.append("text").attr("class", "node-text");
+
+        const nodeMerge = nodeEnter.merge(nodeSel);
+        nodeMerge
+          .attr("class", d => {
+            let c = "node";
+            c += d.data.type === "leaf" ? " leaf" : " question";
+            const subtype = (state.nodes.get(d.data.id) && state.nodes.get(d.data.id).subtype) ? String(state.nodes.get(d.data.id).subtype).toUpperCase() : '';
+            if (subtype) c += ' subtype-' + subtype;
+            if (d.data.id === state.rootId) c += " root";
+            if (d.data.id === state.selectedId) c += " selected";
+            return c;
+          })
+          .attr("transform", d => `translate(${nodeY(d)},${nodeX(d)})`)
+          .call(drag);
+
+        nodeMerge.select("rect")
+          .attr("x", -NODE_WIDTH / 2)
+          .attr("y", d => {
+            const h = nodeHeights.get(d.data.id) || 44;
+            return -h / 2;
+          })
+          .attr("rx", 10)
+          .attr("ry", 10)
+          .attr("width", NODE_WIDTH)
+          .attr("height", d => nodeHeights.get(d.data.id) || 44);
+
+        nodeMerge.select("circle.port.in").attr("cx", -NODE_WIDTH / 2).attr("cy", 0);
+        nodeMerge.select("circle.port.out").attr("cx", NODE_WIDTH / 2).attr("cy", 0);
+
+        nodeMerge.select("text.type-pill")
+          .attr("x", 0)
+          .attr("y", d => {
+            const h = nodeHeights.get(d.data.id) || 44;
+            return -h / 2 - 6;
+          })
+          .text(d => {
+            const subtype = (state.nodes.get(d.data.id) && state.nodes.get(d.data.id).subtype) ? String(state.nodes.get(d.data.id).subtype).toUpperCase() : '';
+            const base = d.data.type === "leaf" ? "Leaf" : "Question";
+            return subtype ? `${base} · ${subtype}` : base;
+          });
+
+        nodeMerge.select("text.node-text")
+          .attr("x", -NODE_WIDTH / 2 + NODE_PADDING)
+          .attr("y", d => {
+            const h = nodeHeights.get(d.data.id) || 44;
+            return -(Math.max(28, h) / 2) + NODE_PADDING + 2;
+          })
+          .attr("text-anchor", "start")
+          .text(d => d.data.text || "")
+          .each(function (d) {
+            const t = d3.select(this);
+            wrapText(t, NODE_WIDTH - 2 * NODE_PADDING, LINE_HEIGHT, 8);
+          });
+
+        // Attach click handler to out port to open answers editor
+        nodeMerge.select('circle.port.out').on('click', (event, d) => {
+          event.stopPropagation();
+          openAnswersEditorForNode(d.data.id, event.sourceEvent ? event.sourceEvent.clientX : event.clientX, event.sourceEvent ? event.sourceEvent.clientY : event.clientY);
+        });
+        // attach hover/click to port-hit (larger invisible circle) as well
+        nodeMerge.select('circle.port-hit').on('click', (event, d) => {
+          event.stopPropagation();
+          openAnswersEditorForNode(d.data.id, event.sourceEvent ? event.sourceEvent.clientX : event.clientX, event.sourceEvent ? event.sourceEvent.clientY : event.clientY);
+        }).on('mouseover', (event) => {
+          const tt = document.getElementById('portTooltip'); if (!tt) return;
+          tt.style.display = 'block'; tt.style.left = (event.sourceEvent ? event.sourceEvent.clientX + 12 : event.clientX + 12) + 'px'; tt.style.top = (event.sourceEvent ? event.sourceEvent.clientY - 18 : event.clientY - 18) + 'px';
+        }).on('mouseout', () => { const tt = document.getElementById('portTooltip'); if (tt) tt.style.display = 'none'; });
+
+        // Mark rects for detached roots (no parent and not the active root)
+        nodeMerge.select('rect').classed('detached-outline', d => {
+          const n = state.nodes.get(d.data.id);
+          return !!(n && (!n.parentId) && d.data.id !== state.rootId);
+        });
+
+        // Render a small DETACHED pill for detached root nodes
+        nodeMerge.each(function (d) {
+          const n = state.nodes.get(d.data.id);
+          const g = d3.select(this);
+          const existing = g.select('.detached-pill-group');
+          if (n && (!n.parentId) && d.data.id !== state.rootId) {
+            const h = nodeHeights.get(d.data.id) || 44;
+            if (existing.empty()) {
+              const pg = g.append('g').attr('class', 'detached-pill-group');
+              pg.append('rect').attr('class', 'pill-bg').attr('rx', 6).attr('ry', 6).attr('fill', '#063b2d').attr('width', 84).attr('height', 18).attr('x', NODE_WIDTH / 2 - 90).attr('y', (-h / 2) + 6);
+              pg.append('text').attr('class', 'detached-pill').attr('x', NODE_WIDTH / 2 - 48).attr('y', (-h / 2) + 18).attr('fill', '#9ff3d6').attr('text-anchor', 'middle').text('DETACHED');
+            } else {
+              existing.select('.detached-pill').text('DETACHED');
+            }
+          } else {
+            if (!existing.empty()) existing.remove();
+          }
+        });
+
+        if (!opts.skipFit) fitToView(root, nodeHeights);
+      }
+
+      function fitToView(root, nodeHeights) {
+        try {
+          const nodes = root.descendants();
+          if (nodes.length === 0) return;
+          let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+          nodes.forEach(n => {
+            const h = Math.max(44, (nodeHeights && nodeHeights.get(n.data.id)) || computeNodeHeight(n.data.text || ""));
+            const nx = nodeX(n);
+            const ny = nodeY(n);
+            const xTop = nx - h / 2 - 28;
+            const xBot = nx + h / 2 + 40;
+            const yLeft = ny - NODE_WIDTH / 2 - 80;
+            const yRight = ny + NODE_WIDTH / 2 + 80;
+            if (xTop < minX) minX = xTop;
+            if (xBot > maxX) maxX = xBot;
+            if (yLeft < minY) minY = yLeft;
+            if (yRight > maxY) maxY = yRight;
+          });
+          const svgNode = svg.node();
+          const w = svgNode.clientWidth, h = svgNode.clientHeight;
+          const bboxW = (maxY - minY), bboxH = (maxX - minX);
+          const scale = Math.max(0.2, Math.min(2.2, Math.min((w - 40) / bboxW, (h - 40) / bboxH)));
+          const tx = (w - scale * (minY + maxY)) / 2;
+          const ty = (h - scale * (minX + maxX)) / 2;
+          const t = d3.zoomIdentity.translate(tx, ty).scale(scale);
+          svg.transition().duration(350).call(zoom.transform, t);
+        } catch (e) { /* ignore */ }
+      }
+
+      // Inspector metadata inputs removed from UI; listeners removed.
+
+      // Type is now derived from Subtype; see nodeSubtype change handler below.
+
+      nodeText.addEventListener("change", () => {
+        const id = state.selectedId; if (!id) return;
+        const n = state.nodes.get(id); if (!n) return;
+        pushHistory(); n.text = nodeText.value;
+        // Don't refit when saving a small edit - preserve user's zoom/pan
+        update({ skipFit: true });
+        lastExport = JSON.stringify(exportAll(), null, 2);
+      });
+
+      addChildBtn.addEventListener("click", () => {
+        const id = state.selectedId; if (!id) return;
+        const parent = state.nodes.get(id); if (!parent || parent.type !== "question") return;
+        const label = (newEdgeLabel.value || "").trim();
+        if (!label) { alert("Edge label required."); return; }
+        const type = newChildType.value;
+        const txt = newChildText.value || (type === "leaf" ? "new leaf" : "New question");
+        pushHistory();
+        const childId = newId();
+        state.nodes.set(childId, { id: childId, type, text: txt, children: type === "question" ? [] : [], parentId: id, offsetX: 0, offsetY: 0 });
+        parent.children.push({ label, childId });
+        newEdgeLabel.value = ""; newChildText.value = "";
+        update(); updateInspector();
+      });
+
+      deleteNodeBtn.addEventListener("click", () => {
+        const id = state.selectedId; if (!id) return;
+        if (id === state.rootId) { alert("Cannot delete root."); return; }
+        const ok = confirm("Delete this node and its subtree?");
+        if (!ok) return;
+        pushHistory();
+        const node = state.nodes.get(id);
+        const parent = state.nodes.get(node.parentId);
+        if (parent) parent.children = parent.children.filter(c => c.childId !== id);
+        deleteSubtree(id);
+        state.selectedId = parent ? parent.id : state.rootId;
+        update(); updateInspector();
+      });
+
+      makeRootBtn.addEventListener("click", () => {
+        const id = state.selectedId; if (!id) return;
+        if (id === state.rootId) return;
+        const node = state.nodes.get(id); if (!node) return;
+        const ok = confirm("Make this node the new root? It will be detached from its current parent.");
+        if (!ok) return;
+        pushHistory();
+        if (node.parentId) {
+          const parent = state.nodes.get(node.parentId);
+          parent.children = parent.children.filter(c => c.childId !== id);
+        }
+        node.parentId = null;
+        state.rootId = id;
+        update(); updateInspector();
+      });
+
+      reparentBtn.addEventListener("click", () => {
+        const id = state.selectedId; if (!id) return;
+        if (id === state.rootId) { alert("Cannot reparent the root."); return; }
+        state.pendingMoveId = id;
+        setStatus("Reparent mode: click a new parent node…", "reconnect-mode");
+      });
+
+      // Toolbar events - single tree
+      // Open button opens file picker (accepts single-tree or array/forest)
+
+      // Keep last export around for diagnostics; prefer copying to clipboard
+      let lastExport = null;
+      async function copyJson(text) {
+        try {
+          await navigator.clipboard.writeText(text || '');
+          setStatus('JSON copied to clipboard.', '');
+        } catch (e) {
+          // Fallback: create a temporary textarea and execCommand
+          const ta = document.createElement('textarea'); ta.value = text || ''; document.body.appendChild(ta); ta.select();
+          try { document.execCommand('copy'); setStatus('JSON copied to clipboard.', ''); } catch (err) { alert('Copy failed: ' + (err.message || err)); }
+          ta.remove();
+        }
+      }
+
+      function initToolbar() {
+        // Paste JSON from clipboard and import directly (no modal)
+        const pasteJsonBtn = document.getElementById('pasteJsonBtn');
+        if (pasteJsonBtn) pasteJsonBtn.addEventListener('click', async () => {
+          try {
+            const text = await navigator.clipboard.readText();
+            if (!text || !text.trim()) { alert('Clipboard is empty or unreadable.'); return; }
+            let obj;
+            try { obj = JSON.parse(text); } catch (e) { alert('Clipboard does not contain valid JSON: ' + (e.message || e)); return; }
+            if (Array.isArray(obj)) {
+              // Import the array directly as a forest so all top-level trees are visible
+              importArrayAsForest(obj, 'clipboard.json');
+              setStatus(`Loaded ${obj.length} tree(s) from clipboard as a forest.`, '');
+            } else {
+              importAll(obj);
+              update(); updateInspector();
+              // record this as a change for undo
+              pushHistory();
+              lastExport = JSON.stringify(exportCurrentTree(), null, 2);
+              setStatus('Loaded current tree from clipboard.', '');
+            }
+          } catch (e) {
+            alert('Unable to read clipboard: ' + (e.message || e));
+          }
+        });
+
+        // Export / download / new detached
+        exportBtn.addEventListener("click", () => {
+          const payload = exportAll();
+          lastExport = JSON.stringify(payload, null, 2);
+          copyJson(lastExport);
+          setStatus("Copied current tree JSON to clipboard.", "");
+        });
+
+        const newDetachedBtn = document.getElementById('newDetachedBtn');
+        if (newDetachedBtn) newDetachedBtn.addEventListener('click', () => {
+          pushHistory();
+          const nid = newId();
+          state.nodes.set(nid, { id: nid, type: 'question', subtype: null, text: 'New detached root', children: [], parentId: null, offsetX: 0, offsetY: 0 });
+          recomputeRoots();
+          state.selectedId = nid;
+          update(); updateInspector();
+          setStatus('Created new detached subtree.', '');
+        });
+
+        downloadBtn.addEventListener("click", async () => {
+          const payload = exportAll();
+          const text = JSON.stringify(payload, null, 2);
+          const base = openedFileName ? openedFileName.replace(/\.json$/i, '') : 'decision-tree';
+
+          // Prefer the File System Access API when available (desktop Chromium/Edge)
+          if (window.showSaveFilePicker) {
+            try {
+              const handle = await window.showSaveFilePicker({
+                suggestedName: base + '.json',
+                types: [{ description: 'JSON', accept: { 'application/json': ['.json'] } }]
+              });
+              const writable = await handle.createWritable();
+              await writable.write(text);
+              await writable.close();
+              openedFileName = base + '.json';
+              setStatus('File saved.', '');
+              return;
+            } catch (err) {
+              // fall through to prompt fallback if user cancels or API not allowed
+              setStatus('Save cancelled or failed, using fallback.', '');
+            }
+          }
+
+          // Fallback: ask user for filename then trigger a download anchor
+          const name = window.prompt('Save as filename', base + '.json');
+          if (!name) { setStatus('Save cancelled.', ''); return; }
+          const filename = /\.json$/i.test(name) ? name : (name + '.json');
+          const blob = new Blob([text], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url; a.download = filename; a.click();
+          URL.revokeObjectURL(url);
+          openedFileName = filename;
+          setStatus('Saved file: ' + filename, '');
+        });
+
+        autoLayoutBtn.addEventListener("click", () => {
+          pushHistory();
+          state.nodes.forEach(n => { n.offsetX = 0; n.offsetY = 0; });
+          update();
+        });
+
+        // View controls
+        const fitViewBtn = document.getElementById('fitViewBtn');
+        const zoomInBtn = document.getElementById('zoomInBtn');
+        const zoomOutBtn = document.getElementById('zoomOutBtn');
+        if (fitViewBtn) fitViewBtn.addEventListener('click', () => { update(); });
+        if (zoomInBtn) zoomInBtn.addEventListener('click', () => {
+          const svgNode = svg.node(); const w = svgNode.clientWidth, h = svgNode.clientHeight;
+          const t = d3.zoomTransform(svgNode);
+          const k = Math.min(2.5, t.k * 1.2);
+          const nx = (w / 2 - t.x) / t.k; const ny = (h / 2 - t.y) / t.k;
+          const newT = d3.zoomIdentity.translate(w / 2 - nx * k, h / 2 - ny * k).scale(k);
+          svg.transition().duration(200).call(zoom.transform, newT);
+        });
+        if (zoomOutBtn) zoomOutBtn.addEventListener('click', () => {
+          const svgNode = svg.node(); const w = svgNode.clientWidth, h = svgNode.clientHeight;
+          const t = d3.zoomTransform(svgNode);
+          const k = Math.max(0.2, t.k / 1.2);
+          const nx = (w / 2 - t.x) / t.k; const ny = (h / 2 - t.y) / t.k;
+          const newT = d3.zoomIdentity.translate(w / 2 - nx * k, h / 2 - ny * k).scale(k);
+          svg.transition().duration(200).call(zoom.transform, newT);
+        });
+
+        undoBtn.addEventListener("click", undo);
+        redoBtn.addEventListener("click", redo);
+      }
+
+      // initialize toolbar wiring
+      initToolbar();
+
+      // Multi-tree helpers and events
+      // Arrays are imported as a forest (multiple top-level roots) directly.
+
+      // Import an array of tree payloads directly into the editor as a forest
+      // (creates multiple top-level roots so all trees are visible at once).
+      function importArrayAsForest(arr, fileName) {
+        if (!Array.isArray(arr)) return;
+        // Reset working state
+        state.nodes = new Map();
+        state.idCounter = 1;
+        state.pendingMoveId = null;
+        state.selectedId = null;
+        openedFileName = fileName || '';
+        const rootIds = [];
+        for (const item of arr) {
+          // support either wrapper { tag, topic, tree } or bare tree object
+          const treeObj = item && item.tree ? item.tree : item;
+          if (!treeObj) continue;
+          const rid = buildInternalTree(treeObj, null);
+          rootIds.push(rid);
+        }
+        // If nothing built, make a blank tree
+        if (rootIds.length === 0) {
+          const blank = makeBlankTree();
+          const rid = buildInternalTree(blank.tree, null);
+          rootIds.push(rid);
+        }
+        state.roots = rootIds;
+        state.rootId = rootIds[0];
+        // Clear history (fresh load)
+        state.history = []; state.future = [];
+        updateUndoRedoButtons();
+        recomputeRoots();
+        update(); updateInspector();
+        lastExport = JSON.stringify(arr, null, 2);
+      }
+
+      // Tree selector and legacy multi controls removed.
+
+      function makeBlankTree() {
+        return {
+          tag: "NEW-TREE",
+          topic: "",
+          "topic-description": "",
+          tree: { question: "New root question", children: {} }
+        };
+      }
+
+      openBtn.addEventListener("click", () => fileInput.click());
+
+      fileInput.addEventListener("change", (e) => {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          try {
+            const obj = JSON.parse(reader.result);
+            openedFileName = file.name || '';
+            if (Array.isArray(obj)) {
+              // Import the array as a forest on the single canvas
+              importArrayAsForest(obj, file.name);
+              setStatus(`Opened ${file.name} with ${obj.length} tree(s).`, "");
+            } else {
+              // Single tree: import and push history
+              importAll(obj);
+              update(); updateInspector(); pushHistory();
+              setStatus(`Opened single tree file: ${file.name}.`, "");
+            }
+          } catch (err) {
+            alert("Invalid JSON file: " + err.message);
+          } finally {
+            fileInput.value = "";
+          }
+        };
+        reader.readAsText(file);
+      });
+
+      // treeSelect control removed; change-handling no longer required
+
+
+      addTreeBtn.addEventListener("click", () => {
+        // Create a new detached root and add it to the forest
+        pushHistory();
+        const nid = newId();
+        state.nodes.set(nid, { id: nid, type: 'question', subtype: null, text: 'New detached root', children: [], parentId: null, offsetX: 0, offsetY: 0 });
+        // ensure roots list exists
+        if (!state.roots) state.roots = [];
+        state.roots.push(nid);
+        state.rootId = nid;
+        state.selectedId = nid;
+        recomputeRoots();
+        // tree selector removed; keep roots list consistent
+        update(); updateInspector();
+        state.history = []; state.future = []; updateUndoRedoButtons();
+        lastExport = JSON.stringify(serializeNode(nid), null, 2);
+        setStatus("Added new detached root to forest.", "");
+      });
+
+      deleteTreeBtn.addEventListener("click", () => {
+        // Delete the currently active root from the forest (use state.rootId)
+        if (!state.roots || state.roots.length <= 1) { alert('Cannot delete: only one root present.'); return; }
+        const ok = confirm("Delete this root from the forest?");
+        if (!ok) return;
+        const rid = state.rootId;
+        if (!rid) return;
+        // find the index
+        const idx = state.roots.indexOf(rid);
+        // snapshot current state so undo can restore this deletion
+        pushHistory();
+        // remove subtree nodes
+        deleteSubtree(rid);
+        // remove from roots list
+        if (idx >= 0) state.roots.splice(idx, 1);
+        // pick new active root
+        state.rootId = state.roots[Math.max(0, (idx - 1))] || state.roots[0];
+        state.selectedId = state.rootId;
+        recomputeRoots(); update(); updateInspector();
+        // keep history so undo is possible
+        updateUndoRedoButtons();
+        lastExport = JSON.stringify(exportAll(), null, 2);
+        setStatus("Deleted root from forest.", "");
+      });
+
+      // legacy download-all button removed; functionality preserved via Export/Copy JSON flows
+
+      // exportAllBtn removed: combined export/copy functionality handled by Export JSON to Clipboard
+
+      // Keyboard shortcuts
+      document.addEventListener("keydown", (e) => {
+        const z = (e.key === 'z' || e.key === 'Z');
+        const y = (e.key === 'y' || e.key === 'Y');
+        if ((e.ctrlKey || e.metaKey) && z && !e.shiftKey) { e.preventDefault(); undo(); }
+        else if ((e.ctrlKey || e.metaKey) && (y || (z && e.shiftKey))) { e.preventDefault(); redo(); }
+        if (e.key === "Escape") { state.pendingMoveId = null; setStatus("", ""); }
+      });
+
+      // Click background: deselect without refitting the view so we don't
+      // reset the user's zoom/pan. Double-click the empty canvas to re-fit.
+      svg.on("click", (event) => {
+        if (state.pendingMoveId) { state.pendingMoveId = null; setStatus("", ""); }
+        else { state.selectedId = null; update({ skipFit: true }); updateInspector(); }
+      });
+
+      // Double-click background to perform an explicit fit-to-view. Ignore
+      // double-clicks that occur on nodes so users can still interact with
+      // node double-clicks if desired.
+      svg.on("dblclick", (event) => {
+        // If double-click happened on a node (or inside a node element), do nothing
+        if (event.target && event.target.closest && event.target.closest('.node')) return;
+        if (state.pendingMoveId) { state.pendingMoveId = null; setStatus("", ""); return; }
+        // Deselect and perform a fit (update() without skipFit will call fitToView)
+        state.selectedId = null;
+        update(); updateInspector();
+      });
+
+      // Initial sample
+      const sample = {
+  "id": "n1",
+  "type": "LLM",
+  "question": "Root question",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "terminal",
+      "assessment": "Assessment text",
+      "children": {}
+    },
+    "No": {
+      "id": "n3",
+      "type": "terminal",
+      "assessment": "Assessment text",
+      "children": {}
+    }
+  }
+};
+
+      // Boot
+      importAll(sample, { pushHist: false });
+      lastExport = JSON.stringify(sample, null, 2);
+      update(); updateInspector();
+      pushHistory();
+      // tree selector removed
+      setStatus("Ready", "");
+    })();
+  </script>
+</body>
+
+</html>

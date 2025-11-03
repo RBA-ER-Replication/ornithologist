@@ -1,0 +1,38 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Does the text describe a demand shock?",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is the demand shock best described as positive, negative, or uncertain?",
+      "children": {
+        "Positive": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Hawkish",
+          "children": {}
+        },
+        "Negative": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Dovish",
+          "children": {}
+        },
+        "Uncertain": {
+          "id": "n5",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "No": {
+      "id": "n6",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is investment being described as causing inflationary pressures, or is growth being described as robust/subdued? Or none of the above?",
+  "children": {
+    "Inflationary Pressures": {
+      "id": "n2",
+      "type": "terminal",
+      "assessment": "Hawkish",
+      "children": {}
+    },
+    "Growth Described as Robust": {
+      "id": "n3",
+      "type": "terminal",
+      "assessment": "Leaning Hawkish",
+      "children": {}
+    },
+    "Growth Described as Subdued": {
+      "id": "n4",
+      "type": "terminal",
+      "assessment": "Dovish",
+      "children": {}
+    },
+    "None of the Above": {
+      "id": "n5",
+      "type": "terminal",
+      "assessment": "Neutral",
+      "children": {}
+    }
+  }
+}

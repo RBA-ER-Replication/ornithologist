@@ -1,0 +1,173 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "What is the nature of the discussion around residential real estate?",
+  "children": {
+    "House Price Growth": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Are house prices best described as notably high or increasing, stable, or declining?",
+      "children": {
+        "High level or growth": {
+          "id": "n3",
+          "type": "LLM",
+          "question": "Does the paragraph discuss any implications for wealth effects or financial stability?",
+          "children": {
+            "Wealth Effects": {
+              "id": "n4",
+              "type": "terminal",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            },
+            "Financial Stability Concerns": {
+              "id": "n5",
+              "type": "terminal",
+              "assessment": "Hawkish",
+              "children": {}
+            },
+            "Neither": {
+              "id": "n22",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        },
+        "Declining house prices": {
+          "id": "n6",
+          "type": "LLM",
+          "question": "Does the paragraph discuss any implications for wealth effects or financial stability?",
+          "children": {
+            "No Wealth Effects": {
+              "id": "n7",
+              "type": "terminal",
+              "assessment": "Dovish",
+              "children": {}
+            },
+            "Financial Stability": {
+              "id": "n8",
+              "type": "terminal",
+              "assessment": "Leaning dovish",
+              "children": {}
+            },
+            "Neither": {
+              "id": "n23",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        },
+        "Stable": {
+          "id": "n21",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Rental Inflation": {
+      "id": "n9",
+      "type": "LLM",
+      "question": "Are rents best described as notably high or increasing, stable, or declining?",
+      "children": {
+        "High rental inflation": {
+          "id": "n10",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "Declining rental inflation": {
+          "id": "n11",
+          "type": "terminal",
+          "assessment": "Dovish",
+          "children": {}
+        },
+        "Stable rental inflation": {
+          "id": "n24",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Dwelling/housing construction": {
+      "id": "n12",
+      "type": "LLM",
+      "question": "Is dwelling construction activity best described as high, low, or stable?",
+      "children": {
+        "High Construction Activity": {
+          "id": "n13",
+          "type": "LLM",
+          "question": "Does the paragraph discuss any implications for future house price growth or economic activity?",
+          "children": {
+            "Future House Price Growth Indicator": {
+              "id": "n14",
+              "type": "terminal",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            },
+            "Economic Activity Boost": {
+              "id": "n15",
+              "type": "terminal",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            },
+            "Neither": {
+              "id": "n26",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            }
+          }
+        },
+        "Low Construction Activity": {
+          "id": "n16",
+          "type": "LLM",
+          "question": "Does the paragraph discuss any implications for future house price growth or economic activity?",
+          "children": {
+            "Future House Price Growth Indicator": {
+              "id": "n17",
+              "type": "terminal",
+              "assessment": "Dovish",
+              "children": {}
+            },
+            "Economic Activity Reduction": {
+              "id": "n18",
+              "type": "terminal",
+              "assessment": "Dovish",
+              "children": {}
+            },
+            "Neither": {
+              "id": "n27",
+              "assessment": "Leaning dovish",
+              "children": {}
+            }
+          }
+        },
+        "Stable Construction Activity": {
+          "id": "n25",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Residential loan or developer stress": {
+      "id": "n19",
+      "type": "LLM",
+      "question": "Does the paragraph describe actual or the risk of financial stress for residential loans or residential developers?",
+      "children": {
+        "yes": {
+          "id": "n28",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "no": {
+          "id": "n29",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Residential real estate not discussed": {
+      "id": "n20",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

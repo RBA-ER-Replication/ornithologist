@@ -1,0 +1,57 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Are interest rates described as restrictive, accommodative, or neither?",
+  "children": {
+    "Restrictive": {
+      "id": "n2",
+      "type": "SYMBOLIC",
+      "question": "{inflation_state}",
+      "children": {
+        "above_target": {
+          "id": "n9",
+          "assessment": "Leaning hawkish (policy is described as restrictive, and inflation is above target, so there may be additional tightening to come).",
+          "children": {}
+        },
+        "on_target": {
+          "id": "n10",
+          "assessment": "Leaning dovish (rates are described as restrictive, but inflation is at target, so there may be easing in the near future).",
+          "children": {}
+        },
+        "below_target": {
+          "id": "n11",
+          "assessment": "Dovish (rates are described as restrictive, but inflation is below target, so there will likely be easing in the near future).",
+          "children": {}
+        }
+      }
+    },
+    "Accommodative": {
+      "id": "n5",
+      "type": "SYMBOLIC",
+      "question": "{inflation_state}",
+      "children": {
+        "above_target": {
+          "id": "n12",
+          "assessment": "Hawkish (rates are described as accommodative, but inflation is above target, so there is likely to be tightening).",
+          "children": {}
+        },
+        "on_target": {
+          "id": "n13",
+          "assessment": "Leaning hawkish (rates are described as accommodative, but inflation is at target, so there may be some tightening in the near future).",
+          "children": {}
+        },
+        "below_target": {
+          "id": "n14",
+          "assessment": "Leaning dovish (policy is described as accommodative, and inflation is below target, so there may be additional loosening to come).",
+          "children": {}
+        }
+      }
+    },
+    "Neither": {
+      "id": "n8",
+      "type": "terminal",
+      "assessment": "Neutral (No strong bias towards tightening or easing)",
+      "children": {}
+    }
+  }
+}

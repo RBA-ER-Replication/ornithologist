@@ -1,0 +1,43 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Are agricultural commodity prices described as increasing, decreasing, or not mentioned?",
+  "children": {
+    "Increasing": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is the price increase due to a temporary supply shock (bad weather, wars, shipping disruptions, etc.)?",
+      "children": {
+        "Yes": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "No": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Hawkish",
+          "children": {}
+        }
+      }
+    },
+    "Decreasing": {
+      "id": "n5",
+      "type": "terminal",
+      "assessment": "Leaning dovish (likely moderate flow-on effects on inflation).",
+      "children": {}
+    },
+    "Not mentioned or unclear": {
+      "id": "n6",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    },
+    "Stable or mixed": {
+      "id": "n7",
+      "assessment": "Neutral",
+      "children": {}
+    }
+  }
+}

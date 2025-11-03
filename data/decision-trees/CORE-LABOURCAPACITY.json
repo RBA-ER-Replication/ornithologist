@@ -1,0 +1,72 @@
+{
+  "id": "n1",
+  "question": "Does the paragraph describe the labour market for the home country (Australia), or is it global/overseas in nature?",
+  "children": {
+    "Overseas or global": {
+      "id": "n2",
+      "assessment": "skip",
+      "children": {}
+    },
+    "Australia": {
+      "id": "n3",
+      "type": "LLM",
+      "question": "Does the paragraph best describe labour market slack as being high/loose, low/tight, or otherwise? You may make inferences from wages and labour market variables.",
+      "children": {
+        "High slack/looseness": {
+          "id": "n4",
+          "type": "LLM",
+          "question": "Is the paragraph an explicit statement or discussing assessments moving towards more spare capacity?",
+          "children": {
+            "Explicit Statement": {
+              "id": "n5",
+              "type": "terminal",
+              "assessment": "Dovish (Clear indication of weak inflationary pressures and need for supportive policies)",
+              "children": {}
+            },
+            "Assessments Moving Towards More Spare Capacity": {
+              "id": "n6",
+              "type": "terminal",
+              "assessment": "Leaning Dovish (Slack is increasing, reducing inflationary pressures)",
+              "children": {}
+            }
+          }
+        },
+        "Low slack/tightness": {
+          "id": "n7",
+          "type": "LLM",
+          "question": "Is the paragraph an explicit statement or discussing assessments moving towards less spare capacity?",
+          "children": {
+            "Explicit Statement": {
+              "id": "n8",
+              "type": "terminal",
+              "assessment": "Hawkish (Clear indication of inflationary pressures building)",
+              "children": {}
+            },
+            "Assessments Moving Towards Less Spare Capacity": {
+              "id": "n9",
+              "type": "terminal",
+              "assessment": "Leaning Hawkish (Slack is decreasing, leading to potential inflationary pressures)",
+              "children": {}
+            }
+          }
+        },
+        "At NAIRU/full employment": {
+          "id": "n10",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        },
+        "Unclear": {
+          "id": "n11",
+          "assessment": "skip",
+          "children": {}
+        }
+      }
+    },
+    "no labour market discussion": {
+      "id": "n12",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

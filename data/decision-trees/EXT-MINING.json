@@ -1,0 +1,56 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the activity in the mining and resources sector described as strong, weak, or stable/otherwise?",
+  "children": {
+    "Strong": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is there an indication of potential inflationary pressures?",
+      "children": {
+        "Yes": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "No": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Weak": {
+      "id": "n5",
+      "type": "LLM",
+      "question": "Is there any indication of accommodative policies to support growth in this sector?",
+      "children": {
+        "Yes": {
+          "id": "n6",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "No": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Stable/Temporary effect/Otherwise": {
+      "id": "n8",
+      "type": "terminal",
+      "assessment": "Neutral",
+      "children": {}
+    },
+    "Mining or resources sector not discussed": {
+      "id": "n9",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

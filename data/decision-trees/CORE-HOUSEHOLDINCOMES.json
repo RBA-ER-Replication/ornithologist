@@ -1,0 +1,153 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Does the paragraph talk about current or future household or disposable incomes for Australia?",
+  "children": {
+    "yes": {
+      "id": "n26",
+      "type": "LLM",
+      "question": "Does the paragraph primarily concern debt servicing, or is it more about wages/consumption, or is it something else?",
+      "children": {
+        "debt servicing": {
+          "id": "n28",
+          "type": "LLM",
+          "question": "Roughly, is the debt burden on households getting heavier, lighter, or is it roughly stable?",
+          "children": {
+            "heavier debt burden": {
+              "id": "n31",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n38",
+                  "assessment": "Leaning hawkish: inflation is above target, and households have a higher debt burden, indicating that tighter monetary policy may be flowing through.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n39",
+                  "assessment": "Neutral: inflation is at target, though households face a heavier debt burden.",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n40",
+                  "assessment": "Dovish: inflation is below target, while households face a heavier debt burden, meaning policymakers are likely to stimulate.",
+                  "children": {}
+                }
+              }
+            },
+            "lighter debt burden": {
+              "id": "n32",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n41",
+                  "assessment": "Hawkish: inflation is above target, while households face a lighter debt burden, meaning policymakers are likely to tighten policy.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n42",
+                  "assessment": "Neutral: inflation is at target, though households face a lighter debt burden.",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n43",
+                  "assessment": "Leaning dovish: inflation is below target, and households have a lighter debt burden, indicating that looser monetary policy may be flowing through.",
+                  "children": {}
+                }
+              }
+            },
+            "debt burden roughly the same": {
+              "id": "n33",
+              "assessment": "Neutral",
+              "children": {}
+            },
+            "unclear": {
+              "id": "n34",
+              "type": "LLM",
+              "question": "Broadly, does the paragraph support tighter monetary policy, looser monetary policy, or is it neutral?",
+              "children": {
+                "tighter policy": {
+                  "id": "n35",
+                  "assessment": "Leaning hawkish",
+                  "children": {}
+                },
+                "looser policy": {
+                  "id": "n36",
+                  "assessment": "Leaning dovish",
+                  "children": {}
+                },
+                "neutral": {
+                  "id": "n37",
+                  "assessment": "Neutral",
+                  "children": {}
+                }
+              }
+            }
+          }
+        },
+        "wages and consumption": {
+          "id": "n29",
+          "type": "LLM",
+          "question": "Are household incomes expected to contribute to stronger or weaker consumption/spending growth?",
+          "children": {
+            "stronger consumption growth": {
+              "id": "n47",
+              "type": "LLM",
+              "question": "Are policymakers notably concerned about wage-price spirals?",
+              "children": {
+                "yes": {
+                  "id": "n51",
+                  "assessment": "Hawkish: household incomes are expected to contribute to stronger consumption growth, and policymakers are concerned about wage-price spirals.",
+                  "children": {}
+                },
+                "no": {
+                  "id": "n52",
+                  "assessment": "Leaning hawkish: household incomes are expected to contribute to stronger consumption growth.",
+                  "children": {}
+                }
+              }
+            },
+            "weaker consumption growth": {
+              "id": "n48",
+              "assessment": "Leaning dovish: household incomes are expected to contribute to weaker consumption growth.",
+              "children": {}
+            },
+            "unclear": {
+              "id": "n50",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        },
+        "other or unclear": {
+          "id": "n30",
+          "type": "LLM",
+          "question": "Broadly, does the paragraph support tighter monetary policy, looser monetary policy, or is it neutral?",
+          "children": {
+            "tighter policy": {
+              "id": "n44",
+              "assessment": "Leaning hawkish",
+              "children": {}
+            },
+            "looser policy": {
+              "id": "n45",
+              "assessment": "Leaning dovish",
+              "children": {}
+            },
+            "neutral": {
+              "id": "n46",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        }
+      }
+    },
+    "no": {
+      "id": "n27",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

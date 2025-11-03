@@ -1,0 +1,37 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Are Superannuation Schemes being framed as a financial risk or in the context of the savings rate?",
+  "children": {
+    "Financial Risk": {
+      "id": "n2",
+      "type": "terminal",
+      "assessment": "Leaning Dovish",
+      "children": {}
+    },
+    "Savings Rate": {
+      "id": "n3",
+      "type": "LLM",
+      "question": "Is the savings rate decreasing or increasing?",
+      "children": {
+        "Decreasing": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning Hawkish",
+          "children": {}
+        },
+        "Increasing": {
+          "id": "n5",
+          "type": "terminal",
+          "assessment": "Leaning Dovish",
+          "children": {}
+        }
+      }
+    },
+    "Other/irrelevant": {
+      "id": "n6",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

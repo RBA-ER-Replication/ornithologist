@@ -1,0 +1,151 @@
+{
+  "id": "n1",
+  "question": "Does the paragraph discuss labour market indicators on the *extensive* margin (i.e. unemployment or participation rates) for Australia?",
+  "children": {
+    "yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Are the labour market indicators current or forward-looking? That is: are they relevant for current policymaking?",
+      "children": {
+        "historical only": {
+          "id": "n3",
+          "type": "LLM",
+          "question": "Broadly, does the historical comparison in the paragraph support tighter monetary policy, looser policy, or is it neutral?",
+          "children": {
+            "tighter policy": {
+              "id": "n4",
+              "assessment": "Leaning hawkish: historical comparisons of labour market indicators supported tighter monetary policy.",
+              "children": {}
+            },
+            "looser policy": {
+              "id": "n5",
+              "assessment": "Leaning dovish: historical comparisons of labour market indicators supported looser monetary policy.",
+              "children": {}
+            },
+            "neutral": {
+              "id": "n6",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        },
+        "current relevance": {
+          "id": "n7",
+          "type": "LLM",
+          "question": "Do labour market indicators broadly point towards tightness (e.g., low unemployment rates, high participation rates etc.), stability, or slack (e.g., high unemployment rates, low participation rates etc.)?",
+          "children": {
+            "Tightness": {
+              "id": "n8",
+              "type": "LLM",
+              "question": "Is inflation described as a risk, are policymakers willing to tolerate inflationary pressures, or is there no mention, or a neutral mention?",
+              "children": {
+                "Inflation Risk Discussed": {
+                  "id": "n9",
+                  "type": "terminal",
+                  "assessment": "Hawkish (Concerns over inflationary pressures due to tight labour market)",
+                  "children": {}
+                },
+                "Willing to Tolerate Inflation Pressures": {
+                  "id": "n10",
+                  "type": "terminal",
+                  "assessment": "Dovish (Prioritizing employment growth despite inflation risks)",
+                  "children": {}
+                },
+                "Inflation not mentioned or mentioned neutrally": {
+                  "id": "n11",
+                  "type": "terminal",
+                  "assessment": "Leaning Hawkish (Tight labour market typically signals potential inflation risks)",
+                  "children": {}
+                }
+              }
+            },
+            "Stability": {
+              "id": "n12",
+              "type": "terminal",
+              "assessment": "Neutral",
+              "children": {}
+            },
+            "Slack": {
+              "id": "n13",
+              "type": "LLM",
+              "question": "Do policymakers seem willing to tolerate further slack to control inflation, or does there seem to be a desire to reduce slack in the labour market, or is there no clear discussion?",
+              "children": {
+                "Desire to reduce slack": {
+                  "id": "n14",
+                  "type": "SYMBOLIC",
+                  "question": "{inflation_state}",
+                  "children": {
+                    "above_target": {
+                      "id": "n15",
+                      "assessment": "Dovish: despite inflation being above target, policymakers want to tighten the labour market.",
+                      "children": {}
+                    },
+                    "on_target": {
+                      "id": "n16",
+                      "assessment": "Neutral: inflation is at target, and policymakers want to tighten the labour market.",
+                      "children": {}
+                    },
+                    "below_target": {
+                      "id": "n17",
+                      "assessment": "Dovish: Inflation is below target, and policymakers want to tighten the labour market in order to bring inflation back up to target.",
+                      "children": {}
+                    }
+                  }
+                },
+                "Willing to Tolerate Further Slack to Control Inflation": {
+                  "id": "n18",
+                  "type": "SYMBOLIC",
+                  "question": "{inflation_state}",
+                  "children": {
+                    "above_target": {
+                      "id": "n19",
+                      "assessment": "Hawkish: inflation is above target and policymakers seem willing to tolerate further slack to control inflation.",
+                      "children": {}
+                    },
+                    "on_target": {
+                      "id": "n20",
+                      "assessment": "Hawkish: inflation is on target and policymakers seem willing to tolerate further slack to control inflation.",
+                      "children": {}
+                    },
+                    "below_target": {
+                      "id": "n21",
+                      "assessment": "Hawkish: despite inflation being below target, policymakers seem willing to tolerate further slack to control inflation.",
+                      "children": {}
+                    }
+                  }
+                },
+                "no clear discussion": {
+                  "id": "n22",
+                  "type": "SYMBOLIC",
+                  "question": "{inflation_state}",
+                  "children": {
+                    "above_target": {
+                      "id": "n23",
+                      "assessment": "Leaning hawkish: there is slack in the labour market, and inflation is above target, so policymakers may have to increase slack further.",
+                      "children": {}
+                    },
+                    "on_target": {
+                      "id": "n24",
+                      "assessment": "Leaning dovish: inflation is at target, but there is some slack in the labour market which policymakers may want to reduce.",
+                      "children": {}
+                    },
+                    "below_target": {
+                      "id": "n25",
+                      "assessment": "Leaning dovish: inflation is below target and there is slack in the labour market. Policymakers may want to tighten the labour market to generate inflationary pressures.",
+                      "children": {}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "no": {
+      "id": "n26",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

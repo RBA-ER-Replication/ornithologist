@@ -1,0 +1,50 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the exchange rate movement best described as depreciation, appreciation, or stable?",
+  "children": {
+    "Depreciation": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is inflation expected to increase due to higher import prices and increased aggregate demand?",
+      "children": {
+        "Yes": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "No": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Appreciation": {
+      "id": "n5",
+      "type": "LLM",
+      "question": "Is inflation expected to decrease due to lower export prices and decreased aggregate demand?",
+      "children": {
+        "Yes": {
+          "id": "n6",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "No": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Stable": {
+      "id": "n8",
+      "assessment": "Neutral",
+      "children": {}
+    }
+  }
+}

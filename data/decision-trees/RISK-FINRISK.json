@@ -1,0 +1,62 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the paragraph talking about financial risk for (a) banks, (b) other financial institutions, or (c) other/irrelevant?",
+  "children": {
+    "Banks": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Broadly, how is the level of financial risk described?",
+      "children": {
+        "High Risk": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Dovish (Significant support to ensure stability)",
+          "children": {}
+        },
+        "Moderate Risk": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Low Risk": {
+          "id": "n5",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Other financial institutions": {
+      "id": "n6",
+      "type": "LLM",
+      "question": "Broadly, how is the level of financial risk described?",
+      "children": {
+        "High Risk": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Dovish",
+          "children": {}
+        },
+        "Moderate Risk": {
+          "id": "n8",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Low Risk": {
+          "id": "n9",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Other/irrelevant": {
+      "id": "n10",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

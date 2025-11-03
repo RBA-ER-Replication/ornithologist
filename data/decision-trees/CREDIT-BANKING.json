@@ -1,0 +1,63 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the paragraph discussing lending, financial stability, or not mentioning banks at all?",
+  "children": {
+    "Lending": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is lending increasing, decreasing, or stable? If multiple types are reported, prefer housing/household credit.",
+      "children": {
+        "Increasing": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning Hawkish",
+          "children": {}
+        },
+        "Decreasing": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning Dovish",
+          "children": {}
+        },
+        "Stable": {
+          "id": "n5",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Financial Stability": {
+      "id": "n6",
+      "type": "LLM",
+      "question": "Is financial stability best described as high risk, low risk, or stable?",
+      "children": {
+        "High Risk/Increased Volatility": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Leaning Dovish",
+          "children": {}
+        },
+        "Low Risk/Decreased Volatility": {
+          "id": "n8",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        },
+        "Stable": {
+          "id": "n9",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Not Mentioning Banks at All": {
+      "id": "n10",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

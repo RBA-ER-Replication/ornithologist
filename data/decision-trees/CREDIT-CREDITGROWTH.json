@@ -1,0 +1,37 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the discussion about credit growth and allocation?",
+  "children": {
+    "Yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is credit growth or access described as strong or weak?",
+      "children": {
+        "Strong": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "Weak": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Moderate or other": {
+          "id": "n5",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "No": {
+      "id": "n6",
+      "type": "terminal",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "n9",
+  "question": "Does the paragraph concern capacity utilisation or constraints (e.g. supply/demand balance) in Australia?",
+  "children": {
+    "no": {
+      "id": "n11",
+      "assessment": "skip",
+      "children": {}
+    },
+    "yes": {
+      "id": "n1",
+      "type": "LLM",
+      "question": "Is the economy operating above, at, or below capacity?",
+      "children": {
+        "Above Capacity": {
+          "id": "n2",
+          "type": "LLM",
+          "question": "Is the paragraph an explicit statement or discussing assessments moving towards less spare capacity?",
+          "children": {
+            "Explicit Statement": {
+              "id": "n3",
+              "type": "terminal",
+              "assessment": "Hawkish (Clear indication of inflationary pressures building)",
+              "children": {}
+            },
+            "Assessments Moving Towards Less Spare Capacity": {
+              "id": "n4",
+              "type": "terminal",
+              "assessment": "Leaning Hawkish (Indication that capacity is tightening)",
+              "children": {}
+            }
+          }
+        },
+        "At Capacity": {
+          "id": "n5",
+          "type": "terminal",
+          "assessment": "Neutral (Indicates stability with neither strong inflationary nor deflationary pressures)",
+          "children": {}
+        },
+        "Below Capacity": {
+          "id": "n6",
+          "type": "LLM",
+          "question": "Is the paragraph an explicit statement or discussing assessments moving towards more spare capacity?",
+          "children": {
+            "Explicit Statement": {
+              "id": "n7",
+              "type": "terminal",
+              "assessment": "Dovish (Clear indication of weak inflationary pressures and need for supportive policies)",
+              "children": {}
+            },
+            "Assessments Moving Towards More Spare Capacity": {
+              "id": "n8",
+              "type": "terminal",
+              "assessment": "Leaning Dovish (Indication that capacity is increasing, reducing inflationary pressures)",
+              "children": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "id": "n1",
+  "question": "Does the paragraph concern economic activity indicators (e.g. GDP, investment, or consumption) for Australia?",
+  "children": {
+    "yes": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Do the indicators in the paragraph broadly indicate that economic growth might be strong, subdued, negative, or is it unclear?",
+      "children": {
+        "strong expansion": {
+          "id": "n3",
+          "type": "LLM",
+          "question": "Does the paragraph directly link this to inflationary pressures?",
+          "children": {
+            "yes": {
+              "id": "n4",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n5",
+                  "assessment": "Hawkish: economic activity indicators point towards strong expansion, and inflation is above target.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n6",
+                  "assessment": "Leaning hawkish: economic activity indicators point towards strong expansion, though inflation is on target.",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n7",
+                  "assessment": "Leaning dovish: economic activity indicators point towards strong expansion. Inflation is below target, so this may generate positive inflationary pressures.",
+                  "children": {}
+                }
+              }
+            },
+            "no": {
+              "id": "n8",
+              "assessment": "Leaning hawkish: economic activity indicators point towards strong expansion, which may generate inflationary pressures.",
+              "children": {}
+            }
+          }
+        },
+        "growth subdued or flat": {
+          "id": "n9",
+          "type": "LLM",
+          "question": "Does the paragraph directly link this to inflationary pressures?",
+          "children": {
+            "yes": {
+              "id": "n10",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n11",
+                  "assessment": "Neutral: inflation is above target, and subdued economic growth may help with returning inflation to target.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n12",
+                  "assessment": "Leaning dovish: inflation is on target, and indicators point towards subdued economic growth, so policymakers may decide to stimulate.",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n13",
+                  "assessment": "Dovish: inflation is below target, and indicators point towards subdued economic growth, so policymakers will likely stimulate.",
+                  "children": {}
+                }
+              }
+            },
+            "no": {
+              "id": "n14",
+              "assessment": "Leaning dovish: economic activity indicators point towards subdued or flat growth, so policymakers may stimulate.",
+              "children": {}
+            }
+          }
+        },
+        "economic contraction": {
+          "id": "n15",
+          "type": "LLM",
+          "question": "Does the paragraph directly link this to inflationary pressures?",
+          "children": {
+            "yes": {
+              "id": "n16",
+              "type": "SYMBOLIC",
+              "question": "{inflation_state}",
+              "children": {
+                "above_target": {
+                  "id": "n17",
+                  "assessment": "Leaning dovish: though inflation is above target, indicators point towards an economic contraction, so policymakers may decide to stimulate.",
+                  "children": {}
+                },
+                "on_target": {
+                  "id": "n18",
+                  "assessment": "Dovish: inflation is on target, and indicators point towards an economic contraction, so policymakers may decide to stimulate.",
+                  "children": {}
+                },
+                "below_target": {
+                  "id": "n19",
+                  "assessment": "Dovish: inflation is below target, and indicators point towards an economic contraction, so policymakers are likely to stimulate.",
+                  "children": {}
+                }
+              }
+            },
+            "no": {
+              "id": "n20",
+              "assessment": "Dovish: economic activity indicators point towards a contraction, so policymakers may stimulate.",
+              "children": {}
+            }
+          }
+        },
+        "unclear": {
+          "id": "n21",
+          "type": "LLM",
+          "question": "Broadly, does the paragraph support tighter monetary policy, looser policy, or is it neutral?",
+          "children": {
+            "tighter policy": {
+              "id": "n22",
+              "assessment": "Leaning hawkish: economic activity indicators point towards tighter policy.",
+              "children": {}
+            },
+            "looser policy": {
+              "id": "n23",
+              "assessment": "Leaning dovish: economic activity indicators point towards looser policy.",
+              "children": {}
+            },
+            "neutral": {
+              "id": "n24",
+              "assessment": "Neutral",
+              "children": {}
+            }
+          }
+        }
+      }
+    },
+    "no": {
+      "id": "n25",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

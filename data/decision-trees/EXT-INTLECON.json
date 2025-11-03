@@ -1,0 +1,96 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "What is the nature of the paragraph's discussion about international major trading partners (e.g. one or several of China, Asia, US, or Europe)? Choose the most relevant.",
+  "children": {
+    "Global Growth": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Is global growth improving or sluggish?",
+      "children": {
+        "Improving": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "Sluggish": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Stable, mixed, or uncertain": {
+          "id": "n5",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Growth in Major Trading Partners": {
+      "id": "n6",
+      "type": "LLM",
+      "question": "Are major trading partners' economies performing well or poorly?",
+      "children": {
+        "Performing Well": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "Performing Poorly": {
+          "id": "n8",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Stable, mixed, or uncertain": {
+          "id": "n9",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "International Financial Flows": {
+      "id": "n10",
+      "type": "LLM",
+      "question": "Are the financial flows described as too hot/problematic or otherwise?",
+      "children": {
+        "Problematic": {
+          "id": "n11",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Otherwise": {
+          "id": "n12",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "International Financial Stability": {
+      "id": "n13",
+      "type": "LLM",
+      "question": "Does the paragraph describe international financial stability risks or crises?",
+      "children": {
+        "yes": {
+          "id": "n14",
+          "assessment": "Leaning dovish (international financial stability risks may spill over into Australia necessitating central bank support).",
+          "children": {}
+        },
+        "no": {
+          "id": "n15",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Other, domestic, irrelevant, or unclear": {
+      "id": "n16",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

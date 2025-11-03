@@ -1,0 +1,32 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the primary concern a skills mismatch or shortage, or growth in human capital?",
+  "children": {
+    "Skills Mismatch or Shortage": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Does the mismatch or shortage indicate significant labour market tightness?",
+      "children": {
+        "Yes": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Hawkish",
+          "children": {}
+        },
+        "No": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Growth in Human Capital": {
+      "id": "n5",
+      "type": "terminal",
+      "assessment": "Neutral",
+      "children": {}
+    }
+  }
+}

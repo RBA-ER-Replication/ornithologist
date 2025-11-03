@@ -1,0 +1,60 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the paragraph discussing oil prices, or other bulk commodities like iron ore, coal, LNG?",
+  "children": {
+    "Oil": {
+      "id": "n2",
+      "type": "LLM",
+      "question": "Are oil prices moving higher or lower?",
+      "children": {
+        "Higher": {
+          "id": "n3",
+          "type": "terminal",
+          "assessment": "Leaning Hawkish",
+          "children": {}
+        },
+        "Lower": {
+          "id": "n4",
+          "type": "terminal",
+          "assessment": "Leaning Dovish",
+          "children": {}
+        },
+        "Mixed or stable": {
+          "id": "n5",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Iron Ore, Coal, LNG, or non-specific/general commodity prices": {
+      "id": "n6",
+      "type": "LLM",
+      "question": "Are commodity prices moving higher or lower?",
+      "children": {
+        "Higher": {
+          "id": "n7",
+          "type": "terminal",
+          "assessment": "Leaning hawkish",
+          "children": {}
+        },
+        "Lower": {
+          "id": "n8",
+          "type": "terminal",
+          "assessment": "Leaning dovish",
+          "children": {}
+        },
+        "Mixed or stable": {
+          "id": "n9",
+          "assessment": "Neutral",
+          "children": {}
+        }
+      }
+    },
+    "Unclear/irrelevant": {
+      "id": "n10",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

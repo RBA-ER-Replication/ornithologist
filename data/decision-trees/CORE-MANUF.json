@@ -1,0 +1,30 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Is the manufacturing industry or sector described as growing robustly, stable, or growing slowly/not at all?",
+  "children": {
+    "Growing robustly": {
+      "id": "n2",
+      "type": "terminal",
+      "assessment": "Hawkish",
+      "children": {}
+    },
+    "Stable": {
+      "id": "n3",
+      "type": "terminal",
+      "assessment": "Neutral",
+      "children": {}
+    },
+    "Growing slowly/not at all": {
+      "id": "n4",
+      "type": "terminal",
+      "assessment": "Dovish",
+      "children": {}
+    },
+    "paragraph not related to manufacturing": {
+      "id": "n5",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

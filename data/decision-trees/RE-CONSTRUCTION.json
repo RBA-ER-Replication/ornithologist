@@ -1,0 +1,26 @@
+{
+  "id": "n8",
+  "question": "Is the level of construction activity best described as increasing, decreasing, or is it moderate/stable?",
+  "children": {
+    "increasing": {
+      "id": "n9",
+      "assessment": "Leaning hawkish",
+      "children": {}
+    },
+    "decreasing": {
+      "id": "n10",
+      "assessment": "Leaning dovish",
+      "children": {}
+    },
+    "moderate or stable": {
+      "id": "n11",
+      "assessment": "Neutral",
+      "children": {}
+    },
+    "construction activity not discussed or other": {
+      "id": "n12",
+      "assessment": "skip",
+      "children": {}
+    }
+  }
+}

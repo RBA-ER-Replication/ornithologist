@@ -1,0 +1,19 @@
+{
+  "id": "n1",
+  "type": "LLM",
+  "question": "Are markets being described as excessively volatile, or stable/irrelevant?",
+  "children": {
+    "Volatile": {
+      "id": "n2",
+      "type": "terminal",
+      "assessment": "Leaning dovish",
+      "children": {}
+    },
+    "Stable/Irrelevant": {
+      "id": "n3",
+      "type": "terminal",
+      "assessment": "Neutral",
+      "children": {}
+    }
+  }
+}
