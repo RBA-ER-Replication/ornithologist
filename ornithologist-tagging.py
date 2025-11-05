@@ -96,6 +96,8 @@ def rrf(query_rankings, k=60, threshold=0.75): # weight it?
             delta = 1.0 / (k + rank + 1)
             scores[element] = scores[element] + delta if element in scores else delta
     ret = [(el, score) for el, score in scores.items()]
+    if len(ret) == 0: # just in case...
+        return []
     ret.sort(key=lambda x: -x[1])
     max_score = ret[0][1]
     return [(el, sc, sc/max_score) for el, sc in ret if sc/max_score >= threshold]
